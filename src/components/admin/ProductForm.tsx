@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Product, ProductImage } from '@/types'
-import { X, Plus, Trash2 } from 'lucide-react'
+import { X, Plus, Trash2, Upload } from 'lucide-react'
 
 interface ProductFormProps {
   product: Product | null
@@ -23,20 +23,19 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
     materials: [],
     dimensions: { width: 0, height: 0, depth: 0, unit: 'cm' },
     featured: false,
-    externalCheckoutUrl: '',
     inStock: true,
     quantity: 0,
     visible: true,
     createdAt: new Date().toISOString().split('T')[0],
   })
 
-  const [materialInput, setMaterialInput] = useState('')
+  // const [materialInput, setMaterialInput] = useState('')
   const [imageInput, setImageInput] = useState({
     src: '',
-    alt: '',
     width: 1200,
     height: 1600,
   })
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (product) {
@@ -58,34 +57,35 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
     })
   }
 
-  const addMaterial = () => {
-    if (materialInput.trim()) {
-      setFormData({
-        ...formData,
-        materials: [...(formData.materials || []), materialInput.trim()],
-      })
-      setMaterialInput('')
-    }
-  }
+  // const addMaterial = () => {
+  //   if (materialInput.trim()) {
+  //     setFormData({
+  //       ...formData,
+  //       materials: [...(formData.materials || []), materialInput.trim()],
+  //     })
+  //     setMaterialInput('')
+  //   }
+  // }
 
-  const removeMaterial = (index: number) => {
-    setFormData({
-      ...formData,
-      materials: formData.materials?.filter((_, i) => i !== index),
-    })
-  }
+  // const removeMaterial = (index: number) => {
+  //   setFormData({
+  //     ...formData,
+  //     materials: formData.materials?.filter((_, i) => i !== index),
+  //   })
+  // }
 
   const addImage = () => {
     if (imageInput.src) {
       const newImage: ProductImage = {
         ...imageInput,
         isPrimary: formData.images.length === 0,
+        alt: ''
       }
       setFormData({
         ...formData,
         images: [...formData.images, newImage],
       })
-      setImageInput({ src: '', alt: '', width: 1200, height: 1600 })
+      setImageInput({ src: '', width: 1200, height: 1600 })
     }
   }
 
@@ -94,6 +94,36 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
       ...formData,
       images: formData.images.filter((_, i) => i !== index),
     })
+  }
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (!files || files.length === 0) return
+
+    Array.from(files).forEach((file) => {
+      const reader = new FileReader()
+      reader.onload = (event) => {
+        const img = new Image()
+        img.onload = () => {
+          const newImage: ProductImage = {
+            src: event.target?.result as string,
+            isPrimary: formData.images.length === 0,
+            width: img.width,
+            height: img.height,
+          }
+          setFormData((prev) => ({
+            ...prev,
+            images: [...prev.images, newImage],
+          }))
+        }
+        img.src = event.target?.result as string
+      }
+      reader.readAsDataURL(file)
+    })
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
   }
 
   return (
@@ -112,7 +142,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
+          {/* <div>
             <label className="block text-sm font-semibold text-white mb-2">
               Product ID (auto-generated if empty)
             </label>
@@ -124,11 +154,11 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500 disabled:opacity-50"
               placeholder="unique-product-id (optional)"
             />
-          </div>
+          </div> */}
 
           <div>
             <label className="block text-sm font-semibold text-white mb-2">
-              Product Name
+              Product Name <span className="text-red-400">*</span>
             </label>
             <input
               type="text"
@@ -140,7 +170,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
             />
           </div>
 
-          <div>
+          {/* <div>
             <label className="block text-sm font-semibold text-white mb-2">
               Slug (optional, auto-generated)
             </label>
@@ -151,7 +181,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
               placeholder="classic-disco-ball"
             />
-          </div>
+          </div> */}
 
           <div>
             <label className="block text-sm font-semibold text-white mb-2">
@@ -176,7 +206,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
 
           <div>
             <label className="block text-sm font-semibold text-white mb-2">
-              Price
+              Price <span className="text-red-400">*</span>
             </label>
             <input
               type="number"
@@ -193,7 +223,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
 
           <div>
             <label className="block text-sm font-semibold text-white mb-2">
-              Quantity
+              Quantity <span className="text-red-400">*</span>
             </label>
             <input
               type="number"
@@ -204,22 +234,6 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               }
               className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
               placeholder="10"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-semibold text-white mb-2">
-              External Checkout URL
-            </label>
-            <input
-              type="url"
-              required
-              value={formData.externalCheckoutUrl}
-              onChange={(e) =>
-                setFormData({ ...formData, externalCheckoutUrl: e.target.value })
-              }
-              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
-              placeholder="https://example.com/checkout/product"
             />
           </div>
 
@@ -252,7 +266,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
 
         <div>
           <label className="block text-sm font-semibold text-white mb-2">
-            Description
+            Description <span className="text-red-400">*</span>
           </label>
           <textarea
             required
@@ -342,7 +356,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
           </div>
         </div>
 
-        <div className="border-t border-zinc-800 pt-6">
+        {/* <div className="border-t border-zinc-800 pt-6">
           <h3 className="text-lg font-semibold text-white mb-4">Materials</h3>
           <div className="flex gap-2 mb-3">
             <input
@@ -378,7 +392,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         <div className="border-t border-zinc-800 pt-6">
           <h3 className="text-lg font-semibold text-white mb-4">Images</h3>
@@ -392,22 +406,29 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               className="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
               placeholder="Image URL"
             />
-            <input
-              type="text"
-              value={imageInput.alt}
-              onChange={(e) =>
-                setImageInput({ ...imageInput, alt: e.target.value })
-              }
-              className="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
-              placeholder="Alt text"
-            />
             <button
               type="button"
               onClick={addImage}
               className="px-4 py-2 bg-white text-black rounded-lg font-semibold hover:bg-zinc-200 transition"
             >
               <Plus size={20} className="inline mr-2" />
-              Add Image
+              Add URL
+            </button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={handleFileUpload}
+              className="hidden"
+            />
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="px-4 py-2 bg-zinc-700 text-white rounded-lg font-semibold hover:bg-zinc-600 transition border border-zinc-600"
+            >
+              <Upload size={20} className="inline mr-2" />
+              Upload Image
             </button>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -418,7 +439,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               >
                 <img
                   src={image.src}
-                  alt={image.alt}
+                  alt=""
                   className="w-full h-32 object-cover"
                 />
                 <button

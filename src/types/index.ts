@@ -15,7 +15,6 @@ export interface Product {
     unit: 'cm' | 'in'
   }
   featured: boolean
-  externalCheckoutUrl: string
   inStock: boolean
   quantity: number
   visible: boolean
@@ -24,7 +23,7 @@ export interface Product {
 
 export interface ProductImage {
   src: string
-  alt: string
+  alt?: string
   width: number
   height: number
   isPrimary: boolean

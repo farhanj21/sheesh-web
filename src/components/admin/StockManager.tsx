@@ -4,6 +4,14 @@ import { useState, useEffect } from 'react'
 import { Product } from '@/types'
 import { Plus, Edit2, Trash2, Eye, EyeOff } from 'lucide-react'
 import { ProductForm } from './ProductForm'
+import { ToastContainer, ToastType } from '@/components/ui/Toast'
+import { ConfirmDialog } from '@/components/ui/ConfirmDialog'
+
+interface Toast {
+  id: string
+  message: string
+  type: ToastType
+}
 
 export function StockManager() {
   const [products, setProducts] = useState<Product[]>([])
@@ -14,6 +22,11 @@ export function StockManager() {
   const [editingProduct, setEditingProduct] = useState<Product | null>(null)
   const [showForm, setShowForm] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [toasts, setToasts] = useState<Toast[]>([])
+  const [deleteDialog, setDeleteDialog] = useState<{ isOpen: boolean; productId: string | null }>({
+    isOpen: false,
+    productId: null,
+  })
 
   useEffect(() => {
     const savedToken = localStorage.getItem('admin_token')
@@ -23,6 +36,15 @@ export function StockManager() {
       fetchProducts(savedToken)
     }
   }, [])
+
+  const showToast = (message: string, type: ToastType) => {
+    const id = `${Date.now()}-${Math.random()}`
+    setToasts((prev) => [...prev, { id, message, type }])
+  }
+
+  const removeToast = (id: string) => {
+    setToasts((prev) => prev.filter((toast) => toast.id !== id))
+  }
 
   const login = async () => {
     try {
@@ -94,14 +116,21 @@ export function StockManager() {
         await fetchProducts(token)
         setShowForm(false)
         setEditingProduct(null)
+        showToast(
+          isNew ? 'Product created successfully!' : 'Product updated successfully!',
+          'success'
+        )
+      } else {
+        showToast('Failed to save product', 'error')
       }
     } catch (err) {
       console.error('Failed to save product:', err)
+      showToast('An error occurred while saving the product', 'error')
     }
   }
 
   const handleDeleteProduct = async (id: string) => {
-    if (!token || !confirm('Are you sure you want to delete this product?')) return
+    if (!token) return
 
     console.log('Deleting product with ID:', id)
 
@@ -113,6 +142,7 @@ export function StockManager() {
 
       if (res.ok) {
         await fetchProducts(token)
+        showToast('Product deleted successfully!', 'success')
       } else {
         let errorMessage = 'Unknown error'
         try {
@@ -122,12 +152,18 @@ export function StockManager() {
           errorMessage = `HTTP ${res.status}: ${res.statusText}`
         }
         console.error('Delete failed:', errorMessage)
-        alert(`Failed to delete product: ${errorMessage}`)
+        showToast(`Failed to delete product: ${errorMessage}`, 'error')
       }
     } catch (err) {
       console.error('Failed to delete product:', err)
-      alert('Failed to delete product. Check console for details.')
+      showToast('An error occurred while deleting the product', 'error')
+    } finally {
+      setDeleteDialog({ isOpen: false, productId: null })
     }
+  }
+
+  const confirmDelete = (id: string) => {
+    setDeleteDialog({ isOpen: true, productId: id })
   }
 
   const toggleVisibility = async (product: Product) => {
@@ -145,9 +181,16 @@ export function StockManager() {
 
       if (res.ok) {
         await fetchProducts(token)
+        showToast(
+          `Product ${!product.visible ? 'shown' : 'hidden'} successfully!`,
+          'success'
+        )
+      } else {
+        showToast('Failed to update visibility', 'error')
       }
     } catch (err) {
       console.error('Failed to update visibility:', err)
+      showToast('An error occurred while updating visibility', 'error')
     }
   }
 
@@ -169,15 +212,21 @@ export function StockManager() {
 
       if (res.ok) {
         await fetchProducts(token)
+        showToast('Stock updated successfully!', 'success')
+      } else {
+        showToast('Failed to update stock', 'error')
       }
     } catch (err) {
       console.error('Failed to update stock:', err)
+      showToast('An error occurred while updating stock', 'error')
     }
   }
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
+      <>
+        <ToastContainer toasts={toasts} onClose={removeToast} />
+        <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="bg-zinc-900 p-8 rounded-lg shadow-xl w-full max-w-md border border-zinc-800">
           <h2 className="text-2xl font-bold mb-6 text-white">Admin Login</h2>
           <input
@@ -197,12 +246,15 @@ export function StockManager() {
           </button>
         </div>
       </div>
+      </>
     )
   }
 
   if (showForm) {
     return (
-      <div className="min-h-screen bg-black pt-24 pb-12">
+      <>
+        <ToastContainer toasts={toasts} onClose={removeToast} />
+        <div className="min-h-screen bg-black pt-24 pb-12">
         <div className="container mx-auto px-6">
           <ProductForm
             product={editingProduct}
@@ -214,11 +266,28 @@ export function StockManager() {
           />
         </div>
       </div>
+      </>
     )
   }
 
   return (
-    <div className="min-h-screen bg-black pt-24 pb-12">
+    <>
+      <ToastContainer toasts={toasts} onClose={removeToast} />
+      <ConfirmDialog
+        isOpen={deleteDialog.isOpen}
+        title="Delete Product"
+        message="Are you sure you want to delete this product? This action cannot be undone."
+        confirmText="Delete"
+        cancelText="Cancel"
+        type="danger"
+        onConfirm={() => {
+          if (deleteDialog.productId) {
+            handleDeleteProduct(deleteDialog.productId)
+          }
+        }}
+        onCancel={() => setDeleteDialog({ isOpen: false, productId: null })}
+      />
+      <div className="min-h-screen bg-black pt-24 pb-12">
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-4xl font-bold text-white">Stock Management</h1>
@@ -333,7 +402,7 @@ export function StockManager() {
                             <Edit2 size={18} />
                           </button>
                           <button
-                            onClick={() => handleDeleteProduct(product.id)}
+                            onClick={() => confirmDelete(product.id)}
                             className="p-2 text-red-400 hover:text-red-300 transition"
                           >
                             <Trash2 size={18} />
@@ -349,5 +418,6 @@ export function StockManager() {
         )}
       </div>
     </div>
+    </>
   )
 }
