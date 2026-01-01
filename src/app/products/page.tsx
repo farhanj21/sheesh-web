@@ -1,5 +1,5 @@
 import { ProductGrid } from '@/components/products/ProductGrid'
-import { products } from '@/data/products'
+import { getVisibleProducts } from '@/lib/products-server'
 
 export const metadata = {
   title: 'Products - Sheesh',
@@ -7,6 +7,8 @@ export const metadata = {
 }
 
 export default function ProductsPage() {
+  const visibleProducts = getVisibleProducts()
+
   return (
     <div className="min-h-screen pt-32 pb-16">
       <div className="container mx-auto px-6 lg:px-12">
@@ -22,7 +24,7 @@ export default function ProductsPage() {
           </p>
         </div>
 
-        <ProductGrid products={products} />
+        <ProductGrid products={visibleProducts} />
       </div>
     </div>
   )

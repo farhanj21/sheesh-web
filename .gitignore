@@ -41,3 +41,6 @@ yarn-error.log*
 next-env.d.ts
 .claude/settings.local.json
 .eslintrc.json
+
+# product data (optional - remove to commit product data)
+/data/products.json

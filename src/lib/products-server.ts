@@ -1,4 +1,15 @@
 import { Product } from '@/types'
+import fs from 'fs'
+import path from 'path'
+
+const PRODUCTS_FILE = path.join(process.cwd(), 'data', 'products.json')
+
+function ensureDataDir() {
+  const dataDir = path.join(process.cwd(), 'data')
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true })
+  }
+}
 
 export const defaultProducts: Product[] = [
   {
@@ -138,4 +149,69 @@ export const defaultProducts: Product[] = [
   },
 ]
 
-export const products = defaultProducts
+export function loadProductsFromFile(): Product[] {
+  try {
+    ensureDataDir()
+    if (fs.existsSync(PRODUCTS_FILE)) {
+      const fileData = fs.readFileSync(PRODUCTS_FILE, 'utf-8')
+      return JSON.parse(fileData)
+    }
+  } catch (error) {
+    console.error('Error loading products from file:', error)
+  }
+  return defaultProducts
+}
+
+export function saveProductsToFile(products: Product[]) {
+  try {
+    ensureDataDir()
+    fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(products, null, 2), 'utf-8')
+  } catch (error) {
+    console.error('Error saving products to file:', error)
+  }
+}
+
+let productsCache: Product[] | null = null
+
+export function getProducts() {
+  if (!productsCache) {
+    productsCache = loadProductsFromFile()
+  }
+  return productsCache
+}
+
+export function getVisibleProducts() {
+  return getProducts().filter(p => p.visible)
+}
+
+export function updateProduct(id: string, updates: Partial<Product>) {
+  const products = getProducts()
+  const index = products.findIndex(p => p.id === id)
+  if (index !== -1) {
+    products[index] = { ...products[index], ...updates }
+    saveProductsToFile(products)
+    productsCache = products
+    return products[index]
+  }
+  return null
+}
+
+export function addProduct(product: Product) {
+  const products = getProducts()
+  products.push(product)
+  saveProductsToFile(products)
+  productsCache = products
+  return product
+}
+
+export function deleteProduct(id: string) {
+  const products = getProducts()
+  const index = products.findIndex(p => p.id === id)
+  if (index !== -1) {
+    products.splice(index, 1)
+    saveProductsToFile(products)
+    productsCache = products
+    return true
+  }
+  return false
+}

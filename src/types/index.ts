@@ -17,6 +17,8 @@ export interface Product {
   featured: boolean
   externalCheckoutUrl: string
   inStock: boolean
+  quantity: number
+  visible: boolean
   createdAt: string
 }
 
