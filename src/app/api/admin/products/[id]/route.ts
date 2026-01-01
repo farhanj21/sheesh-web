@@ -46,9 +46,11 @@ export async function DELETE(
   }
 
   const { id } = await params
+  console.log('DELETE request for product ID:', id)
   
   try {
     const success = await deleteProduct(id)
+    console.log('Delete result:', success)
 
     if (!success) {
       return NextResponse.json({ error: 'Product not found' }, { status: 404 })

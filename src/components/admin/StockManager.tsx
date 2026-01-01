@@ -62,6 +62,7 @@ export function StockManager() {
       })
       if (res.ok) {
         const data = await res.json()
+        console.log('Fetched products:', data)
         setProducts(data)
       }
     } catch (err) {
@@ -102,6 +103,8 @@ export function StockManager() {
   const handleDeleteProduct = async (id: string) => {
     if (!token || !confirm('Are you sure you want to delete this product?')) return
 
+    console.log('Deleting product with ID:', id)
+
     try {
       const res = await fetch(`/api/admin/products/${id}`, {
         method: 'DELETE',
@@ -110,9 +113,20 @@ export function StockManager() {
 
       if (res.ok) {
         await fetchProducts(token)
+      } else {
+        let errorMessage = 'Unknown error'
+        try {
+          const error = await res.json()
+          errorMessage = error.error || errorMessage
+        } catch {
+          errorMessage = `HTTP ${res.status}: ${res.statusText}`
+        }
+        console.error('Delete failed:', errorMessage)
+        alert(`Failed to delete product: ${errorMessage}`)
       }
     } catch (err) {
       console.error('Failed to delete product:', err)
+      alert('Failed to delete product. Check console for details.')
     }
   }
 

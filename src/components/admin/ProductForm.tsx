@@ -48,9 +48,11 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
     e.preventDefault()
     
     const slug = formData.slug || formData.name.toLowerCase().replace(/\s+/g, '-')
+    const id = formData.id || `${slug}-${Date.now()}`
     
     onSave({
       ...formData,
+      id,
       slug,
       inStock: formData.quantity > 0,
     })
@@ -112,16 +114,15 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label className="block text-sm font-semibold text-white mb-2">
-              Product ID
+              Product ID (auto-generated if empty)
             </label>
             <input
               type="text"
-              required
               value={formData.id}
               onChange={(e) => setFormData({ ...formData, id: e.target.value })}
               disabled={!!product}
               className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500 disabled:opacity-50"
-              placeholder="unique-product-id"
+              placeholder="unique-product-id (optional)"
             />
           </div>
 
