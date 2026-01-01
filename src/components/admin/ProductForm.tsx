@@ -17,7 +17,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
     slug: '',
     description: '',
     price: 0,
-    currency: 'USD',
+    currency: 'PKR',
     images: [],
     category: 'disco-balls',
     materials: [],

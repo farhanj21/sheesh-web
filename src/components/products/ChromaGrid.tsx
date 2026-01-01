@@ -63,12 +63,18 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
   const items: ChromaItem[] = products.map(product => {
     const primaryImage = product.images.find(img => img.isPrimary) || product.images[0]
     const colorScheme = categoryColors[product.category] || categoryColors.mirrors
+    
+    const stockText = !product.inStock 
+      ? 'OUT OF STOCK' 
+      : product.quantity <= 3 
+        ? `ONLY ${product.quantity} LEFT`
+        : 'IN STOCK'
 
     return {
       image: primaryImage?.src || '/placeholder.jpg',
       title: product.name,
-      subtitle: `${product.price.toFixed(2)} ${product.currency}`,
-      handle: product.category.replace('-', ' ').toUpperCase(),
+      subtitle: `Rs ${product.price.toFixed(2)}`,
+      handle: stockText,
       borderColor: colorScheme.border,
       gradient: colorScheme.gradient,
       url: `/products/${product.slug}`

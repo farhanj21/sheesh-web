@@ -8,7 +8,7 @@ export const defaultProducts: Product[] = [
     description:
       'Handcrafted mirror ball with premium reflective tiles. Perfect for creating an enchanting atmosphere in any space. Each tile is individually placed to ensure maximum light reflection and stunning visual effects.',
     price: 129.99,
-    currency: 'USD',
+    currency: 'PKR',
     images: [
       {
         src: '/images/products/double-ball.jpeg',
@@ -35,7 +35,7 @@ export const defaultProducts: Product[] = [
     description:
       'Contemporary hexagonal mirror featuring hand-placed mosaic tiles in a stunning geometric pattern. A statement piece that adds depth and light to any room.',
     price: 189.99,
-    currency: 'USD',
+    currency: 'PKR',
     images: [
       {
         src: '/images/products/mini-balls.jpeg',
@@ -62,7 +62,7 @@ export const defaultProducts: Product[] = [
     description:
       'Compact disco ball perfect for smaller spaces or as decorative accents. Features the same premium craftsmanship as our larger pieces in a more intimate size.',
     price: 79.99,
-    currency: 'USD',
+    currency: 'PKR',
     images: [
       {
         src: '/images/products/stickers.jpeg',
@@ -89,7 +89,7 @@ export const defaultProducts: Product[] = [
     description:
       'Breathtaking wall art piece featuring gradient mosaic tiles that capture the warm hues of a sunset. A unique focal point for any living space.',
     price: 249.99,
-    currency: 'USD',
+    currency: 'PKR',
     images: [
       {
         src: '/images/products/beads.jpeg',
@@ -116,7 +116,7 @@ export const defaultProducts: Product[] = [
     description:
       'Breathtaking wall art pieces featuring gradient mosaic tiles that capture the warm hues of a sunset. Unique focal points for any living space.',
     price: 249.99,
-    currency: 'USD',
+    currency: 'PKR',
     images: [
       {
         src: '/images/products/miscellaneous.jpeg',

@@ -4,7 +4,7 @@ export interface Product {
   slug: string
   description: string
   price: number
-  currency: 'USD' | 'EUR' | 'GBP'
+  currency: 'PKR' | 'EUR' | 'GBP'
   images: ProductImage[]
   category: 'mirrors' | 'disco-balls' | 'wall-art' | 'accessories'
   materials?: string[]

@@ -67,8 +67,20 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
               </div>
 
               <div className="space-y-4">
-                <div className="text-2xl font-bold text-primary-500">
-                  {formatPrice(product.price, product.currency)}
+                <div className="flex items-center justify-between">
+                  <div className="text-2xl font-bold text-primary-500">
+                    Rs {product.price.toFixed(2)}
+                  </div>
+                  {product.inStock && product.quantity <= 3 && (
+                    <div className="text-xs font-semibold text-orange-600 bg-orange-50 px-2 py-1 rounded">
+                      Items Left: {product.quantity}
+                    </div>
+                  )}
+                  {product.inStock && product.quantity > 3 && (
+                    <div className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded">
+                      In Stock
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex gap-2">
@@ -105,8 +117,20 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           </div>
 
           <h2 className="text-3xl font-bold mb-4">{product.name}</h2>
-          <div className="text-3xl font-bold text-primary-500 mb-6">
-            {formatPrice(product.price, product.currency)}
+          <div className="flex items-center justify-between mb-6">
+            <div className="text-3xl font-bold text-primary-500">
+              Rs {product.price.toFixed(2)}
+            </div>
+            {product.inStock && product.quantity <= 3 && (
+              <div className="text-sm font-semibold text-orange-600 bg-orange-50 px-3 py-2 rounded">
+                Only {product.quantity} items left!
+              </div>
+            )}
+            {product.inStock && product.quantity > 3 && (
+              <div className="text-sm font-semibold text-green-600 bg-green-50 px-3 py-2 rounded">
+                In Stock
+              </div>
+            )}
           </div>
 
           <p className="text-neutral-600 mb-6 leading-relaxed">

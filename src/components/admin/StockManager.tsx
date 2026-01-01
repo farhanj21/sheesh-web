@@ -272,7 +272,7 @@ export function StockManager() {
                         {product.category}
                       </td>
                       <td className="px-6 py-4 text-zinc-300">
-                        ${product.price.toFixed(2)}
+                        Rs {product.price.toFixed(2)}
                       </td>
                       <td className="px-6 py-4">
                         <input

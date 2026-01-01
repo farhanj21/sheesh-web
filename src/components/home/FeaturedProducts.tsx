@@ -1,11 +1,21 @@
 'use client'
 
-import { products } from '@/data/products'
+import { useState, useEffect } from 'react'
+import { Product } from '@/types'
 import { FadeIn } from '@/components/animations/FadeIn'
 import CircularGallery from './CircularGallery'
 
 export function FeaturedProducts() {
-  const featuredProducts = products.filter((p) => p.featured)
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([])
+
+  useEffect(() => {
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(products => {
+        setFeaturedProducts(products.filter((p: Product) => p.featured))
+      })
+      .catch(err => console.error('Failed to load products:', err))
+  }, [])
 
   const galleryItems = featuredProducts.map((product) => ({
     image: product.images?.[0]?.src || `https://picsum.photos/seed/${product.id}/800/600`,
@@ -24,15 +34,17 @@ export function FeaturedProducts() {
           <p className="text-gray-600 text-lg text-center font-fancy italic"><span className="text-silver-shine" data-text="Handcrafted with precision, designed to captivate">Handcrafted with precision, designed to captivate</span></p>
         </FadeIn>
 
-        <div style={{ height: '500px', position: 'relative', marginTop: '-70px' }}>
-          <CircularGallery 
-            items={galleryItems}
-            bend={3} 
-            textColor="#ffffff" 
-            borderRadius={0.05} 
-            scrollEase={0.02}
-          />
-        </div>
+        {galleryItems.length > 0 && (
+          <div style={{ height: '500px', position: 'relative', marginTop: '-70px' }}>
+            <CircularGallery 
+              items={galleryItems}
+              bend={3} 
+              textColor="#ffffff" 
+              borderRadius={0.05} 
+              scrollEase={0.02}
+            />
+          </div>
+        )}
       </div>
     </section>
   )

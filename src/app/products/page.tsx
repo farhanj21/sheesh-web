@@ -6,6 +6,8 @@ export const metadata = {
   description: 'Explore our collection of handcrafted mosaic mirrors, disco balls, and reflective art.',
 }
 
+export const dynamic = 'force-dynamic'
+
 export default function ProductsPage() {
   const visibleProducts = getVisibleProducts()
 
