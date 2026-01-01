@@ -1,5 +1,6 @@
 import { ProductGrid } from '@/components/products/ProductGrid'
-import { getVisibleProducts } from '@/lib/products-server'
+import { getVisibleProducts, initializeProducts } from '@/lib/products-db'
+import { defaultProducts } from '@/data/products'
 
 export const metadata = {
   title: 'Products - Sheesh',
@@ -8,8 +9,9 @@ export const metadata = {
 
 export const dynamic = 'force-dynamic'
 
-export default function ProductsPage() {
-  const visibleProducts = getVisibleProducts()
+export default async function ProductsPage() {
+  await initializeProducts(defaultProducts)
+  const visibleProducts = await getVisibleProducts()
 
   return (
     <div className="min-h-screen pt-32 pb-16">

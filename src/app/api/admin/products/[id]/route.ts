@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { updateProduct, deleteProduct } from '@/lib/products-server'
+import { updateProduct, deleteProduct } from '@/lib/products-db'
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123'
 
@@ -24,7 +24,7 @@ export async function PUT(
 
   try {
     const updates = await request.json()
-    const updatedProduct = updateProduct(id, updates)
+    const updatedProduct = await updateProduct(id, updates)
     
     if (!updatedProduct) {
       return NextResponse.json({ error: 'Product not found' }, { status: 404 })
@@ -32,6 +32,7 @@ export async function PUT(
 
     return NextResponse.json(updatedProduct)
   } catch (error) {
+    console.error('Failed to update product:', error)
     return NextResponse.json({ error: 'Invalid product data' }, { status: 400 })
   }
 }
@@ -45,11 +46,17 @@ export async function DELETE(
   }
 
   const { id } = await params
-  const success = deleteProduct(id)
+  
+  try {
+    const success = await deleteProduct(id)
 
-  if (!success) {
-    return NextResponse.json({ error: 'Product not found' }, { status: 404 })
+    if (!success) {
+      return NextResponse.json({ error: 'Product not found' }, { status: 404 })
+    }
+
+    return NextResponse.json({ success: true })
+  } catch (error) {
+    console.error('Failed to delete product:', error)
+    return NextResponse.json({ error: 'Failed to delete product' }, { status: 500 })
   }
-
-  return NextResponse.json({ success: true })
 }
