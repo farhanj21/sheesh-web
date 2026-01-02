@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { updateProduct, deleteProduct } from '@/lib/products-db'
 
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '10mb',
+    },
+  },
+}
+
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123'
 
 function verifyAuth(request: NextRequest) {

@@ -8,7 +8,16 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: '**.myshopify.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
     ],
+  },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '10mb',
+    },
   },
 }
 

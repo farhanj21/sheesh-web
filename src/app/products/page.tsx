@@ -10,7 +10,9 @@ export const metadata = {
 export const dynamic = 'force-dynamic'
 
 export default async function ProductsPage() {
-  await initializeProducts(defaultProducts)
+  if (process.env.NODE_ENV === 'development') {
+    await initializeProducts(defaultProducts)
+  }
   const visibleProducts = await getVisibleProducts()
 
   return (

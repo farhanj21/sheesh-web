@@ -35,6 +35,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
     width: 1200,
     height: 1600,
   })
+  const [uploading, setUploading] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -96,33 +97,48 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
     })
   }
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
     if (!files || files.length === 0) return
 
-    Array.from(files).forEach((file) => {
-      const reader = new FileReader()
-      reader.onload = (event) => {
-        const img = new Image()
-        img.onload = () => {
-          const newImage: ProductImage = {
-            src: event.target?.result as string,
-            isPrimary: formData.images.length === 0,
-            width: img.width,
-            height: img.height,
-          }
-          setFormData((prev) => ({
-            ...prev,
-            images: [...prev.images, newImage],
-          }))
-        }
-        img.src = event.target?.result as string
-      }
-      reader.readAsDataURL(file)
-    })
+    setUploading(true)
 
-    if (fileInputRef.current) {
-      fileInputRef.current.value = ''
+    try {
+      for (const file of Array.from(files)) {
+        const formDataUpload = new FormData()
+        formDataUpload.append('file', file)
+        
+        const response = await fetch('/api/upload', {
+          method: 'POST',
+          body: formDataUpload,
+        })
+        
+        if (!response.ok) {
+          throw new Error('Upload failed')
+        }
+        
+        const { url, width, height } = await response.json()
+        
+        const newImage: ProductImage = {
+          src: url,
+          isPrimary: formData.images.length === 0,
+          width: width || 1200,
+          height: height || 1600,
+        }
+        
+        setFormData((prev) => ({
+          ...prev,
+          images: [...prev.images, newImage],
+        }))
+      }
+    } catch (error) {
+      console.error('Upload error:', error)
+      alert('Failed to upload image. Please try again.')
+    } finally {
+      setUploading(false)
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ''
+      }
     }
   }
 
@@ -425,10 +441,11 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="px-4 py-2 bg-zinc-700 text-white rounded-lg font-semibold hover:bg-zinc-600 transition border border-zinc-600"
+              disabled={uploading}
+              className="px-4 py-2 bg-zinc-700 text-white rounded-lg font-semibold hover:bg-zinc-600 transition border border-zinc-600 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Upload size={20} className="inline mr-2" />
-              Upload Image
+              {uploading ? 'Uploading...' : 'Upload Image'}
             </button>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
