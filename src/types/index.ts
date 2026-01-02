@@ -29,3 +29,14 @@ export interface ProductImage {
   height: number
   isPrimary: boolean
 }
+
+export interface Event {
+  id: string
+  title: string
+  date: string
+  location: string
+  description: string
+  image: string
+  gallery: string[]
+  createdAt: string
+}

@@ -13,11 +13,11 @@ interface Toast {
   type: ToastType
 }
 
-export function StockManager() {
+export function StockManager({ token: propToken, onLogout }: { token?: string, onLogout?: () => void }) {
   const [products, setProducts] = useState<Product[]>([])
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [password, setPassword] = useState('')
-  const [token, setToken] = useState<string | null>(null)
+  const [token, setToken] = useState<string | null>(propToken || null)
   const [error, setError] = useState('')
   const [editingProduct, setEditingProduct] = useState<Product | null>(null)
   const [showForm, setShowForm] = useState(false)
@@ -30,12 +30,16 @@ export function StockManager() {
 
   useEffect(() => {
     const savedToken = localStorage.getItem('admin_token')
-    if (savedToken) {
+    if (propToken) {
+      setToken(propToken)
+      setIsAuthenticated(true)
+      fetchProducts(propToken)
+    } else if (savedToken) {
       setToken(savedToken)
       setIsAuthenticated(true)
       fetchProducts(savedToken)
     }
-  }, [])
+  }, [propToken])
 
   const showToast = (message: string, type: ToastType) => {
     const id = `${Date.now()}-${Math.random()}`
@@ -74,6 +78,7 @@ export function StockManager() {
     setIsAuthenticated(false)
     setToken(null)
     setProducts([])
+    if (onLogout) onLogout()
   }
 
   const fetchProducts = async (authToken: string) => {
@@ -85,7 +90,7 @@ export function StockManager() {
       if (res.ok) {
         const data = await res.json()
         console.log('Fetched products:', data)
-        setProducts(data)
+        setProducts(data.products || data)
       }
     } catch (err) {
       console.error('Failed to fetch products:', err)
@@ -301,12 +306,6 @@ export function StockManager() {
             >
               <Plus size={20} />
               Add Product
-            </button>
-            <button
-              onClick={logout}
-              className="bg-zinc-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-zinc-700 transition border border-zinc-700"
-            >
-              Logout
             </button>
           </div>
         </div>

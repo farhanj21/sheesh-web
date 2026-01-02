@@ -1,10 +1,10 @@
-import { StockManager } from '@/components/admin/StockManager'
+import { AdminDashboard } from '@/components/admin/AdminDashboard'
 
 export const metadata = {
-  title: 'Admin - Stock Management',
-  description: 'Manage product inventory and stock',
+  title: 'Admin - Dashboard',
+  description: 'Manage products and events',
 }
 
 export default function AdminPage() {
-  return <StockManager />
+  return <AdminDashboard />
 }

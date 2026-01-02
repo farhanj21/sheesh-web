@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getProducts, addProduct } from '@/lib/products-db'
+import { getProducts, addProduct, getProductCount } from '@/lib/products-db'
 import { Product } from '@/types'
 
 export const config = {
@@ -9,6 +9,9 @@ export const config = {
     },
   },
 }
+
+export const dynamic = 'force-dynamic'
+export const revalidate = 60
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123'
 
@@ -27,8 +30,29 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const products = await getProducts()
-    return NextResponse.json(products)
+    const { searchParams } = new URL(request.url)
+    const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit')!) : 100
+    const page = searchParams.get('page') ? parseInt(searchParams.get('page')!) : 1
+    const skip = (page - 1) * limit
+
+    const [products, totalCount] = await Promise.all([
+      getProducts(limit, skip),
+      getProductCount()
+    ])
+
+    return NextResponse.json({
+      products,
+      pagination: {
+        total: totalCount,
+        page,
+        limit,
+        pages: Math.ceil(totalCount / limit)
+      }
+    }, {
+      headers: {
+        'Cache-Control': 'private, max-age=60',
+      }
+    })
   } catch (error) {
     console.error('Failed to get products:', error)
     return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 })

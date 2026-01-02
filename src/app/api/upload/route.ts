@@ -11,6 +11,7 @@ export async function POST(request: NextRequest) {
   try {
     const data = await request.formData()
     const file = data.get('file') as File
+    const folder = (data.get('folder') as string) || 'sheesh-products'
     
     if (!file) {
       return NextResponse.json({ error: 'No file provided' }, { status: 400 })
@@ -22,7 +23,7 @@ export async function POST(request: NextRequest) {
     const result: any = await new Promise((resolve, reject) => {
       cloudinary.uploader.upload_stream(
         { 
-          folder: 'sheesh-products',
+          folder: folder,
           resource_type: 'auto',
         },
         (error, result) => {
