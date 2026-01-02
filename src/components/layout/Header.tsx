@@ -107,14 +107,13 @@ export function Header() {
               transition={{ duration: 0.2 }}
               className="md:hidden overflow-hidden bg-dark-850/50 backdrop-blur-md"
             >
-              <div className="py-4 space-y-4 border-t border-silver-700/20">
+              <div className="py-4 border-t border-silver-700/20">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-silver-shine transition-all duration-300 font-fancy text-lg hover:pl-2 hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]"
-                    data-text={link.label}
+                    className="block py-3 px-4 text-silver-shine transition-all duration-300 font-fancy text-sm hover:bg-silver-700/10 hover:pl-6 whitespace-nowrap"
                   >
                     {link.label}
                   </Link>

@@ -12,11 +12,11 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-dark-900 text-silver-400 py-16 border-t border-silver-700/20">
+    <footer className="bg-dark-900 text-silver-400 py-8 md:py-16 border-t border-silver-700/20">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
           {/* Brand */}
-          <div className="space-y-4">
+          <div className="space-y-4 hidden md:block">
             <Link href="/" className="block">
               <img src="/Logo NO BG.png" alt="Logo" className="h-16" />
             </Link>
@@ -29,7 +29,7 @@ export function Footer() {
           {/* Quick Links */}
           <div className="space-y-4">
             <h4 className="text-silver-shine font-fancy font-semibold text-lg" data-text="Quick Links">Quick Links</h4>
-            <ul className="space-y-2 text-sm font-fancy">
+            <ul className="flex flex-wrap gap-x-4 gap-y-2 md:flex-col md:space-y-2 text-sm font-fancy">
               <li>
                 <Link href="/products" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Products">
                   Products
@@ -60,8 +60,9 @@ export function Footer() {
 
           {/* Social & Newsletter */}
           <div className="space-y-4">
-            <h4 className="text-silver-shine font-fancy font-semibold text-lg" data-text="Follow Us">Follow Us</h4>
-            <div className="flex gap-4">
+            <div className="flex items-center justify-between md:flex-col md:items-start md:gap-4 md:justify-start">
+              <h4 className="text-silver-shine font-fancy font-semibold text-lg" data-text="Follow Us">Follow Us</h4>
+              <div className="flex gap-4 md:gap-4">
               <a
                 href="https://www.instagram.com/sheeshupyourlife/"
                 className="hover:text-silver-100 transition-all hover:scale-110"
@@ -105,12 +106,13 @@ export function Footer() {
                   </svg>
                 </a>
 
+              </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-silver-700/20 text-sm text-center font-fancy">
+        <div className="mt-12 pt-8 border-t border-silver-700/20 text-sm text-center font-fancy hidden md:block">
           <p className="text-silver-shine" data-text={`© ${currentYear} Sheesh. All rights reserved.`}>&copy; {currentYear} Sheesh. All rights reserved.</p>
         </div>
       </div>
