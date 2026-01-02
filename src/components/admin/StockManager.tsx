@@ -292,10 +292,10 @@ export function StockManager({ token: propToken, onLogout }: { token?: string, o
         }}
         onCancel={() => setDeleteDialog({ isOpen: false, productId: null })}
       />
-      <div className="min-h-screen bg-black pt-24 pb-12">
+      <div className="min-h-screen bg-black pt-6 pb-12">
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-white">Stock Management</h1>
+          <h1 className="text-3xl font-bold text-white">Stock Management</h1>
           <div className="flex gap-4">
             <button
               onClick={() => {
