@@ -27,7 +27,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
+          <div className="space-y-4 hidden md:block">
             <h4 className="text-silver-shine font-fancy font-semibold text-lg" data-text="Quick Links">Quick Links</h4>
             <ul className="flex flex-wrap gap-x-4 gap-y-2 md:flex-col md:space-y-2 text-sm font-fancy">
               <li>

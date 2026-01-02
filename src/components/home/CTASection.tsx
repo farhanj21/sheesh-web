@@ -63,11 +63,11 @@ export function CTASection() {
                 className="flex flex-col sm:flex-row gap-4"
               >
                 {/* Button 1 - Contact Us */}
-                <Link href="/contact">
+                <Link href="/contact" className="w-full sm:w-auto">
                   <motion.button
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group inline-flex items-center justify-center gap-3 px-6 py-4 text-md font-fancy tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full"
+                    className="group inline-flex w-full sm:w-auto items-center justify-center gap-3 px-6 py-4 text-md font-fancy tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full"
                   >
                     <span>Get in Touch</span>
                     <div className="w-8 h-8 bg-black/10 rounded-full flex items-center justify-center group-hover:bg-black/20 transition-colors">
@@ -78,8 +78,8 @@ export function CTASection() {
                   </motion.button>
                 </Link>
 
-                {/* Button 2 - View Products */}
-                <Link href="/products">
+                {/* Button 2 - View Products - Hidden on mobile */}
+                <Link href="/products" className="hidden sm:block">
                   <motion.button
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.98 }}
