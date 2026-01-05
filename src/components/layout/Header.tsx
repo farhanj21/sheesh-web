@@ -20,6 +20,10 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const handleNavClick = () => {
+    setIsMobileMenuOpen(false)
+  }
+
   if (pathname?.startsWith('/admin')) {
     return null
   }
@@ -112,7 +116,7 @@ export function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={handleNavClick}
                     className="block py-3 px-4 text-silver-shine transition-all duration-300 font-fancy text-sm hover:bg-silver-700/10 hover:pl-6 whitespace-nowrap"
                   >
                     {link.label}

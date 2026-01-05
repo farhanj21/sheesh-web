@@ -1,19 +1,36 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import { ProductGrid } from '@/components/products/ProductGrid'
-import { getVisibleProducts, initializeProducts } from '@/lib/products-db'
-import { defaultProducts } from '@/data/products'
+import { LoadingScreen } from '@/components/shared/LoadingScreen'
+import { Product } from '@/types'
 
-export const metadata = {
-  title: 'Products - Sheesh',
-  description: 'Explore our collection of handcrafted mosaic mirrors, disco balls, and reflective art.',
-}
+export default function ProductsPage() {
+  const [products, setProducts] = useState<Product[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
-export const dynamic = 'force-dynamic'
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('/api/products')
+        if (!response.ok) {
+          throw new Error('Failed to fetch products')
+        }
+        const data = await response.json()
+        setProducts(data)
+      } catch (error) {
+        console.error('Error fetching products:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
 
-export default async function ProductsPage() {
-  if (process.env.NODE_ENV === 'development') {
-    await initializeProducts(defaultProducts)
+    fetchProducts()
+  }, [])
+
+  if (isLoading) {
+    return <LoadingScreen pageName="Products" />
   }
-  const visibleProducts = await getVisibleProducts()
 
   return (
     <div className="min-h-screen pt-32 pb-16">
@@ -30,7 +47,7 @@ export default async function ProductsPage() {
           </p>
         </div>
 
-        <ProductGrid products={visibleProducts} />
+        <ProductGrid products={products} />
       </div>
     </div>
   )
