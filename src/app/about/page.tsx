@@ -56,55 +56,6 @@ export default function AboutPage() {
                 </p>
             </div>
           </SlideIn>
-
-          <SlideIn direction="up" delay={0.2}>
-            <div className="prose prose-lg mx-auto">
-              <h2 className="text-3xl font-bold mb-4">
-                <span
-                  className="text-gold-shine"
-                  data-text="Our Craft"
-                >
-                  Our Craft
-                </span>
-              </h2>
-              <p className="leading-relaxed text-silver-shine/80">
-                Every mirror tile is individually placed by hand. Every disco
-                ball is carefully balanced for perfect rotation. We believe in
-                the value of slow, intentional work—the kind that creates pieces
-                meant to be cherished for years to come.
-              </p>
-              <p className="text-silver-shine/80 leading-relaxed">
-                Our materials are sourced responsibly, our production methods are
-                sustainable, and our commitment to quality is unwavering. When
-                you bring a Sheesh piece into your home, you&apos;re not just adding
-                decoration—you&apos;re adding a piece of our passion and dedication.
-              </p>
-            </div>
-          </SlideIn>
-
-          <SlideIn direction="up" delay={0.4}>
-            <div className="prose prose-lg mx-auto">
-              <h2 className="text-3xl font-bold mb-4">
-                <span
-                  className="text-gold-shine"
-                  data-text="Our Vision"
-                >
-                  Our Vision
-                </span>
-              </h2>
-              <p className="text-silver-shine/80 leading-relaxed">
-                We envision a world where art isn&apos;t confined to galleries and
-                museums, but lives in the spaces we inhabit every day. Where the
-                play of light can turn an ordinary room into something
-                extraordinary. Where beauty is accessible, sustainable, and
-                crafted with care.
-              </p>
-              <p className="text-silver-shine/80 leading-relaxed">
-                Thank you for being part of our journey. We&apos;re honored to help
-                you transform your space.
-              </p>
-            </div>
-          </SlideIn>
         </div>
       </div>
     </div>

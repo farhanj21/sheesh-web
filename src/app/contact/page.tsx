@@ -16,15 +16,23 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission
+
+    // Construct mailto link with form data
+    const mailtoLink = `mailto:farhanjafri21@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`
+
+    // Open default email client
+    window.location.href = mailtoLink
+
+    // Show success message and reset form
     setTimeout(() => {
       setIsSubmitting(false)
       setSubmitStatus('success')
       setFormData({ name: '', email: '', subject: '', message: '' })
-      
+
       setTimeout(() => setSubmitStatus('idle'), 5000)
-    }, 1500)
+    }, 500)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
