@@ -18,7 +18,7 @@ export default function ContactPage() {
     setIsSubmitting(true)
 
     // Construct mailto link with form data
-    const mailtoLink = `mailto:farhanjafri21@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+    const mailtoLink = `mailto:sheeshupyourlife@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     )}`
 

@@ -28,6 +28,7 @@ export interface ProductImage {
   width: number
   height: number
   isPrimary: boolean
+  isLazyLoad?: boolean // Flag to indicate if image needs to be lazy loaded
 }
 
 export interface Event {

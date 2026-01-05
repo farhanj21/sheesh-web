@@ -292,6 +292,26 @@ class Media {
     img.onload = () => {
       texture.image = img;
       this.program.uniforms.uImageSizes.value = [img.naturalWidth, img.naturalHeight];
+      // Force texture update after image loads
+      texture.needsUpdate = true;
+    };
+    img.onerror = (e) => {
+      console.error('Failed to load image:', this.image, e);
+      // Use a fallback placeholder if image fails to load
+      const placeholderCanvas = document.createElement('canvas');
+      placeholderCanvas.width = 800;
+      placeholderCanvas.height = 600;
+      const ctx = placeholderCanvas.getContext('2d');
+      if (ctx) {
+        ctx.fillStyle = '#333';
+        ctx.fillRect(0, 0, 800, 600);
+        ctx.fillStyle = '#fff';
+        ctx.font = '20px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Image unavailable', 400, 300);
+      }
+      texture.image = placeholderCanvas;
+      texture.needsUpdate = true;
     };
   }
 
