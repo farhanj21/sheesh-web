@@ -73,7 +73,7 @@ export function AnalyticsManager({ token }: AnalyticsManagerProps) {
 
     const rows = [
       ['Product Analytics Report'],
-      ['Date Range', analytics.dateRange.start, 'to', analytics.dateRange.end],
+      ['Date Range', analytics.dateRange.startDate, 'to', analytics.dateRange.endDate],
       [],
       ['Summary Metrics'],
       ['Total Page Views', analytics.totalPageViews],
@@ -84,14 +84,14 @@ export function AnalyticsManager({ token }: AnalyticsManagerProps) {
       ['Product Name', 'Views', 'DM Clicks', 'CTR %'],
       ...analytics.topProducts.map((p) => [
         p.productName,
-        p.views,
-        p.dmClicks,
-        p.ctr.toFixed(2),
+        p.viewCount,
+        p.dmClickCount,
+        p.clickThroughRate.toFixed(2),
       ]),
       [],
       ['Top Categories'],
       ['Category', 'Views'],
-      ...analytics.topCategories.map((c) => [c.category, c.views]),
+      ...analytics.topCategories.map((c) => [c.category, c.viewCount]),
     ]
 
     const csvContent = rows.map((row) => row.join(',')).join('\n')
@@ -257,16 +257,16 @@ export function AnalyticsManager({ token }: AnalyticsManagerProps) {
                             </div>
                           </td>
                           <td className="text-right py-3 px-4 text-white">
-                            {formatNumber(product.views)}
+                            {formatNumber(product.viewCount)}
                           </td>
                           <td className="text-right py-3 px-4 text-white">
-                            {formatNumber(product.dmClicks)}
+                            {formatNumber(product.dmClickCount)}
                           </td>
                           <td className="text-right py-3 px-4">
                             <span
-                              className={`font-semibold ${getCTRColor(product.ctr)}`}
+                              className={`font-semibold ${getCTRColor(product.clickThroughRate)}`}
                             >
-                              {product.ctr.toFixed(2)}%
+                              {product.clickThroughRate.toFixed(2)}%
                             </span>
                           </td>
                         </tr>
@@ -299,7 +299,7 @@ export function AnalyticsManager({ token }: AnalyticsManagerProps) {
                       </div>
                       <div className="text-right">
                         <div className="text-white font-semibold">
-                          {formatNumber(category.views)}
+                          {formatNumber(category.viewCount)}
                         </div>
                         <div className="text-xs text-zinc-400">views</div>
                       </div>
