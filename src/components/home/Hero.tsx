@@ -32,8 +32,8 @@ export function Hero() {
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-fancy max-w-3xl mb-6 md:mb-8 italic drop-shadow-[0_0_50px_rgba(255,255,255,0.2)] leading-tight"
             >
               <span className="text-silver-shine block sm:inline" data-text="Handcrafted ">
-                Handcrafted 
-              </span>
+                Handcrafted
+              </span>{' '}
               <span className="text-gold-shine block sm:inline" data-text="Mosaic Mirror Art">
                 Mosaic Mirror Art
               </span>

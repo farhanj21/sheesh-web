@@ -8,10 +8,10 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pt-32 pb-16">
+    <div className="pt-32 pb-15">
       <div className="container mx-auto px-6 lg:px-12">
         <FadeIn>
-          <div className="text-center mb-16 max-w-3xl mx-auto">
+          <div className="text-center mb-12 max-w-3xl mx-auto">
             <h1 className="text-section font-bold text-4xl mb-4">
               <span
                 className="text-silver-shine"
@@ -21,20 +21,19 @@ export default function AboutPage() {
               </span>
             </h1>
 
-            <p className="text-xl max-w-2xl mx-auto text-center">
+            <p className="text-xl max-w-4xl mx-auto text-center">
               <span
-                className="font-fancy text-gold-shine italic leading-relaxed"
+                className="font-fancy text-gold-shine italic leading-relaxed lg:whitespace-nowrap"
                 data-text="We create handcrafted reflective art that transforms spaces and captures imagination."
               >
-                We create handcrafted reflective art that transforms spaces and captures
-                imagination.
+                We create handcrafted reflective art that transforms spaces and captures imagination.
               </span>
             </p>
 
           </div>
         </FadeIn>
 
-        <div className="space-y-24 max-w-4xl mx-auto">
+        <div className="space-y-8 max-w-4xl mx-auto">
           <SlideIn direction="up">
             <div className="prose prose-lg mx-auto">
                 <h2 className="text-3xl font-bold mb-4">

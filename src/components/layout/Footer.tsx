@@ -28,34 +28,45 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4 hidden md:block">
-            <h4 className="text-silver-shine font-fancy font-semibold text-lg" data-text="Quick Links">Quick Links</h4>
-            <ul className="flex flex-wrap gap-x-4 gap-y-2 md:flex-col md:space-y-2 text-sm font-fancy">
-              <li>
-                <Link href="/products" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Products">
-                  Products
-                </Link>
-              </li>
-              <li>
-                <Link href="/events" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Events">
-                  Events
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Contact Us">
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="About Us">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <a href="/privacy" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Privacy Policy">
-                  Privacy Policy
-                </a>
-              </li>
-            </ul>
+            {/* <h4 className="text-silver-shine font-fancy font-semibold text-lg" data-text="Quick Links">Quick Links</h4> */}
+            <div className="grid grid-cols-2 gap-x-6 text-sm font-fancy">
+              {/* Column 1 */}
+              <ul className="flex flex-col space-y-2">
+                <li>
+                  <Link href="/" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Home">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/products" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Products">
+                    Products
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/events" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Events">
+                    Events
+                  </Link>
+                </li>
+              </ul>
+              {/* Column 2 */}
+              <ul className="flex flex-col space-y-2">
+                <li>
+                  <Link href="/contact" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Contact Us">
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="About Us">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <a href="/privacy" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Privacy Policy">
+                    Privacy Policy
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Social & Newsletter */}
@@ -113,7 +124,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-silver-700/20 text-sm text-center font-fancy hidden md:block">
-          <p className="text-silver-shine" data-text={`© ${currentYear} Sheesh. All rights reserved.`}>&copy; {currentYear} Sheesh. All rights reserved.</p>
+          <p className="text-silver-shine" data-text={`© ${currentYear} Sheesh. All Rights Reserved.`}>&copy; {currentYear} Sheesh. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

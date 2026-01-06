@@ -123,21 +123,38 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              className="group relative bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg p-6 text-center hover:shadow-lg hover:border-blue-400 transition-all duration-300"
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative bg-gradient-to-br from-dark-700/95 via-dark-800/95 to-dark-850/95 backdrop-blur-md border-2 border-silver-600/40 rounded-2xl p-8 text-center overflow-hidden transition-all duration-500 hover:border-silver-400/70 hover:shadow-[0_0_50px_rgba(192,192,192,0.4)] shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
             >
-              <div className="flex justify-center mb-4">
-                <div className={`flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${social.color} transition-all duration-300 group-hover:scale-105`}>
-                  <div className="w-6 h-6 text-white flex items-center justify-center">
-                    {social.icon}
+              {/* Animated gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-silver-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Shimmer effect on hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-silver-300/20 to-transparent animate-shimmer bg-[length:200%_100%]" />
+              </div>
+
+              {/* Radial glow effect behind icon */}
+              <div className={`absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br ${social.color} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500`} />
+
+              <div className="relative z-10">
+                <div className="flex justify-center mb-6">
+                  <div className={`flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br ${social.color} ${social.hoverColor} transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg group-hover:shadow-2xl`}>
+                    <div className="w-10 h-10 text-white flex items-center justify-center">
+                      {social.icon}
+                    </div>
                   </div>
                 </div>
+                <h3 className="text-2xl font-fancy text-silver-shine mb-3 group-hover:text-gold-shine transition-colors duration-300">
+                  {social.name}
+                </h3>
+                <p className="text-sm font-fancy text-silver-400 italic group-hover:text-silver-300 transition-colors duration-300">
+                  {social.description}
+                </p>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                {social.name}
-              </h3>
-              <p className="text-sm text-gray-600">
-                {social.description}
-              </p>
+
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-silver-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.a>
           ))}
         </motion.div>
@@ -184,8 +201,8 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-dark-800/50 border border-silver-700/30 rounded-lg text-silver-100 placeholder-silver-500 focus:outline-none focus:border-silver-500 transition-colors font-fancy"
-                    placeholder="John Doe"
+                    className="w-full px-4 py-3 bg-dark-800/50 border-2 border-silver-700/30 rounded-lg text-silver-100 placeholder-silver-500 focus:outline-none focus:border-silver-400 focus:bg-dark-800/70 focus:shadow-[0_0_20px_rgba(192,192,192,0.2)] transition-all duration-300 font-fancy"
+                    placeholder="Enter your name"
                   />
                 </div>
                 <div>
@@ -199,8 +216,8 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-dark-800/50 border border-silver-700/30 rounded-lg text-silver-100 placeholder-silver-500 focus:outline-none focus:border-silver-500 transition-colors font-fancy"
-                    placeholder="john@example.com"
+                    className="w-full px-4 py-3 bg-dark-800/50 border-2 border-silver-700/30 rounded-lg text-silver-100 placeholder-silver-500 focus:outline-none focus:border-silver-400 focus:bg-dark-800/70 focus:shadow-[0_0_20px_rgba(192,192,192,0.2)] transition-all duration-300 font-fancy"
+                    placeholder="Enter your email"
                   />
                 </div>
               </div>
@@ -216,7 +233,7 @@ export default function ContactPage() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-dark-800/50 border border-silver-700/30 rounded-lg text-silver-100 placeholder-silver-500 focus:outline-none focus:border-silver-500 transition-colors font-fancy"
+                  className="w-full px-4 py-3 bg-dark-800/50 border-2 border-silver-700/30 rounded-lg text-silver-100 placeholder-silver-500 focus:outline-none focus:border-silver-400 focus:bg-dark-800/70 focus:shadow-[0_0_20px_rgba(192,192,192,0.2)] transition-all duration-300 font-fancy"
                   placeholder="What's this about?"
                 />
               </div>
@@ -232,7 +249,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-dark-800/50 border border-silver-700/30 rounded-lg text-silver-100 placeholder-silver-500 focus:outline-none focus:border-silver-500 transition-colors resize-none font-fancy"
+                  className="w-full px-4 py-3 bg-dark-800/50 border-2 border-silver-700/30 rounded-lg text-silver-100 placeholder-silver-500 focus:outline-none focus:border-silver-400 focus:bg-dark-800/70 focus:shadow-[0_0_20px_rgba(192,192,192,0.2)] transition-all duration-300 resize-none font-fancy"
                   placeholder="Tell us more..."
                 />
               </div>
