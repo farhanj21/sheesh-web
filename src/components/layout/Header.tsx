@@ -70,11 +70,11 @@ export function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 hover:bg-silver-700/30 rounded-lg transition-all duration-300 text-silver-300 hover:scale-110 hover:shadow-[0_0_12px_rgba(192,192,192,0.2)]"
-            aria-label="Toggle mobile menu"
-          >
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden p-2 mr-5 hover:bg-silver-700/30 rounded-lg transition-all duration-300 text-silver-300 hover:scale-110 hover:shadow-[0_0_12px_rgba(192,192,192,0.2)]"
+                aria-label="Toggle mobile menu"
+              >
             <svg
               className="w-6 h-6"
               fill="none"
@@ -116,7 +116,7 @@ export function Header() {
                     key={link.href}
                     href={link.href}
                     onClick={handleNavClick}
-                    className="block py-3 px-4 text-silver-shine transition-all duration-300 font-fancy text-sm hover:bg-silver-700/10 hover:pl-6 whitespace-nowrap"
+                    className="block py-4 px-4 text-silver-shine transition-all duration-300 font-fancy text-xl text-center hover:bg-silver-700/10 hover:scale-105 whitespace-nowrap"
                   >
                     {link.label}
                   </Link>
