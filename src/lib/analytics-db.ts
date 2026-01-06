@@ -4,6 +4,7 @@ import {
   AnalyticsSummary,
   ProductAnalytics,
   CategoryAnalytics,
+  PageViewBreakdown,
 } from '@/types/analytics'
 
 const COLLECTION_NAME = 'analytics'
@@ -49,6 +50,31 @@ export async function getAnalyticsSummary(
     eventType: 'page_view',
   })
 
+  // Get page views breakdown by page
+  const pageViewsByPageAgg = await collection
+    .aggregate([
+      {
+        $match: {
+          ...dateFilter,
+          eventType: 'page_view',
+          'metadata.page': { $exists: true },
+        },
+      },
+      {
+        $group: {
+          _id: '$metadata.page',
+          viewCount: { $sum: 1 },
+        },
+      },
+      { $sort: { viewCount: -1 } },
+    ])
+    .toArray()
+
+  const pageViewsByPage: PageViewBreakdown[] = pageViewsByPageAgg.map((item) => ({
+    page: item._id,
+    viewCount: item.viewCount,
+  }))
+
   // Aggregate total product views
   const totalProductViews = await collection.countDocuments({
     ...dateFilter,
@@ -62,7 +88,7 @@ export async function getAnalyticsSummary(
     'metadata.buttonLabel': { $regex: /DM.*Order/i },
   })
 
-  // Get top products by views
+  // Get all products by views (no limit yet)
   const topProductsAgg = await collection
     .aggregate([
       {
@@ -79,8 +105,6 @@ export async function getAnalyticsSummary(
           viewCount: { $sum: 1 },
         },
       },
-      { $sort: { viewCount: -1 } },
-      { $limit: 10 },
     ])
     .toArray()
 
@@ -109,18 +133,21 @@ export async function getAnalyticsSummary(
     dmClicksAgg.map((item) => [item._id, item.dmClickCount])
   )
 
-  // Combine product data with DM clicks
-  const topProducts: ProductAnalytics[] = topProductsAgg.map((item) => {
-    const dmClicks = dmClicksMap.get(item._id) || 0
-    return {
-      productId: item._id,
-      productName: item.productName || 'Unknown',
-      viewCount: item.viewCount,
-      detailViewCount: 0, // Can be enhanced later
-      dmClickCount: dmClicks,
-      clickThroughRate: item.viewCount > 0 ? (dmClicks / item.viewCount) * 100 : 0,
-    }
-  })
+  // Combine product data with DM clicks and sort by interaction rate
+  const topProducts: ProductAnalytics[] = topProductsAgg
+    .map((item) => {
+      const dmClicks = dmClicksMap.get(item._id) || 0
+      return {
+        productId: item._id,
+        productName: item.productName || 'Unknown',
+        viewCount: item.viewCount,
+        detailViewCount: 0, // Can be enhanced later
+        dmClickCount: dmClicks,
+        clickThroughRate: item.viewCount > 0 ? (dmClicks / item.viewCount) * 100 : 0,
+      }
+    })
+    .sort((a, b) => b.clickThroughRate - a.clickThroughRate)
+    .slice(0, 10)
 
   // Get top categories
   const topCategoriesAgg = await collection
@@ -150,6 +177,7 @@ export async function getAnalyticsSummary(
 
   return {
     totalPageViews,
+    pageViewsByPage,
     totalProductViews,
     totalDMClicks,
     dateRange: { startDate, endDate },

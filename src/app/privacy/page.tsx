@@ -1,8 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useEffect } from 'react'
+import { trackPageView } from '@/lib/analytics'
 
 export default function PrivacyPage() {
+  useEffect(() => {
+    trackPageView('Privacy')
+  }, [])
   return (
     <div className="min-h-screen pt-32 pb-16 bg-dark-950">
       {/* Background effects */}

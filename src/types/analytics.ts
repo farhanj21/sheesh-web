@@ -42,8 +42,14 @@ export interface AnalyticsDateRange {
   endDate: string
 }
 
+export interface PageViewBreakdown {
+  page: string
+  viewCount: number
+}
+
 export interface AnalyticsSummary {
   totalPageViews: number
+  pageViewsByPage: PageViewBreakdown[]
   totalProductViews: number
   totalDMClicks: number
   dateRange: AnalyticsDateRange

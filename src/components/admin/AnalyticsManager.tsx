@@ -176,20 +176,7 @@ export function AnalyticsManager({ token }: AnalyticsManagerProps) {
       ) : analytics ? (
         <>
           {/* Key Metrics Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {/* Total Page Views */}
-            <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div className="p-3 bg-blue-500/10 rounded-lg">
-                  <Eye className="text-blue-400" size={24} />
-                </div>
-              </div>
-              <div className="text-3xl font-bold text-white mb-1">
-                {formatNumber(analytics.totalPageViews)}
-              </div>
-              <div className="text-sm text-zinc-400">Total Page Views</div>
-            </div>
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {/* Total Product Views */}
             <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
               <div className="flex items-center justify-between mb-4">
@@ -218,6 +205,38 @@ export function AnalyticsManager({ token }: AnalyticsManagerProps) {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Page Views by Page */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
+              <h2 className="text-xl font-bold text-white mb-4">Page Views</h2>
+              {analytics.pageViewsByPage.length > 0 ? (
+                <div className="space-y-3">
+                  {analytics.pageViewsByPage.map((pageView, index) => (
+                    <div
+                      key={pageView.page}
+                      className="flex items-center justify-between p-3 bg-zinc-800/50 rounded-lg hover:bg-zinc-800 transition"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-8 h-8 bg-zinc-700 rounded-full text-xs font-semibold text-zinc-300">
+                          {index + 1}
+                        </div>
+                        <span className="text-white font-medium">
+                          {pageView.page}
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-white font-semibold">
+                          {formatNumber(pageView.viewCount)}
+                        </div>
+                        <div className="text-xs text-zinc-400">views</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-zinc-500 text-center py-8">No page view data available</p>
+              )}
+            </div>
+
             {/* Top Products Table */}
             <div className="lg:col-span-2 bg-zinc-900 border border-zinc-800 rounded-xl p-6">
               <h2 className="text-xl font-bold text-white mb-4">Top Products</h2>
@@ -236,7 +255,7 @@ export function AnalyticsManager({ token }: AnalyticsManagerProps) {
                           DM Clicks
                         </th>
                         <th className="text-right py-3 px-4 text-sm font-medium text-zinc-400">
-                          CTR %
+                          Interaction Rate
                         </th>
                       </tr>
                     </thead>
@@ -276,38 +295,6 @@ export function AnalyticsManager({ token }: AnalyticsManagerProps) {
                 </div>
               ) : (
                 <p className="text-zinc-500 text-center py-8">No product data available</p>
-              )}
-            </div>
-
-            {/* Top Categories Panel */}
-            <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
-              <h2 className="text-xl font-bold text-white mb-4">Top Categories</h2>
-              {analytics.topCategories.length > 0 ? (
-                <div className="space-y-3">
-                  {analytics.topCategories.map((category, index) => (
-                    <div
-                      key={category.category}
-                      className="flex items-center justify-between p-3 bg-zinc-800/50 rounded-lg hover:bg-zinc-800 transition"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="flex items-center justify-center w-8 h-8 bg-zinc-700 rounded-full text-xs font-semibold text-zinc-300">
-                          {index + 1}
-                        </div>
-                        <span className="text-white font-medium capitalize">
-                          {category.category.replace('-', ' ')}
-                        </span>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-white font-semibold">
-                          {formatNumber(category.viewCount)}
-                        </div>
-                        <div className="text-xs text-zinc-400">views</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-zinc-500 text-center py-8">No category data available</p>
               )}
             </div>
           </div>

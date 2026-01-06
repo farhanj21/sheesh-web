@@ -250,7 +250,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
-              placeholder="Classic Disco Ball"
+              placeholder="Enter product name here"
             />
           </div>
 
@@ -313,12 +313,12 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               type="number"
               step="0.01"
               required
-              value={formData.price}
+              value={formData.price || ''}
               onChange={(e) =>
-                setFormData({ ...formData, price: parseFloat(e.target.value) })
+                setFormData({ ...formData, price: parseFloat(e.target.value) || 0 })
               }
               className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
-              placeholder="99.99"
+              placeholder="Enter price here"
             />
           </div>
 
@@ -329,12 +329,12 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
             <input
               type="number"
               required
-              value={formData.quantity}
+              value={formData.quantity || ''}
               onChange={(e) =>
                 setFormData({ ...formData, quantity: parseInt(e.target.value) || 0 })
               }
               className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
-              placeholder="10"
+              placeholder="Enter quantity here"
             />
           </div>
 
@@ -377,7 +377,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
             }
             rows={4}
             className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
-            placeholder="Detailed product description..."
+            placeholder="Enter description here"
           />
         </div>
 
@@ -522,7 +522,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
                 setImageInput({ ...imageInput, src: e.target.value })
               }
               className="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
-              placeholder="Image URL"
+              placeholder="Enter image URL here"
             />
             <button
               type="button"

@@ -181,7 +181,7 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
               className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
-              placeholder="Summer Festival 2026"
+              placeholder="Enter event title here"
             />
           </div>
 
@@ -195,7 +195,7 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
               value={formData.date}
               onChange={(e) => setFormData({ ...formData, date: e.target.value })}
               className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
-              placeholder="November 11, 2025"
+              placeholder="Enter date here"
             />
           </div>
 
@@ -209,7 +209,7 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
               value={formData.location}
               onChange={(e) => setFormData({ ...formData, location: e.target.value })}
               className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
-              placeholder="Lahore, Pakistan"
+              placeholder="Enter location here"
             />
           </div>
         </div>
@@ -226,7 +226,7 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
             }
             rows={4}
             className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
-            placeholder="Detailed event description..."
+            placeholder="Enter description here"
           />
         </div>
 
