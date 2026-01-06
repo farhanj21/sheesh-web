@@ -100,7 +100,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
                     className="flex-1"
                     disabled={!product.inStock}
                   >
-                    Shop Now
+                    DM To Place Order
                   </Button>
                 </div>
               </div>
@@ -166,7 +166,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             onClick={() => window.open(product.externalCheckoutUrl, '_blank')}
             disabled={!product.inStock}
           >
-            {product.inStock ? 'Shop Now' : 'Out of Stock'}
+            {product.inStock ? 'DM To Place Order' : 'Out of Stock'}
           </Button>
         </div>
       </Modal>

@@ -252,7 +252,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
           </div>
         )}
 
-        {selectedProduct.dimensions && (
+        {selectedProduct.dimensions && selectedProduct.dimensions.width > 0 && selectedProduct.dimensions.height > 0 && (
           <div>
             <h3 className="font-semibold mb-1 text-white text-xs">Dimensions</h3>
             <p className="text-neutral-300 text-xs">
@@ -271,7 +271,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
         onClick={() => window.open('https://www.instagram.com/sheeshupyourlife/', '_blank')}
         disabled={!selectedProduct.inStock}
       >
-        <span>{selectedProduct.inStock ? 'Shop Now' : 'Out of Stock'}</span>
+        <span>{selectedProduct.inStock ? 'DM To Place Order' : 'Out of Stock'}</span>
         <div className="w-8 h-8 bg-black/10 rounded-full flex items-center justify-center group-hover:bg-black/20 transition-colors">
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />

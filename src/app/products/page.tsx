@@ -39,10 +39,9 @@ export default function ProductsPage() {
           <h1 className="text-section font-bold text-4xl mb-4">
             <span className="text-silver-shine" data-text="Our Collection">Our Collection</span>
           </h1>
-          <p className="text-xl max-w-2xl mx-auto text-center">
-            <span className="font-fancy text-gold-shine italic leading-relaxed" data-text="Discover handcrafted reflective art pieces that transform any space into a captivating experience.">
-              Discover handcrafted reflective art pieces that transform any space
-              into a captivating experience.
+          <p className="text-xl max-w-5xl mx-auto text-center">
+            <span className="font-fancy text-gold-shine italic leading-relaxed lg:whitespace-nowrap" data-text="Discover handcrafted reflective art pieces that transform any space into a captivating experience.">
+              Discover handcrafted reflective art pieces that transform any space into a captivating experience.
             </span>
           </p>
         </div>
