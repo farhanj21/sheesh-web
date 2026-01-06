@@ -8,6 +8,7 @@ import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
 import { motion } from 'framer-motion'
 import { trackProductView, trackProductButtonClick } from '@/lib/analytics'
+import { ImageGallery } from '@/components/events/ImageGallery'
 
 export interface ChromaItem {
   image: string
@@ -44,6 +45,8 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
   const setY = useRef<SetterFn | null>(null)
   const pos = useRef({ x: 0, y: 0 })
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
 
   // Convert products to ChromaItem format
   const categoryColors: Record<string, { border: string; gradient: string }> = {
@@ -129,6 +132,13 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
     const product = products[index]
     trackProductView(product.id, product.name, product.category)
     setSelectedProduct(product)
+    setSelectedImageIndex(0) // Reset to first image when opening modal
+  }
+
+  const handleCloseModal = () => {
+    setSelectedProduct(null)
+    setSelectedImageIndex(0)
+    setIsGalleryOpen(false)
   }
 
   const handleCardMove: React.MouseEventHandler<HTMLElement> = e => {
@@ -194,21 +204,67 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
 
       {/* Product Detail Modal */}
 {selectedProduct && (
-  <Modal isOpen={!!selectedProduct} onClose={() => setSelectedProduct(null)}>
+  <Modal isOpen={!!selectedProduct} onClose={handleCloseModal}>
     <div className="bg-black text-white rounded-2xl p-6 max-w-lg w-full">
       {/* Image Section */}
-      <div className="aspect-square bg-gradient-to-br from-primary-100 to-accent-disco/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
-        {selectedProduct.images.length > 0 ? (
-          <Image 
-            src={selectedProduct.images.find(img => img.isPrimary)?.src || selectedProduct.images[0].src} 
-            alt={selectedProduct.name}
-            width={500}
-            height={500}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <div className="text-8xl">
-            {selectedProduct.category === 'disco-balls' ? '✨' : '🪞'}
+      <div className="mb-4">
+        <div
+          className="aspect-square bg-gradient-to-br from-primary-100 to-accent-disco/20 rounded-xl mb-3 flex items-center justify-center overflow-hidden cursor-pointer group relative"
+          onClick={() => {
+            if (selectedProduct.images.length > 0) {
+              setIsGalleryOpen(true)
+            }
+          }}
+        >
+          {selectedProduct.images.length > 0 ? (
+            <>
+              <Image
+                src={selectedProduct.images[selectedImageIndex]?.src || selectedProduct.images[0].src}
+                alt={selectedProduct.name}
+                width={500}
+                height={500}
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              {selectedProduct.images.length > 1 && (
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-black/70 px-4 py-2 rounded-full text-sm font-fancy flex items-center gap-2">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    </svg>
+                    View Gallery
+                  </div>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="text-8xl">
+              {selectedProduct.category === 'disco-balls' ? '✨' : '🪞'}
+            </div>
+          )}
+        </div>
+
+        {/* Thumbnail Strip */}
+        {selectedProduct.images.length > 1 && (
+          <div className="flex gap-2 overflow-x-auto pb-2">
+            {selectedProduct.images.map((image, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedImageIndex(index)}
+                className={`relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all ${
+                  index === selectedImageIndex
+                    ? 'border-primary-400 scale-105'
+                    : 'border-transparent opacity-60 hover:opacity-100'
+                }`}
+              >
+                <Image
+                  src={image.src}
+                  alt={`${selectedProduct.name} ${index + 1}`}
+                  width={64}
+                  height={64}
+                  className="w-full h-full object-cover"
+                />
+              </button>
+            ))}
           </div>
         )}
       </div>
@@ -287,6 +343,16 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
     </div>
   </Modal>
 )}
+
+      {/* Full-Screen Image Gallery */}
+      {selectedProduct && selectedProduct.images.length > 0 && (
+        <ImageGallery
+          images={selectedProduct.images.map(img => img.src)}
+          isOpen={isGalleryOpen}
+          onClose={() => setIsGalleryOpen(false)}
+          initialIndex={selectedImageIndex}
+        />
+      )}
     </>
   )
 }
