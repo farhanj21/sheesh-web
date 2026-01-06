@@ -53,13 +53,13 @@ export function Toast({ id, message, type, onClose, duration = 3000 }: ToastProp
 }
 
 interface ToastContainerProps {
-  toasts: Array<{ id: string; message: string; type: ToastType }>
+  toasts: Array<{ id: string; message: string; type: ToastType; duration?: number }>
   onClose: (id: string) => void
 }
 
 export function ToastContainer({ toasts, onClose }: ToastContainerProps) {
   return (
-    <div className="fixed top-4 right-4 z-50 flex flex-col gap-2">
+    <div className="fixed top-24 right-4 z-50 flex flex-col gap-2">
       {toasts.map((toast) => (
         <Toast
           key={toast.id}
@@ -67,6 +67,7 @@ export function ToastContainer({ toasts, onClose }: ToastContainerProps) {
           message={toast.message}
           type={toast.type}
           onClose={onClose}
+          duration={toast.duration}
         />
       ))}
     </div>

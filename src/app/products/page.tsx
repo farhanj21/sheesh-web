@@ -1,19 +1,38 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { ProductGrid } from '@/components/products/ProductGrid'
 import { LoadingScreen } from '@/components/shared/LoadingScreen'
 import { Product } from '@/types'
 import { trackPageView } from '@/lib/analytics'
+import { ToastContainer, ToastType } from '@/components/ui/Toast'
+
+interface Toast {
+  id: string
+  message: string
+  type: ToastType
+  duration?: number
+}
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [toasts, setToasts] = useState<Toast[]>([])
 
-  // Track page view
+  const showToast = useCallback((message: string, type: ToastType, duration?: number) => {
+    const id = `${Date.now()}-${Math.random()}`
+    setToasts((prev) => [...prev, { id, message, type, duration }])
+  }, [])
+
+  const removeToast = useCallback((id: string) => {
+    setToasts((prev) => prev.filter((toast) => toast.id !== id))
+  }, [])
+
+  // Track page view and show disclaimer toast
   useEffect(() => {
     trackPageView('Products')
-  }, [])
+    showToast('Note: Please DM us on Instagram to place orders!', 'info', 5000)
+  }, [showToast])
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -39,21 +58,24 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="min-h-screen pt-32 pb-16">
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="text-center mb-16">
-          <h1 className="text-section font-bold text-4xl mb-4">
-            <span className="text-silver-shine" data-text="Our Collection">Our Collection</span>
-          </h1>
-          <p className="text-xl max-w-5xl mx-auto text-center">
-            <span className="font-fancy text-gold-shine italic leading-relaxed lg:whitespace-nowrap" data-text="Discover handcrafted reflective art pieces that transform any space into a captivating experience.">
-              Discover handcrafted reflective art pieces that transform any space into a captivating experience.
-            </span>
-          </p>
-        </div>
+    <>
+      <ToastContainer toasts={toasts} onClose={removeToast} />
+      <div className="min-h-screen pt-32 pb-16">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="text-center mb-16">
+            <h1 className="text-section font-bold text-4xl mb-4">
+              <span className="text-silver-shine" data-text="Our Collection">Our Collection</span>
+            </h1>
+            <p className="text-xl max-w-5xl mx-auto text-center">
+              <span className="font-fancy text-gold-shine italic leading-relaxed lg:whitespace-nowrap" data-text="Discover handcrafted reflective art pieces that transform any space into a captivating experience.">
+                Discover handcrafted reflective art pieces that transform any space into a captivating experience.
+              </span>
+            </p>
+          </div>
 
-        <ProductGrid products={products} />
+          <ProductGrid products={products} />
+        </div>
       </div>
-    </div>
+    </>
   )
 }

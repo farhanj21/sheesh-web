@@ -12,7 +12,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-dark-900 text-silver-400 py-8 md:py-16 border-t border-silver-700/20">
+    <footer className="bg-dark-900 text-silver-400 pt-8 md:pt-16 pb-4 md:pb-6 border-t border-silver-700/20">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
           {/* Brand */}
@@ -21,7 +21,7 @@ export function Footer() {
               <img src="/Logo NO BG.png" alt="Logo" className="h-16" />
             </Link>
             <p className="text-xs font-fancy text-silver-400/80 italic text-left">by Aliha Naeem</p>
-            <p className="text-sm font-fancy text-silver-shine" data-text="Premium mosaic handmade mirrorworks that transform any space.">
+            <p className="text-sm font-fancy text-silver-shine whitespace-nowrap" data-text="Premium mosaic handmade mirrorworks that transform any space.">
               Premium mosaic handmade mirrorworks that transform any space.
             </p>
           </div>
@@ -124,8 +124,14 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-silver-700/20 text-sm text-center font-fancy hidden md:block">
-          <p className="text-silver-shine" data-text={`© ${currentYear} Sheesh. All Rights Reserved.`}>&copy; {currentYear} Sheesh. All Rights Reserved.</p>
+          <p
+            className="text-silver-shine"
+            data-text={`© ${currentYear} Sheesh. All Rights Reserved – Developed by Syed Farhan Jafri`}
+          >
+            &copy; {currentYear} Sheesh. All Rights Reserved – Developed by Syed Farhan Jafri
+          </p>
         </div>
+
       </div>
     </footer>
   )
