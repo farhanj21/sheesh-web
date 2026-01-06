@@ -27,10 +27,37 @@ export function EventsPageContent({ events }: EventsPageContentProps) {
 
   const currentEvent = events.find(e => e.id === selectedEventId)
   
+  // Helper to parse dates reliably
+  const parseEventDate = (dateStr: string): Date => {
+    // Trim whitespace and parse date
+    const trimmed = dateStr.trim()
+    const parsed = new Date(trimmed)
+    return parsed
+  }
+
   // Split events into upcoming and past
   const now = new Date()
-  const upcomingEvents = events.filter(e => new Date(e.date) > now)
-  const pastEvents = events.filter(e => new Date(e.date) <= now)
+  now.setHours(0, 0, 0, 0) // Reset to start of day for accurate comparison
+
+  const upcomingEvents = events
+    .filter(e => {
+      const eventDate = parseEventDate(e.date)
+      eventDate.setHours(0, 0, 0, 0)
+      return eventDate > now
+    })
+    .sort((a, b) => parseEventDate(a.date).getTime() - parseEventDate(b.date).getTime())
+
+  const pastEvents = events
+    .filter(e => {
+      const eventDate = parseEventDate(e.date)
+      eventDate.setHours(0, 0, 0, 0)
+      return eventDate <= now
+    })
+    .sort((a, b) => {
+      const dateA = parseEventDate(a.date).getTime()
+      const dateB = parseEventDate(b.date).getTime()
+      return dateB - dateA // newest first (most recent at top)
+    })
 
   return (
     <div className="min-h-screen pt-32 pb-16 bg-dark-950">

@@ -28,18 +28,41 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
 
   useEffect(() => {
     if (event) {
-      setFormData(event)
+      // Convert date from "Month DD, YYYY" to YYYY-MM-DD for date picker
+      let dateForPicker = event.date
+      if (event.date && !event.date.includes('-')) {
+        const dateObj = new Date(event.date)
+        if (!isNaN(dateObj.getTime())) {
+          dateForPicker = dateObj.toISOString().split('T')[0]
+        }
+      }
+      setFormData({
+        ...event,
+        date: dateForPicker
+      })
     }
   }, [event])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     const id = formData.id || `event-${Date.now()}`
-    
+
+    // Convert date from YYYY-MM-DD to "Month DD, YYYY" format
+    let formattedDate = formData.date
+    if (formData.date && formData.date.includes('-')) {
+      const dateObj = new Date(formData.date + 'T00:00:00')
+      formattedDate = dateObj.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
+    }
+
     onSave({
       ...formData,
       id,
+      date: formattedDate,
     })
   }
 
@@ -190,11 +213,11 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
               Date <span className="text-red-400">*</span>
             </label>
             <input
-              type="text"
+              type="date"
               required
               value={formData.date}
               onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500 [color-scheme:dark]"
               placeholder="Enter date here"
             />
           </div>
