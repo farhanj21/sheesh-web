@@ -19,15 +19,15 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
 
   // Track product impression when component mounts
   useEffect(() => {
-    trackProductView(product._id, product.name, product.category)
-  }, [product._id, product.name, product.category])
+    trackProductView(product.id, product.name, product.category)
+  }, [product.id, product.name, product.category])
 
   // Track when modal opens (Quick View clicked)
   useEffect(() => {
     if (isModalOpen) {
-      trackProductDetailView(product._id, product.name, product.category)
+      trackProductDetailView(product.id, product.name, product.category)
     }
-  }, [isModalOpen, product._id, product.name, product.category])
+  }, [isModalOpen, product.id, product.name, product.category])
 
   return (
     <>
@@ -110,7 +110,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
                     variant="primary"
                     size="sm"
                     onClick={() => {
-                      trackProductButtonClick('DM To Place Order', product._id, product.name, product.category)
+                      trackProductButtonClick('DM To Place Order', product.id, product.name, product.category)
                       window.open(product.externalCheckoutUrl, '_blank')
                     }}
                     className="flex-1"
@@ -180,7 +180,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             size="lg"
             className="w-full"
             onClick={() => {
-              trackProductButtonClick('DM To Place Order', product._id, product.name, product.category)
+              trackProductButtonClick('DM To Place Order', product.id, product.name, product.category)
               window.open(product.externalCheckoutUrl, '_blank')
             }}
             disabled={!product.inStock}

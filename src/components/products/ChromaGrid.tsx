@@ -127,7 +127,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
 
   const handleCardClick = (index: number) => {
     const product = products[index]
-    trackProductView(product._id, product.name, product.category)
+    trackProductView(product.id, product.name, product.category)
     setSelectedProduct(product)
   }
 
@@ -272,7 +272,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
         whileTap={{ scale: 0.98 }}
         className="group w-full inline-flex items-center justify-center gap-3 px-2 py-2 text-md font-fancy tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
         onClick={() => {
-          trackProductButtonClick('DM To Place Order', selectedProduct._id, selectedProduct.name, selectedProduct.category)
+          trackProductButtonClick('DM To Place Order', selectedProduct.id, selectedProduct.name, selectedProduct.category)
           window.open('https://www.instagram.com/sheeshupyourlife/', '_blank')
         }}
         disabled={!selectedProduct.inStock}
