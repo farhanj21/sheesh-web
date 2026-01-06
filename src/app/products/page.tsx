@@ -28,13 +28,12 @@ export default function ProductsPage() {
     setToasts((prev) => prev.filter((toast) => toast.id !== id))
   }, [])
 
-  // Track page view and show disclaimer toast
   useEffect(() => {
+    // Track page view and show disclaimer toast
     trackPageView('Products')
-    showToast('Note: Please DM us on Instagram to place orders!', 'info', 5000)
-  }, [showToast])
+    const id = `${Date.now()}-${Math.random()}`
+    setToasts([{ id, message: 'Note: Please DM us on Instagram to place orders!', type: 'info', duration: 5000 }])
 
-  useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await fetch('/api/products')

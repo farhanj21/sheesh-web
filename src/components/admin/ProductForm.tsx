@@ -271,21 +271,38 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
             <label className="block text-sm font-semibold text-white mb-2">
               Category
             </label>
-            <select
-              value={formData.category}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  category: e.target.value as Product['category'],
-                })
-              }
-              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
-            >
-              <option value="disco-balls">Disco Balls</option>
-              <option value="mirrors">Mirrors</option>
-              <option value="wall-art">Wall Art</option>
-              <option value="accessories">Accessories</option>
-            </select>
+              <div className="relative w-full">
+                <select
+                  value={formData.category}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      category: e.target.value as Product['category'],
+                    })
+                  }
+                  className="w-full appearance-none px-4 py-2 pr-10 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+                >
+                  <option value="disco-balls">Disco Balls</option>
+                  <option value="mirrors">Mirrors</option>
+                  <option value="wall-art">Wall Art</option>
+                  <option value="accessories">Accessories</option>
+                </select>
+
+                <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-zinc-400">
+                  <svg
+                    className="h-4 w-4"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+
           </div>
 
           <div>
@@ -420,6 +437,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
             </div>
             <div>
               <label className="block text-sm text-zinc-400 mb-2">Unit</label>
+            <div className="relative w-full">
               <select
                 value={formData.dimensions?.unit || 'cm'}
                 onChange={(e) =>
@@ -431,11 +449,27 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
                     },
                   })
                 }
-                className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+                className="w-full appearance-none px-4 py-2 pr-10 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
               >
                 <option value="cm">cm</option>
                 <option value="in">in</option>
               </select>
+
+              {/* Custom chevron */}
+              <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-zinc-400">
+                <svg
+                  className="h-4 w-4"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
             </div>
           </div>
         </div>
