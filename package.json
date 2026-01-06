@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "setup-indexes": "tsx --env-file=.env.local scripts/setup-indexes.ts",
+    "setup-analytics-indexes": "tsx --env-file=.env.local scripts/setup-analytics-indexes.ts",
     "migrate-images": "tsx --env-file=.env.local src/scripts/migrate-images-to-cloudinary.ts"
   },
   "dependencies": {

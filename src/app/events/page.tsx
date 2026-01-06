@@ -4,10 +4,16 @@ import { useState, useEffect } from 'react'
 import { EventsPageContent } from '@/components/events/EventsPageContent'
 import { LoadingScreen } from '@/components/shared/LoadingScreen'
 import { Event } from '@/types'
+import { trackPageView } from '@/lib/analytics'
 
 export default function EventsPage() {
   const [events, setEvents] = useState<Event[]>([])
   const [isLoading, setIsLoading] = useState(true)
+
+  // Track page view
+  useEffect(() => {
+    trackPageView('Events')
+  }, [])
 
   useEffect(() => {
     const fetchEvents = async () => {

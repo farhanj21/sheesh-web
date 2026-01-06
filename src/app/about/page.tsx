@@ -1,12 +1,16 @@
+'use client'
+
+import { useEffect } from 'react'
 import { FadeIn } from '@/components/animations/FadeIn'
 import { SlideIn } from '@/components/animations/SlideIn'
-
-export const metadata = {
-  title: 'About - Sheesh',
-  description: 'Learn about Sheesh and our passion for creating handcrafted reflective art.',
-}
+import { trackPageView } from '@/lib/analytics'
 
 export default function AboutPage() {
+  // Track page view
+  useEffect(() => {
+    trackPageView('About')
+  }, [])
+
   return (
     <div className="pt-32 pb-15">
       <div className="container mx-auto px-6 lg:px-12">

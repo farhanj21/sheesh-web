@@ -4,10 +4,16 @@ import { useState, useEffect } from 'react'
 import { ProductGrid } from '@/components/products/ProductGrid'
 import { LoadingScreen } from '@/components/shared/LoadingScreen'
 import { Product } from '@/types'
+import { trackPageView } from '@/lib/analytics'
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState(true)
+
+  // Track page view
+  useEffect(() => {
+    trackPageView('Products')
+  }, [])
 
   useEffect(() => {
     const fetchProducts = async () => {

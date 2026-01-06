@@ -3,12 +3,13 @@
 import { useState, useEffect } from 'react'
 import { StockManager } from './StockManager'
 import { EventManager } from './EventManager'
-import { LayoutGrid, Calendar } from 'lucide-react'
+import { AnalyticsManager } from './AnalyticsManager'
+import { LayoutGrid, Calendar, TrendingUp } from 'lucide-react'
 
 export function AdminDashboard() {
   const [token, setToken] = useState<string | null>(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [activeTab, setActiveTab] = useState<'products' | 'events'>('products')
+  const [activeTab, setActiveTab] = useState<'products' | 'events' | 'analytics'>('products')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
@@ -104,6 +105,17 @@ export function AdminDashboard() {
                   <Calendar size={20} />
                   Events
                 </button>
+                <button
+                  onClick={() => setActiveTab('analytics')}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
+                    activeTab === 'analytics'
+                      ? 'bg-zinc-800 text-white'
+                      : 'text-zinc-400 hover:text-white'
+                  }`}
+                >
+                  <TrendingUp size={20} />
+                  Analytics
+                </button>
               </div>
             </div>
             <button
@@ -120,8 +132,10 @@ export function AdminDashboard() {
       <div className="pt-20">
         {activeTab === 'products' ? (
           <StockManager token={token!} onLogout={logout} />
-        ) : (
+        ) : activeTab === 'events' ? (
           <EventManager token={token!} />
+        ) : (
+          <AnalyticsManager token={token!} />
         )}
       </div>
     </div>

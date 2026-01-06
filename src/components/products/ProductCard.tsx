@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Product } from '@/types'
 import { formatPrice } from '@/lib/utils'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import { FadeIn } from '@/components/animations/FadeIn'
 import { motion } from 'framer-motion'
+import { trackProductView, trackProductDetailView, trackProductButtonClick } from '@/lib/analytics'
 
 interface ProductCardProps {
   product: Product
@@ -15,6 +16,18 @@ interface ProductCardProps {
 
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // Track product impression when component mounts
+  useEffect(() => {
+    trackProductView(product._id, product.name, product.category)
+  }, [product._id, product.name, product.category])
+
+  // Track when modal opens (Quick View clicked)
+  useEffect(() => {
+    if (isModalOpen) {
+      trackProductDetailView(product._id, product.name, product.category)
+    }
+  }, [isModalOpen, product._id, product.name, product.category])
 
   return (
     <>
@@ -96,7 +109,10 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
                   <Button
                     variant="primary"
                     size="sm"
-                    onClick={() => window.open(product.externalCheckoutUrl, '_blank')}
+                    onClick={() => {
+                      trackProductButtonClick('DM To Place Order', product._id, product.name, product.category)
+                      window.open(product.externalCheckoutUrl, '_blank')
+                    }}
                     className="flex-1"
                     disabled={!product.inStock}
                   >
@@ -163,7 +179,10 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             variant="primary"
             size="lg"
             className="w-full"
-            onClick={() => window.open(product.externalCheckoutUrl, '_blank')}
+            onClick={() => {
+              trackProductButtonClick('DM To Place Order', product._id, product.name, product.category)
+              window.open(product.externalCheckoutUrl, '_blank')
+            }}
             disabled={!product.inStock}
           >
             {product.inStock ? 'DM To Place Order' : 'Out of Stock'}
