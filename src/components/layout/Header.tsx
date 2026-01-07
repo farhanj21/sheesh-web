@@ -20,6 +20,30 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMobileMenuOpen])
+
+  // Handle keyboard navigation (ESC to close)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isMobileMenuOpen])
+
   const handleNavClick = () => {
     setIsMobileMenuOpen(false)
   }
@@ -28,11 +52,19 @@ export function Header() {
     return null
   }
 
-  const navLinks = [
+  const desktopNavLinks = [
     { href: '/products', label: 'Products' },
     { href: '/events', label: 'Events' },
     { href: '/contact', label: 'Contact' },
     { href: '/about', label: 'About' },
+  ]
+
+  const mobileNavLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/products', label: 'Products' },
+    { href: '/events', label: 'Events' },
+    { href: '/about', label: 'About' },
+    { href: '/contact', label: 'Contact' },
   ]
 
   return (
@@ -56,7 +88,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {desktopNavLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -70,62 +102,119 @@ export function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 mr-5 hover:bg-silver-700/30 rounded-lg transition-all duration-300 text-silver-300 hover:scale-110 hover:shadow-[0_0_12px_rgba(192,192,192,0.2)]"
-                aria-label="Toggle mobile menu"
-              >
+          <button
+            onClick={() => setIsMobileMenuOpen(true)}
+            className="md:hidden p-2 hover:bg-silver-700/30 rounded-lg transition-all duration-300 text-silver-300 hover:scale-110 hover:shadow-[0_0_12px_rgba(192,192,192,0.2)]"
+            aria-label="Open mobile menu"
+            aria-expanded={isMobileMenuOpen}
+          >
             <svg
               className="w-6 h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           </button>
         </div>
+      </nav>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
+      {/* Full-Screen Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop */}
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden overflow-hidden bg-dark-850/50 backdrop-blur-md"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9998] md:hidden"
+              onClick={handleNavClick}
+              aria-hidden="true"
+            />
+
+            {/* Menu Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+              className="fixed top-0 right-0 bottom-0 left-0 h-screen w-full bg-black z-[9999] md:hidden overflow-y-auto"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation menu"
             >
-              <div className="py-4 border-t border-silver-700/20">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={handleNavClick}
-                    className="block py-4 px-4 text-silver-shine transition-all duration-300 font-fancy text-xl text-center hover:bg-silver-700/10 hover:scale-105"
-                  >
-                    {link.label}
+              <div className="flex flex-col min-h-screen">
+                {/* Header with Close Button */}
+                <div className="flex items-center justify-between px-6 py-6 border-b border-silver-700/20 shrink-0">
+                  <Link href="/" onClick={handleNavClick} className="block">
+                    <img
+                      src="/Logo NO BG.png"
+                      alt="Logo"
+                      className="h-20 w-auto drop-shadow-[0_0_8px_rgba(192,192,192,0.3)]"
+                    />
                   </Link>
-                ))}
+                  <button
+                    onClick={handleNavClick}
+                    className="p-2 hover:bg-silver-700/30 rounded-lg transition-all duration-300 text-silver-200 hover:text-white hover:scale-110"
+                    aria-label="Close mobile menu"
+                  >
+                    <svg
+                      className="w-7 h-7"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Navigation Links */}
+                <nav className="flex-1 px-6 pt-8 pb-12" aria-label="Mobile navigation">
+                  <ul className="space-y-3">
+                    {mobileNavLinks.map((link, index) => (
+                      <motion.li
+                        key={link.href}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 + 0.1, duration: 0.3 }}
+                      >
+                        <Link
+                          href={link.href}
+                          onClick={handleNavClick}
+                          className={cn(
+                            'block py-5 px-6 rounded-xl font-fancy text-3xl transition-all duration-300',
+                            pathname === link.href
+                              ? 'bg-silver-700/20'
+                              : 'hover:bg-silver-700/10 hover:translate-x-2'
+                          )}
+                        >
+                          <span className="text-silver-shine" data-text={link.label}>
+                            {link.label}
+                          </span>
+                        </Link>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </nav>
               </div>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
