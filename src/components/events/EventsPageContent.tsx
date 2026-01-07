@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { ImageGallery } from '@/components/events/ImageGallery'
 import Link from 'next/link'
 import { Event } from '@/types'
+import { Button } from '@/components/ui/Button'
 
 interface EventsPageContentProps {
   events: Event[]
@@ -239,11 +240,13 @@ export function EventsPageContent({ events }: EventsPageContentProps) {
           <p className="text-xl font-fancy text-silver-400 mb-6">
             Want to see us at your next event?
           </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-3 bg-gradient-to-r from-silver-600 to-silver-500 text-dark-900 font-fancy font-semibold rounded-lg hover:from-silver-500 hover:to-silver-400 transition-all duration-300 shadow-[0_4px_16px_rgba(192,192,192,0.3)] hover:shadow-[0_6px_24px_rgba(192,192,192,0.4)] hover:scale-105"
-          >
-            Get in Touch
+          <Link href="/contact">
+            <Button
+              size="md"
+              className="text-sm sm:text-md font-fancy tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+            >
+              Get in Touch
+            </Button>
           </Link>
         </motion.div>
       </div>
