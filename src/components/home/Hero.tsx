@@ -18,7 +18,7 @@ export function Hero() {
       </div>
 
       {/* Radial glow effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] lg:w-[800px] lg:h-[800px] bg-accent-silver/10 rounded-full blur-[120px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[600px] md:h-[600px] lg:w-[800px] lg:h-[800px] bg-accent-silver/10 rounded-full blur-[120px]" />
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12 w-full">
         <div className="grid lg:grid-cols-[45%_55%] gap-8 lg:gap-12 items-center min-h-screen py-20 lg:py-0">

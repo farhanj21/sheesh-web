@@ -51,7 +51,7 @@ export function Header() {
             href="/"
             className="text-3xl font-display font-bold text-metallic hover:scale-105 transition-all duration-300"
           >
-            <img src="/Logo NO BG.png" alt="Logo" className="h-16 drop-shadow-[0_0_8px_rgba(192,192,192,0.3)]" />
+            <img src="/Logo NO BG.png" alt="Logo" className="h-16 w-auto drop-shadow-[0_0_8px_rgba(192,192,192,0.3)]" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -116,7 +116,7 @@ export function Header() {
                     key={link.href}
                     href={link.href}
                     onClick={handleNavClick}
-                    className="block py-4 px-4 text-silver-shine transition-all duration-300 font-fancy text-xl text-center hover:bg-silver-700/10 hover:scale-105 whitespace-nowrap"
+                    className="block py-4 px-4 text-silver-shine transition-all duration-300 font-fancy text-xl text-center hover:bg-silver-700/10 hover:scale-105"
                   >
                     {link.label}
                   </Link>

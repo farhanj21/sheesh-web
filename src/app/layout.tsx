@@ -40,8 +40,8 @@ export default function RootLayout({
   const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID
 
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} ${cormorant.variable}`}>
-      <body className="font-sans bg-dark-950 text-silver-100">
+    <html lang="en" className={`${inter.variable} ${playfair.variable} ${cormorant.variable} overflow-x-hidden`}>
+      <body className="font-sans bg-dark-950 text-silver-100 overflow-x-hidden">
         {/* Google Analytics 4 */}
         {GA4_ID && (
           <>
@@ -63,7 +63,7 @@ export default function RootLayout({
         )}
 
         <Header />
-        <main>{children}</main>
+        <main className="overflow-x-hidden">{children}</main>
         <Footer />
       </body>
     </html>

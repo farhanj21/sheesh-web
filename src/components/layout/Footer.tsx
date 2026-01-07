@@ -18,10 +18,10 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4 hidden md:block">
             <Link href="/" className="block">
-              <img src="/Logo NO BG.png" alt="Logo" className="h-16" />
+              <img src="/Logo NO BG.png" alt="Logo" className="h-16 w-auto" />
             </Link>
             <p className="text-xs font-fancy text-silver-400/80 italic text-left">by Aliha Naeem</p>
-            <p className="text-sm font-fancy text-silver-shine whitespace-nowrap" data-text="Premium mosaic handmade mirrorworks that transform any space.">
+            <p className="text-sm font-fancy text-silver-shine md:whitespace-nowrap" data-text="Premium mosaic handmade mirrorworks that transform any space.">
               Premium mosaic handmade mirrorworks that transform any space.
             </p>
           </div>
