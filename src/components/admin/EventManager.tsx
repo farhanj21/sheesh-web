@@ -138,7 +138,7 @@ export function EventManager({ token: propToken }: EventManagerProps) {
       <>
         <ToastContainer toasts={toasts} onClose={removeToast} />
         <div className="bg-black pt-6 pb-12">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <EventForm
               event={editingEvent}
               onSave={handleSaveEvent}
@@ -171,95 +171,165 @@ export function EventManager({ token: propToken }: EventManagerProps) {
         onCancel={() => setDeleteDialog({ isOpen: false, eventId: null })}
       />
       <div className="bg-black pt-6 pb-12">
-        <div className="container mx-auto px-6">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold text-white">Event Management</h2>
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 md:mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Event Management</h2>
             <button
               onClick={() => {
                 setEditingEvent(null)
                 setShowForm(true)
               }}
-              className="flex items-center gap-2 bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-zinc-200 transition"
+              className="flex items-center justify-center gap-2 bg-white text-black px-4 md:px-6 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-zinc-200 transition"
             >
-              <Plus size={20} />
-              Add Event
+              <Plus size={18} />
+              <span>Add Event</span>
             </button>
           </div>
 
           {loading ? (
             <div className="text-center text-white py-12">Loading...</div>
           ) : (
-            <div className="bg-zinc-900 rounded-lg shadow-xl border border-zinc-800 overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="bg-zinc-800 text-white">
-                      <th className="px-6 py-4 text-left">Event</th>
-                      <th className="px-6 py-4 text-left">Date</th>
-                      <th className="px-6 py-4 text-left">Location</th>
-                      <th className="px-6 py-4 text-right">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {events.map((event) => (
-                      <tr
-                        key={event.id}
-                        className="border-b border-zinc-800 hover:bg-zinc-800/50 transition"
-                      >
-                        <td className="px-6 py-4">
-                          <div className="flex items-center gap-4">
-                            {event.image && (
-                                <img
-                                src={event.image}
-                                alt={event.title}
-                                className="w-12 h-12 object-cover rounded"
-                                />
-                            )}
-                            <div>
-                              <div className="font-semibold text-white">
-                                {event.title}
+            <>
+              {/* Desktop Table View */}
+              <div className="hidden md:block bg-zinc-900 rounded-lg shadow-xl border border-zinc-800 overflow-hidden">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="bg-zinc-800 text-white">
+                        <th className="px-6 py-4 text-left">Event</th>
+                        <th className="px-6 py-4 text-left">Date</th>
+                        <th className="px-6 py-4 text-left">Location</th>
+                        <th className="px-6 py-4 text-right">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {events.map((event) => (
+                        <tr
+                          key={event.id}
+                          className="border-b border-zinc-800 hover:bg-zinc-800/50 transition"
+                        >
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-4">
+                              {event.image && (
+                                  <img
+                                  src={event.image}
+                                  alt={event.title}
+                                  className="w-12 h-12 object-cover rounded"
+                                  />
+                              )}
+                              <div>
+                                <div className="font-semibold text-white">
+                                  {event.title}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 text-zinc-300">
-                          {event.date}
-                        </td>
-                        <td className="px-6 py-4 text-zinc-300">
-                          {event.location}
-                        </td>
-                        <td className="px-6 py-4">
-                          <div className="flex justify-end gap-2">
-                            <button
-                              onClick={() => {
-                                setEditingEvent(event)
-                                setShowForm(true)
-                              }}
-                              className="p-2 text-blue-400 hover:text-blue-300 transition"
-                            >
-                              <Edit2 size={18} />
-                            </button>
-                            <button
-                              onClick={() => confirmDelete(event.id)}
-                              className="p-2 text-red-400 hover:text-red-300 transition"
-                            >
-                              <Trash2 size={18} />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                    {events.length === 0 && (
-                         <tr className="border-b border-zinc-800">
-                             <td colSpan={4} className="px-6 py-8 text-center text-zinc-400">
-                                 No events found.
-                             </td>
-                         </tr>
-                    )}
-                  </tbody>
-                </table>
+                          </td>
+                          <td className="px-6 py-4 text-zinc-300">
+                            {event.date}
+                          </td>
+                          <td className="px-6 py-4 text-zinc-300">
+                            {event.location}
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="flex justify-end gap-2">
+                              <button
+                                onClick={() => {
+                                  setEditingEvent(event)
+                                  setShowForm(true)
+                                }}
+                                className="p-2 text-blue-400 hover:text-blue-300 transition"
+                              >
+                                <Edit2 size={18} />
+                              </button>
+                              <button
+                                onClick={() => confirmDelete(event.id)}
+                                className="p-2 text-red-400 hover:text-red-300 transition"
+                              >
+                                <Trash2 size={18} />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                      {events.length === 0 && (
+                           <tr className="border-b border-zinc-800">
+                               <td colSpan={4} className="px-6 py-8 text-center text-zinc-400">
+                                   No events found.
+                               </td>
+                           </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
+
+              {/* Mobile Card View */}
+              <div className="md:hidden space-y-4">
+                {events.length === 0 ? (
+                  <div className="bg-zinc-900 rounded-lg shadow-xl border border-zinc-800 p-8 text-center text-zinc-400">
+                    No events found.
+                  </div>
+                ) : (
+                  events.map((event) => (
+                    <div
+                      key={event.id}
+                      className="bg-zinc-900 rounded-lg shadow-xl border border-zinc-800 overflow-hidden"
+                    >
+                      <div className="p-4">
+                        {/* Event Header */}
+                        <div className="flex gap-3 mb-4">
+                          {event.image && (
+                            <img
+                              src={event.image}
+                              alt={event.title}
+                              className="w-16 h-16 object-cover rounded flex-shrink-0"
+                            />
+                          )}
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-semibold text-white text-base">
+                              {event.title}
+                            </h3>
+                          </div>
+                        </div>
+
+                        {/* Event Details */}
+                        <div className="space-y-2 mb-4">
+                          <div>
+                            <p className="text-xs text-zinc-400 mb-0.5">Date</p>
+                            <p className="text-white text-sm">{event.date}</p>
+                          </div>
+                          <div>
+                            <p className="text-xs text-zinc-400 mb-0.5">Location</p>
+                            <p className="text-white text-sm">{event.location}</p>
+                          </div>
+                        </div>
+
+                        {/* Actions */}
+                        <div className="flex gap-2 pt-3 border-t border-zinc-800">
+                          <button
+                            onClick={() => {
+                              setEditingEvent(event)
+                              setShowForm(true)
+                            }}
+                            className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 rounded-lg transition text-sm font-medium"
+                          >
+                            <Edit2 size={16} />
+                            <span>Edit</span>
+                          </button>
+                          <button
+                            onClick={() => confirmDelete(event.id)}
+                            className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-red-500/10 text-red-400 hover:bg-red-500/20 rounded-lg transition text-sm font-medium"
+                          >
+                            <Trash2 size={16} />
+                            <span>Delete</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </>
           )}
         </div>
       </div>

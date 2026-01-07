@@ -260,7 +260,7 @@ export function StockManager({ token: propToken, onLogout }: { token?: string, o
       <>
         <ToastContainer toasts={toasts} onClose={removeToast} />
         <div className="min-h-screen bg-black pt-24 pb-12">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <ProductForm
             product={editingProduct}
             onSave={handleSaveProduct}
@@ -293,127 +293,225 @@ export function StockManager({ token: propToken, onLogout }: { token?: string, o
         onCancel={() => setDeleteDialog({ isOpen: false, productId: null })}
       />
       <div className="min-h-screen bg-black pt-6 pb-12">
-      <div className="container mx-auto px-6">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-white">Stock Management</h1>
-          <div className="flex gap-4">
-            <button
-              onClick={() => {
-                setEditingProduct(null)
-                setShowForm(true)
-              }}
-              className="flex items-center gap-2 bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-zinc-200 transition"
-            >
-              <Plus size={20} />
-              Add Product
-            </button>
-          </div>
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 md:mb-8">
+          <h1 className="text-2xl md:text-3xl font-bold text-white">Stock Management</h1>
+          <button
+            onClick={() => {
+              setEditingProduct(null)
+              setShowForm(true)
+            }}
+            className="flex items-center justify-center gap-2 bg-white text-black px-4 md:px-6 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-zinc-200 transition"
+          >
+            <Plus size={18} />
+            <span>Add Product</span>
+          </button>
         </div>
 
         {loading ? (
           <div className="text-center text-white py-12">Loading...</div>
         ) : (
-          <div className="bg-zinc-900 rounded-lg shadow-xl border border-zinc-800 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-zinc-800 text-white">
-                    <th className="px-6 py-4 text-left">Product</th>
-                    <th className="px-6 py-4 text-left">Category</th>
-                    <th className="px-6 py-4 text-left">Price</th>
-                    <th className="px-6 py-4 text-center">Stock</th>
-                    <th className="px-6 py-4 text-center">Status</th>
-                    <th className="px-6 py-4 text-center">Visible</th>
-                    <th className="px-6 py-4 text-right">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {products.map((product) => (
-                    <tr
-                      key={product.id}
-                      className="border-b border-zinc-800 hover:bg-zinc-800/50 transition"
-                    >
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-4">
-                          <img
-                            src={product.images[0]?.src}
-                            alt={product.name}
-                            className="w-12 h-12 object-cover rounded"
-                          />
-                          <div>
-                            <div className="font-semibold text-white">
-                              {product.name}
-                            </div>
-                            <div className="text-sm text-zinc-400">
-                              {product.id}
+          <>
+            {/* Desktop Table View */}
+            <div className="hidden md:block bg-zinc-900 rounded-lg shadow-xl border border-zinc-800 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="bg-zinc-800 text-white">
+                      <th className="px-6 py-4 text-left">Product</th>
+                      <th className="px-6 py-4 text-left">Category</th>
+                      <th className="px-6 py-4 text-left">Price</th>
+                      <th className="px-6 py-4 text-center">Stock</th>
+                      <th className="px-6 py-4 text-center">Status</th>
+                      <th className="px-6 py-4 text-center">Visible</th>
+                      <th className="px-6 py-4 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {products.map((product) => (
+                      <tr
+                        key={product.id}
+                        className="border-b border-zinc-800 hover:bg-zinc-800/50 transition"
+                      >
+                        <td className="px-6 py-4">
+                          <div className="flex items-center gap-4">
+                            <img
+                              src={product.images[0]?.src}
+                              alt={product.name}
+                              className="w-12 h-12 object-cover rounded"
+                            />
+                            <div>
+                              <div className="font-semibold text-white">
+                                {product.name}
+                              </div>
+                              <div className="text-sm text-zinc-400">
+                                {product.id}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 text-zinc-300">
-                        {product.category}
-                      </td>
-                      <td className="px-6 py-4 text-zinc-300">
-                        Rs {product.price.toFixed(2)}
-                      </td>
-                      <td className="px-6 py-4">
+                        </td>
+                        <td className="px-6 py-4 text-zinc-300">
+                          {product.category}
+                        </td>
+                        <td className="px-6 py-4 text-zinc-300">
+                          Rs {product.price.toFixed(2)}
+                        </td>
+                        <td className="px-6 py-4">
+                          <input
+                            type="number"
+                            value={product.quantity}
+                            onChange={(e) =>
+                              updateStock(product, parseInt(e.target.value) || 0)
+                            }
+                            className="w-20 px-3 py-1 bg-zinc-800 border border-zinc-700 rounded text-white text-center focus:outline-none focus:border-zinc-500"
+                          />
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          <span
+                            className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                              product.inStock
+                                ? 'bg-green-500/20 text-green-400'
+                                : 'bg-red-500/20 text-red-400'
+                            }`}
+                          >
+                            {product.inStock ? 'In Stock' : 'Out of Stock'}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          <button
+                            onClick={() => toggleVisibility(product)}
+                            className="text-zinc-400 hover:text-white transition"
+                          >
+                            {product.visible ? (
+                              <Eye size={20} />
+                            ) : (
+                              <EyeOff size={20} />
+                            )}
+                          </button>
+                        </td>
+                        <td className="px-6 py-4">
+                          <div className="flex justify-end gap-2">
+                            <button
+                              onClick={() => {
+                                setEditingProduct(product)
+                                setShowForm(true)
+                              }}
+                              className="p-2 text-blue-400 hover:text-blue-300 transition"
+                            >
+                              <Edit2 size={18} />
+                            </button>
+                            <button
+                              onClick={() => confirmDelete(product.id)}
+                              className="p-2 text-red-400 hover:text-red-300 transition"
+                            >
+                              <Trash2 size={18} />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Mobile Card View */}
+            <div className="md:hidden space-y-4">
+              {products.map((product) => (
+                <div
+                  key={product.id}
+                  className="bg-zinc-900 rounded-lg shadow-xl border border-zinc-800 overflow-hidden"
+                >
+                  <div className="p-4">
+                    {/* Product Header */}
+                    <div className="flex gap-3 mb-4">
+                      <img
+                        src={product.images[0]?.src}
+                        alt={product.name}
+                        className="w-16 h-16 object-cover rounded flex-shrink-0"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-white text-base truncate">
+                          {product.name}
+                        </h3>
+                        <p className="text-xs text-zinc-400 truncate">{product.id}</p>
+                        <p className="text-sm text-zinc-300 mt-1">{product.category}</p>
+                      </div>
+                    </div>
+
+                    {/* Product Details */}
+                    <div className="grid grid-cols-2 gap-3 mb-4">
+                      <div>
+                        <p className="text-xs text-zinc-400 mb-1">Price</p>
+                        <p className="text-white font-semibold">Rs {product.price.toFixed(2)}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs text-zinc-400 mb-1">Stock Quantity</p>
                         <input
                           type="number"
                           value={product.quantity}
                           onChange={(e) =>
                             updateStock(product, parseInt(e.target.value) || 0)
                           }
-                          className="w-20 px-3 py-1 bg-zinc-800 border border-zinc-700 rounded text-white text-center focus:outline-none focus:border-zinc-500"
+                          className="w-full px-3 py-1.5 bg-zinc-800 border border-zinc-700 rounded text-white text-center focus:outline-none focus:border-zinc-500"
                         />
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <span
-                          className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                            product.inStock
-                              ? 'bg-green-500/20 text-green-400'
-                              : 'bg-red-500/20 text-red-400'
-                          }`}
-                        >
-                          {product.inStock ? 'In Stock' : 'Out of Stock'}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <button
-                          onClick={() => toggleVisibility(product)}
-                          className="text-zinc-400 hover:text-white transition"
-                        >
-                          {product.visible ? (
-                            <Eye size={20} />
-                          ) : (
-                            <EyeOff size={20} />
-                          )}
-                        </button>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="flex justify-end gap-2">
-                          <button
-                            onClick={() => {
-                              setEditingProduct(product)
-                              setShowForm(true)
-                            }}
-                            className="p-2 text-blue-400 hover:text-blue-300 transition"
-                          >
-                            <Edit2 size={18} />
-                          </button>
-                          <button
-                            onClick={() => confirmDelete(product.id)}
-                            className="p-2 text-red-400 hover:text-red-300 transition"
-                          >
-                            <Trash2 size={18} />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                      </div>
+                    </div>
+
+                    {/* Status & Visibility */}
+                    <div className="flex items-center justify-between mb-4">
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                          product.inStock
+                            ? 'bg-green-500/20 text-green-400'
+                            : 'bg-red-500/20 text-red-400'
+                        }`}
+                      >
+                        {product.inStock ? 'In Stock' : 'Out of Stock'}
+                      </span>
+                      <button
+                        onClick={() => toggleVisibility(product)}
+                        className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800 rounded-lg text-zinc-400 hover:text-white transition text-xs"
+                      >
+                        {product.visible ? (
+                          <>
+                            <Eye size={16} />
+                            <span>Visible</span>
+                          </>
+                        ) : (
+                          <>
+                            <EyeOff size={16} />
+                            <span>Hidden</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex gap-2 pt-3 border-t border-zinc-800">
+                      <button
+                        onClick={() => {
+                          setEditingProduct(product)
+                          setShowForm(true)
+                        }}
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 rounded-lg transition text-sm font-medium"
+                      >
+                        <Edit2 size={16} />
+                        <span>Edit</span>
+                      </button>
+                      <button
+                        onClick={() => confirmDelete(product.id)}
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-red-500/10 text-red-400 hover:bg-red-500/20 rounded-lg transition text-sm font-medium"
+                      >
+                        <Trash2 size={16} />
+                        <span>Delete</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
+          </>
         )}
       </div>
     </div>
