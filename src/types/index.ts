@@ -41,3 +41,49 @@ export interface Event {
   gallery: string[]
   createdAt: string
 }
+
+export interface ReviewImage {
+  src: string
+  alt?: string
+  width: number
+  height: number
+}
+
+export interface Review {
+  id: string
+  productId: string
+  productSlug: string
+
+  // Anonymous reviewer info
+  reviewerName: string
+  reviewerEmail: string
+
+  // Review content
+  rating: number // 1-5 stars
+  reviewText: string
+  images: ReviewImage[]
+
+  // Admin response
+  adminResponse?: {
+    text: string
+    respondedAt: string
+    respondedBy: string
+  }
+
+  // Metadata
+  isVisible: boolean
+  createdAt: string
+  updatedAt: string
+}
+
+export interface ReviewStats {
+  averageRating: number
+  totalReviews: number
+  ratingDistribution: {
+    1: number
+    2: number
+    3: number
+    4: number
+    5: number
+  }
+}

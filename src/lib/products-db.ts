@@ -34,6 +34,13 @@ export async function getProductById(id: string): Promise<Product | null> {
   return product as Product | null
 }
 
+export async function getProductBySlug(slug: string): Promise<Product | null> {
+  const db = await getDatabase()
+  const product = await db.collection<Product>(COLLECTION_NAME)
+    .findOne({ slug, visible: true }, { projection: { _id: 0 } })
+  return product as Product | null
+}
+
 export async function updateProduct(id: string, updates: Partial<Product>): Promise<Product | null> {
   const db = await getDatabase()
   const result = await db.collection<Product>(COLLECTION_NAME).findOneAndUpdate(
