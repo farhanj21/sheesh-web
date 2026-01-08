@@ -90,7 +90,7 @@ export const StarRating: React.FC<StarRatingProps> = ({
     <div className={`flex items-center gap-1 ${className}`}>
       <div className="flex items-center gap-0.5">{stars}</div>
       {showNumber && (
-        <span className={`${textSizes[size]} text-neutral-300 ml-1`}>
+        <span className={`${textSizes[size]} text-gray-700 ml-1`}>
           {rating.toFixed(1)}
         </span>
       )}

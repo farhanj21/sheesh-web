@@ -22,7 +22,7 @@ export function Modal({ isOpen, onClose, children, className }: ModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-md z-50"
+            className="fixed inset-0 bg-black/60 backdrop-blur-md z-50"
           />
 
           {/* Modal */}
@@ -38,14 +38,14 @@ export function Modal({ isOpen, onClose, children, className }: ModalProps) {
               onClick={(e) => e.stopPropagation()}
               className={cn(
                 'relative w-full max-w-lg max-h-[90vh] overflow-y-auto',
-                'bg-dark-850 rounded-2xl shadow-glow-lg border border-silver-700/30',
+                'bg-white rounded-2xl shadow-glow-dark-lg border border-gray-300',
                 className
               )}
             >
               {/* Close button */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-dark-800 hover:bg-dark-700 border border-silver-700/30 text-silver-300 hover:text-silver-100 transition-all hover:shadow-glow"
+                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-gray-100 hover:bg-gray-200 border border-gray-300 text-gray-700 hover:text-gray-900 transition-all hover:shadow-glow-dark"
                 aria-label="Close modal"
               >
                 <svg

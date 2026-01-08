@@ -47,7 +47,7 @@ export const StarRatingInput: React.FC<StarRatingInputProps> = ({
         onClick={() => handleClick(i)}
         onMouseEnter={() => handleMouseEnter(i)}
         onMouseLeave={handleMouseLeave}
-        className={`${sizeClasses[size]} transition-all duration-150 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black rounded`}
+        className={`${sizeClasses[size]} transition-all duration-150 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-white rounded`}
         aria-label={`Rate ${i} out of ${maxStars} stars`}
       >
         <svg
@@ -69,12 +69,12 @@ export const StarRatingInput: React.FC<StarRatingInputProps> = ({
       <div className="flex items-center gap-1">
         {stars}
         {rating > 0 && (
-          <span className="ml-2 text-sm text-neutral-300">
+          <span className="ml-2 text-sm text-gray-700">
             {rating} {rating === 1 ? 'star' : 'stars'}
           </span>
         )}
       </div>
-      {error && <p className="text-sm text-red-400">{error}</p>}
+      {error && <p className="text-sm text-red-600">{error}</p>}
     </div>
   )
 }

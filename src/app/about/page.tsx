@@ -12,13 +12,13 @@ export default function AboutPage() {
   }, [])
 
   return (
-    <div className="pt-32 pb-15">
+    <div className="min-h-screen pt-32 pb-16">
       <div className="container mx-auto px-6 lg:px-12">
         <FadeIn>
           <div className="text-center mb-12 max-w-3xl mx-auto">
             <h1 className="text-section font-bold text-4xl mb-4">
               <span
-                className="text-white"
+                className="text-gray-900"
                 data-text="About Sheesh"
               >
                 About Sheesh
@@ -27,7 +27,7 @@ export default function AboutPage() {
 
             <p className="text-xl max-w-4xl mx-auto text-center">
               <span
-                className="text-gray-300 italic leading-relaxed lg:whitespace-nowrap"
+                className="text-gray-600 italic leading-relaxed lg:whitespace-nowrap"
                 data-text="We create handcrafted reflective art that transforms spaces and captures imagination."
               >
                 We create handcrafted reflective art that transforms spaces and captures imagination.
@@ -42,14 +42,14 @@ export default function AboutPage() {
             <div className="prose prose-lg mx-auto">
                 <h2 className="text-3xl font-bold mb-4">
                   <span
-                    className="text-gray-300"
+                    className="text-gray-800"
                     data-text="Our Story"
                   >
                     Our Story
                   </span>
                 </h2>
 
-                <p className="leading-relaxed text-white/80">
+                <p className="leading-relaxed text-gray-800">
                   I'm Aliha Naeem, a filmmaker from Lahore, Pakistan, and the founder of Sheesh — a
                   visual design brand exploring light and reflection through mirror mosaic art.
                   My work blends contemporary design with handcrafted detail, creating pieces

@@ -51,7 +51,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${hkGrotesk.variable} overflow-x-hidden`}>
-      <body className="font-sans bg-dark-950 text-silver-100 overflow-x-hidden">
+      <body className="font-sans bg-white text-gray-900 overflow-x-hidden">
         {/* Google Analytics 4 */}
         {GA4_ID && (
           <>

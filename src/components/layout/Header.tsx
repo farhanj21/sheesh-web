@@ -72,8 +72,8 @@ export function Header() {
       className={cn(
         'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
         isScrolled
-          ? 'bg-dark-900/95 backdrop-blur-md shadow-[0_8px_32px_rgba(192,192,192,0.15)]'
-          : 'bg-dark-900/80 backdrop-blur-sm shadow-[0_4px_24px_rgba(192,192,192,0.1)]'
+          ? 'bg-black backdrop-blur-md shadow-[0_8px_32px_rgba(192,192,192,0.15)]'
+          : 'bg-black backdrop-blur-sm shadow-[0_4px_24px_rgba(192,192,192,0.1)]'
       )}
     >
       <nav className="container mx-auto px-6 lg:px-12">
@@ -92,11 +92,11 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white transition-all duration-300 text-lg tracking-wide relative group hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]"
+                className="text-white transition-all duration-300 text-lg tracking-wide relative group hover:text-silver-300"
                 data-text={link.label}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-transparent via-silver-100 to-transparent group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-transparent via-silver-300 to-transparent group-hover:w-full transition-all duration-300"></span>
               </Link>
             ))}
           </div>
@@ -104,7 +104,7 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="md:hidden p-2 hover:bg-silver-700/30 rounded-lg transition-all duration-300 text-silver-300 hover:scale-110 hover:shadow-[0_0_12px_rgba(192,192,192,0.2)]"
+            className="md:hidden p-2 hover:bg-zinc-800 rounded-lg transition-all duration-300 text-white hover:scale-110"
             aria-label="Open mobile menu"
             aria-expanded={isMobileMenuOpen}
           >
@@ -135,7 +135,7 @@ export function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9998] md:hidden"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9998] md:hidden"
               onClick={handleNavClick}
               aria-hidden="true"
             />
@@ -146,14 +146,14 @@ export function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-              className="fixed top-0 right-0 bottom-0 left-0 h-screen w-full bg-black z-[9999] md:hidden overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 left-0 h-screen w-full bg-dark-900 z-[9999] md:hidden overflow-y-auto"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation menu"
             >
               <div className="flex flex-col min-h-screen">
                 {/* Header with Close Button */}
-                <div className="flex items-center justify-between px-6 py-6 border-b border-silver-700/20 shrink-0">
+                <div className="flex items-center justify-between px-6 py-6 border-b border-silver-700/30 shrink-0">
                   <Link href="/" onClick={handleNavClick} className="block">
                     <img
                       src="/Logo NO BG.png"
@@ -163,7 +163,7 @@ export function Header() {
                   </Link>
                   <button
                     onClick={handleNavClick}
-                    className="p-2 hover:bg-silver-700/30 rounded-lg transition-all duration-300 text-silver-200 hover:text-white hover:scale-110"
+                    className="p-2 hover:bg-zinc-800 rounded-lg transition-all duration-300 text-white hover:text-silver-300 hover:scale-110"
                     aria-label="Close mobile menu"
                   >
                     <svg
@@ -198,8 +198,8 @@ export function Header() {
                           className={cn(
                             'block py-5 px-6 rounded-xl text-3xl transition-all duration-300',
                             pathname === link.href
-                              ? 'bg-silver-700/20'
-                              : 'hover:bg-silver-700/10 hover:translate-x-2'
+                              ? 'bg-zinc-800'
+                              : 'hover:bg-zinc-800 hover:translate-x-2'
                           )}
                         >
                           <span className="text-white" data-text={link.label}>

@@ -47,7 +47,7 @@ export const AdminReplyForm: React.FC<AdminReplyFormProps> = ({
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
       <div>
-        <label htmlFor={`reply-${reviewId}`} className="block text-sm font-medium text-white mb-2">
+        <label htmlFor={`reply-${reviewId}`} className="block text-sm font-medium text-gray-900 mb-2">
           Your Response
         </label>
         <textarea
@@ -56,11 +56,11 @@ export const AdminReplyForm: React.FC<AdminReplyFormProps> = ({
           onChange={(e) => setText(e.target.value)}
           placeholder="Write your response to this review..."
           rows={3}
-          className="w-full px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent resize-none"
+          className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent resize-none"
         />
         <div className="flex justify-between items-center mt-1">
-          {error && <p className="text-sm text-red-400">{error}</p>}
-          <span className={`text-xs ${text.length > 500 ? 'text-red-400' : 'text-neutral-500'} ml-auto`}>
+          {error && <p className="text-sm text-red-600">{error}</p>}
+          <span className={`text-xs ${text.length > 500 ? 'text-red-600' : 'text-gray-500'} ml-auto`}>
             {text.length}/500
           </span>
         </div>
@@ -78,7 +78,7 @@ export const AdminReplyForm: React.FC<AdminReplyFormProps> = ({
           type="button"
           onClick={onCancel}
           disabled={isSubmitting}
-          className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-neutral-300 rounded-lg transition-colors disabled:opacity-50 text-sm"
+          className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg transition-colors disabled:opacity-50 text-sm"
         >
           Cancel
         </button>

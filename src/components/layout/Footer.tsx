@@ -12,7 +12,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-dark-900 text-silver-400 pt-8 md:pt-16 pb-4 md:pb-6 border-t border-silver-700/20">
+    <footer className="bg-black text-neutral-400 pt-8 md:pt-16 pb-4 md:pb-6 border-t border-zinc-800">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
           {/* Brand */}
@@ -20,7 +20,7 @@ export function Footer() {
             <Link href="/" className="block">
               <img src="/Logo NO BG.png" alt="Logo" className="h-16 w-auto" />
             </Link>
-            <p className="text-xs text-silver-400/80 italic text-left">by Aliha Naeem</p>
+            <p className="text-xs text-neutral-500 italic text-left">by Aliha Naeem</p>
             <p className="text-sm text-white md:whitespace-nowrap" data-text="Premium mosaic handmade mirrorworks that transform any space.">
               Premium mosaic handmade mirrorworks that transform any space.
             </p>
@@ -33,17 +33,17 @@ export function Footer() {
               {/* Column 1 */}
               <ul className="flex flex-col space-y-2">
                 <li>
-                  <Link href="/" className="text-white hover:text-silver-100 transition-colors" data-text="Home">
+                  <Link href="/" className="text-neutral-400 hover:text-silver-300 transition-colors" data-text="Home">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products" className="text-white hover:text-silver-100 transition-colors" data-text="Products">
+                  <Link href="/products" className="text-neutral-400 hover:text-silver-300 transition-colors" data-text="Products">
                     Products
                   </Link>
                 </li>
                 <li>
-                  <Link href="/events" className="text-white hover:text-silver-100 transition-colors" data-text="Events">
+                  <Link href="/events" className="text-neutral-400 hover:text-silver-300 transition-colors" data-text="Events">
                     Events
                   </Link>
                 </li>
@@ -51,17 +51,17 @@ export function Footer() {
               {/* Column 2 */}
               <ul className="flex flex-col space-y-2">
                 <li>
-                  <Link href="/contact" className="text-white hover:text-silver-100 transition-colors" data-text="Contact Us">
+                  <Link href="/contact" className="text-neutral-400 hover:text-silver-300 transition-colors" data-text="Contact Us">
                     Contact Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-white hover:text-silver-100 transition-colors" data-text="About Us">
+                  <Link href="/about" className="text-neutral-400 hover:text-silver-300 transition-colors" data-text="About Us">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <a href="/privacy" className="text-white hover:text-silver-100 transition-colors" data-text="Privacy Policy">
+                  <a href="/privacy" className="text-neutral-400 hover:text-silver-300 transition-colors" data-text="Privacy Policy">
                     Privacy Policy
                   </a>
                 </li>
@@ -76,7 +76,7 @@ export function Footer() {
               <div className="flex gap-4 md:gap-4">
               <a
                 href="https://www.instagram.com/sheeshupyourlife/"
-                className="hover:text-silver-100 transition-all hover:scale-110"
+                className="hover:text-silver-300 transition-all hover:scale-110"
                 target="_blank"
                 aria-label="Instagram"
               >
@@ -90,7 +90,7 @@ export function Footer() {
               </a>
               <a
                 href="#"
-                className="hover:text-silver-100 transition-all hover:scale-110"
+                className="hover:text-silver-300 transition-all hover:scale-110"
                 aria-label="Facebook"
               >
                 <svg
@@ -105,7 +105,7 @@ export function Footer() {
                   href="https://wa.me/XXXXXXXXXXX"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-silver-100 transition-all hover:scale-110"
+                  className="hover:text-silver-300 transition-all hover:scale-110"
                   aria-label="WhatsApp"
                 >
                   <svg
@@ -123,7 +123,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-silver-700/20 text-sm text-center hidden md:block">
+        <div className="mt-12 pt-8 border-t border-silver-700/30 text-sm text-center hidden md:block">
           <p
             className="text-white"
             data-text={`© ${currentYear} Sheesh. All Rights Reserved – Developed by Syed Farhan Jafri`}

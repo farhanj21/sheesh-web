@@ -163,25 +163,25 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-      <h3 className="text-xl font-bold text-white mb-4">Write a Review</h3>
+    <form onSubmit={handleSubmit} className="bg-gray-50 rounded-xl p-6 border border-gray-300">
+      <h3 className="text-xl font-bold text-gray-900 mb-4">Write a Review</h3>
 
       {successMessage && (
-        <div className="mb-4 p-3 bg-green-950 border border-green-800 rounded-lg text-green-400 text-sm">
+        <div className="mb-4 p-3 bg-green-100 border border-green-300 rounded-lg text-green-700 text-sm">
           {successMessage}
         </div>
       )}
 
       {errors.submit && (
-        <div className="mb-4 p-3 bg-red-950 border border-red-800 rounded-lg text-red-400 text-sm">
+        <div className="mb-4 p-3 bg-red-100 border border-red-300 rounded-lg text-red-700 text-sm">
           {errors.submit}
         </div>
       )}
 
       {/* Rating */}
       <div className="mb-5">
-        <label className="block text-sm font-medium text-white mb-2">
-          Rating <span className="text-red-400">*</span>
+        <label className="block text-sm font-medium text-gray-900 mb-2">
+          Rating <span className="text-red-600">*</span>
         </label>
         <StarRatingInput
           rating={formData.rating}
@@ -192,8 +192,8 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({
 
       {/* Name */}
       <div className="mb-4">
-        <label htmlFor="reviewerName" className="block text-sm font-medium text-white mb-2">
-          Name <span className="text-red-400">*</span>
+        <label htmlFor="reviewerName" className="block text-sm font-medium text-gray-900 mb-2">
+          Name <span className="text-red-600">*</span>
         </label>
         <input
           type="text"
@@ -201,19 +201,19 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({
           name="reviewerName"
           value={formData.reviewerName}
           onChange={handleInputChange}
-          className="w-full px-4 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
+          className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
           placeholder="Your name"
         />
         {errors.reviewerName && (
-          <p className="mt-1 text-sm text-red-400">{errors.reviewerName}</p>
+          <p className="mt-1 text-sm text-red-600">{errors.reviewerName}</p>
         )}
       </div>
 
       {/* Email */}
       <div className="mb-4">
-        <label htmlFor="reviewerEmail" className="block text-sm font-medium text-white mb-2">
-          Email <span className="text-red-400">*</span>
-          <span className="text-xs text-neutral-500 ml-2">(will not be displayed)</span>
+        <label htmlFor="reviewerEmail" className="block text-sm font-medium text-gray-900 mb-2">
+          Email <span className="text-red-600">*</span>
+          <span className="text-xs text-gray-500 ml-2">(will not be displayed)</span>
         </label>
         <input
           type="email"
@@ -221,18 +221,18 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({
           name="reviewerEmail"
           value={formData.reviewerEmail}
           onChange={handleInputChange}
-          className="w-full px-4 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
+          className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
           placeholder="your@email.com"
         />
         {errors.reviewerEmail && (
-          <p className="mt-1 text-sm text-red-400">{errors.reviewerEmail}</p>
+          <p className="mt-1 text-sm text-red-600">{errors.reviewerEmail}</p>
         )}
       </div>
 
       {/* Review Text */}
       <div className="mb-4">
-        <label htmlFor="reviewText" className="block text-sm font-medium text-white mb-2">
-          Review <span className="text-red-400">*</span>
+        <label htmlFor="reviewText" className="block text-sm font-medium text-gray-900 mb-2">
+          Review <span className="text-red-600">*</span>
         </label>
         <textarea
           id="reviewText"
@@ -240,12 +240,12 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({
           value={formData.reviewText}
           onChange={handleInputChange}
           rows={4}
-          className="w-full px-4 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent resize-none"
+          className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent resize-none"
           placeholder="Share your experience with this product..."
         />
         <div className="flex justify-between items-center mt-1">
-          {errors.reviewText && <p className="text-sm text-red-400">{errors.reviewText}</p>}
-          <span className={`text-xs ${formData.reviewText.length > 1000 ? 'text-red-400' : 'text-neutral-500'} ml-auto`}>
+          {errors.reviewText && <p className="text-sm text-red-600">{errors.reviewText}</p>}
+          <span className={`text-xs ${formData.reviewText.length > 1000 ? 'text-red-600' : 'text-gray-500'} ml-auto`}>
             {formData.reviewText.length}/1000
           </span>
         </div>
@@ -253,14 +253,14 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({
 
       {/* Image Upload */}
       <div className="mb-5">
-        <label className="block text-sm font-medium text-white mb-2">
-          Photos <span className="text-neutral-500 text-xs">(optional, max 5)</span>
+        <label className="block text-sm font-medium text-gray-900 mb-2">
+          Photos <span className="text-gray-500 text-xs">(optional, max 5)</span>
         </label>
 
         {images.length > 0 && (
           <div className="flex gap-2 mb-3 overflow-x-auto pb-2">
             {images.map((url, index) => (
-              <div key={index} className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border border-zinc-800 group">
+              <div key={index} className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border border-gray-300 group">
                 <Image
                   src={url}
                   alt={`Review image ${index + 1}`}
@@ -283,7 +283,7 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({
         )}
 
         {images.length < 5 && (
-          <label className="inline-flex items-center gap-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-neutral-300 rounded-lg cursor-pointer transition-colors">
+          <label className="inline-flex items-center gap-2 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg cursor-pointer transition-colors">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
@@ -299,7 +299,7 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({
           </label>
         )}
 
-        {errors.images && <p className="mt-2 text-sm text-red-400">{errors.images}</p>}
+        {errors.images && <p className="mt-2 text-sm text-red-600">{errors.images}</p>}
       </div>
 
       {/* Submit Buttons */}
@@ -317,7 +317,7 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({
             type="button"
             onClick={onCancel}
             disabled={isSubmitting}
-            className="px-6 py-3 bg-zinc-800 hover:bg-zinc-700 text-neutral-300 rounded-full transition-colors disabled:opacity-50"
+            className="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full transition-colors disabled:opacity-50"
           >
             Cancel
           </button>

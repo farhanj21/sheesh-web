@@ -23,24 +23,24 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white text-gray-900">
       <div className="max-w-7xl mx-auto px-4 pt-28 pb-8">
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm">
-          <ol className="flex items-center gap-2 text-neutral-400">
+          <ol className="flex items-center gap-2 text-gray-600">
             <li>
-              <Link href="/" className="hover:text-white transition-colors">
+              <Link href="/" className="hover:text-gray-900 transition-colors">
                 Home
               </Link>
             </li>
             <li>/</li>
             <li>
-              <Link href="/products" className="hover:text-white transition-colors">
+              <Link href="/products" className="hover:text-gray-900 transition-colors">
                 Products
               </Link>
             </li>
             <li>/</li>
-            <li className="text-white">{product.name}</li>
+            <li className="text-gray-900">{product.name}</li>
           </ol>
         </nav>
 
@@ -55,7 +55,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           <div>
             {/* Category Badge */}
             <div className="mb-4">
-              <span className="inline-block px-3 py-1 bg-zinc-800 text-neutral-300 text-sm rounded-full capitalize">
+              <span className="inline-block px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-full capitalize">
                 {product.category.replace('-', ' ')}
               </span>
             </div>
@@ -64,19 +64,19 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">{product.name}</h1>
 
             {/* Price */}
-            <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 mb-6">
+            <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-gray-600 to-gray-800 mb-6">
               Rs {product.price.toFixed(2)}
             </div>
 
             {/* Stock Status */}
             <div className="flex items-center gap-3 mb-6">
               {product.inStock && product.quantity <= 3 && (
-                <div className="text-sm font-semibold text-orange-400 bg-orange-950 px-3 py-2 rounded-lg">
+                <div className="text-sm font-semibold text-orange-700 bg-orange-100 px-3 py-2 rounded-lg">
                   Only {product.quantity} left!
                 </div>
               )}
               {product.inStock && product.quantity > 3 && (
-                <div className="text-sm font-semibold text-green-400 bg-green-950 px-3 py-2 rounded-lg flex items-center gap-2">
+                <div className="text-sm font-semibold text-green-700 bg-green-100 px-3 py-2 rounded-lg flex items-center gap-2">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path
                       fillRule="evenodd"
@@ -88,7 +88,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                 </div>
               )}
               {!product.inStock && (
-                <div className="text-sm font-semibold text-red-400 bg-red-950 px-3 py-2 rounded-lg">
+                <div className="text-sm font-semibold text-red-700 bg-red-100 px-3 py-2 rounded-lg">
                   Out of Stock
                 </div>
               )}
@@ -97,18 +97,18 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
             {/* Description */}
             <div className="mb-8">
               <h2 className="text-xl font-semibold mb-3">Description</h2>
-              <p className="text-neutral-300 leading-relaxed">{product.description}</p>
+              <p className="text-gray-600 leading-relaxed">{product.description}</p>
             </div>
 
             {/* Product Details */}
             {((product.materials && product.materials.length > 0) ||
               (product.dimensions && product.dimensions.width > 0 && product.dimensions.height > 0)) && (
-              <div className="grid md:grid-cols-2 gap-6 mb-8 p-6 bg-zinc-900 border border-zinc-800 rounded-xl">
+              <div className="grid md:grid-cols-2 gap-6 mb-8 p-6 bg-gray-50 border border-gray-300 rounded-xl">
                 {/* Materials */}
                 {product.materials && product.materials.length > 0 && (
                   <div>
-                    <h3 className="font-semibold mb-2 text-white">Materials</h3>
-                    <ul className="text-neutral-300 space-y-1 text-sm">
+                    <h3 className="font-semibold mb-2 text-gray-900">Materials</h3>
+                    <ul className="text-gray-600 space-y-1 text-sm">
                       {product.materials.map((material, index) => (
                         <li key={index} className="flex items-start gap-2">
                           <span className="text-gray-400 mt-1">•</span>
@@ -122,8 +122,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                 {/* Dimensions */}
                 {product.dimensions && product.dimensions.width > 0 && product.dimensions.height > 0 && (
                   <div>
-                    <h3 className="font-semibold mb-2 text-white">Dimensions</h3>
-                    <p className="text-neutral-300 text-sm">
+                    <h3 className="font-semibold mb-2 text-gray-900">Dimensions</h3>
+                    <p className="text-gray-600 text-sm">
                       {product.dimensions.width} × {product.dimensions.height}
                       {product.dimensions.depth && product.dimensions.depth > 0 && ` × ${product.dimensions.depth}`}{' '}
                       {product.dimensions.unit}
@@ -152,8 +152,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
             </motion.button>
 
             {/* Additional Info */}
-            <div className="mt-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-lg space-y-3">
-              <p className="text-sm text-neutral-400 flex items-start gap-2">
+            <div className="mt-6 p-4 bg-gray-50 border border-gray-300 rounded-lg space-y-3">
+              <p className="text-sm text-gray-600 flex items-start gap-2">
                 <svg className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     strokeLinecap="round"
@@ -166,8 +166,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                   Contact us via Instagram to discuss delivery, and payment options.
                 </span>
               </p>
-              <p className="text-sm text-neutral-400 flex items-start gap-2">
-                <svg className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <p className="text-sm text-gray-600 flex items-start gap-2">
+                <svg className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -176,7 +176,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                   />
                 </svg>
                 <span>
-                  <strong className="text-yellow-400">Payment Policy:</strong> 40% of the total price must be paid in advance for order confirmation. Cash on delivery (COD) is available with additional charges calculated separately.
+                  <strong className="text-yellow-700">Payment Policy:</strong> 40% of the total price must be paid in advance for order confirmation. Cash on delivery (COD) is available with additional charges calculated separately.
                 </span>
               </p>
             </div>

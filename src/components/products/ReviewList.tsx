@@ -42,8 +42,8 @@ export const ReviewList: React.FC<ReviewListProps> = ({
     return (
       <div className="text-center py-12">
         <div className="text-6xl mb-4">💬</div>
-        <h3 className="text-xl font-bold text-white mb-2">No reviews yet</h3>
-        <p className="text-neutral-400">Be the first to review this product!</p>
+        <h3 className="text-xl font-bold text-gray-900 mb-2">No reviews yet</h3>
+        <p className="text-gray-600">Be the first to review this product!</p>
       </div>
     )
   }
@@ -53,14 +53,14 @@ export const ReviewList: React.FC<ReviewListProps> = ({
       {/* Sort Options */}
       {reviews.length > 1 && (
         <div className="flex items-center gap-3 mb-4">
-          <span className="text-sm text-neutral-400">Sort by:</span>
+          <span className="text-sm text-gray-600">Sort by:</span>
           <div className="flex gap-2">
             <button
               onClick={() => setSortBy('recent')}
               className={`text-sm px-3 py-1 rounded-full transition-colors ${
                 sortBy === 'recent'
                   ? 'bg-gray-300 text-black font-semibold'
-                  : 'bg-zinc-800 text-neutral-300 hover:bg-zinc-700'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
               Most Recent
@@ -70,7 +70,7 @@ export const ReviewList: React.FC<ReviewListProps> = ({
               className={`text-sm px-3 py-1 rounded-full transition-colors ${
                 sortBy === 'rating-high'
                   ? 'bg-gray-300 text-black font-semibold'
-                  : 'bg-zinc-800 text-neutral-300 hover:bg-zinc-700'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
               Highest Rating
@@ -80,7 +80,7 @@ export const ReviewList: React.FC<ReviewListProps> = ({
               className={`text-sm px-3 py-1 rounded-full transition-colors ${
                 sortBy === 'rating-low'
                   ? 'bg-gray-300 text-black font-semibold'
-                  : 'bg-zinc-800 text-neutral-300 hover:bg-zinc-700'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
               Lowest Rating
@@ -109,7 +109,7 @@ export const ReviewList: React.FC<ReviewListProps> = ({
           <button
             onClick={onLoadMore}
             disabled={isLoading}
-            className="px-6 py-3 bg-zinc-800 hover:bg-zinc-700 text-neutral-300 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? 'Loading...' : 'Load More Reviews'}
           </button>

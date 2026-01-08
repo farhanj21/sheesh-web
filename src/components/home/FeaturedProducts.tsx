@@ -27,11 +27,11 @@ export function FeaturedProducts() {
       <div className="container mx-auto px-6 lg:px-12">
         <FadeIn>
           <h2 className="text-3xl font-display font-bold text-center">
-            <span className="text-gray-300">
+            <span className="text-gray-800">
               Signature Pieces
             </span>
           </h2>
-          <p className="text-gray-600 text-lg text-center italic"><span className="text-white">Handcrafted with precision, designed to captivate</span></p>
+          <p className="text-gray-600 text-lg text-center italic"><span className="text-gray-900">Handcrafted with precision, designed to captivate</span></p>
         </FadeIn>
 
         {galleryItems.length > 0 && (
@@ -39,7 +39,7 @@ export function FeaturedProducts() {
             <CircularGallery 
               items={galleryItems}
               bend={3} 
-              textColor="#ffffff" 
+              textColor="#111827" 
               borderRadius={0.05} 
               scrollEase={0.02}
             />
