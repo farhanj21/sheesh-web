@@ -92,7 +92,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-silver-shine transition-all duration-300 font-fancy text-lg tracking-wide relative group hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]"
+                className="text-white transition-all duration-300 text-lg tracking-wide relative group hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]"
                 data-text={link.label}
               >
                 {link.label}
@@ -196,13 +196,13 @@ export function Header() {
                           href={link.href}
                           onClick={handleNavClick}
                           className={cn(
-                            'block py-5 px-6 rounded-xl font-fancy text-3xl transition-all duration-300',
+                            'block py-5 px-6 rounded-xl text-3xl transition-all duration-300',
                             pathname === link.href
                               ? 'bg-silver-700/20'
                               : 'hover:bg-silver-700/10 hover:translate-x-2'
                           )}
                         >
-                          <span className="text-silver-shine" data-text={link.label}>
+                          <span className="text-white" data-text={link.label}>
                             {link.label}
                           </span>
                         </Link>

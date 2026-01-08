@@ -20,30 +20,30 @@ export function Footer() {
             <Link href="/" className="block">
               <img src="/Logo NO BG.png" alt="Logo" className="h-16 w-auto" />
             </Link>
-            <p className="text-xs font-fancy text-silver-400/80 italic text-left">by Aliha Naeem</p>
-            <p className="text-sm font-fancy text-silver-shine md:whitespace-nowrap" data-text="Premium mosaic handmade mirrorworks that transform any space.">
+            <p className="text-xs text-silver-400/80 italic text-left">by Aliha Naeem</p>
+            <p className="text-sm text-white md:whitespace-nowrap" data-text="Premium mosaic handmade mirrorworks that transform any space.">
               Premium mosaic handmade mirrorworks that transform any space.
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4 hidden md:block">
-            {/* <h4 className="text-silver-shine font-fancy font-semibold text-lg" data-text="Quick Links">Quick Links</h4> */}
-            <div className="grid grid-cols-2 gap-x-6 text-sm font-fancy">
+            {/* <h4 className="text-white font-semibold text-lg" data-text="Quick Links">Quick Links</h4> */}
+            <div className="grid grid-cols-2 gap-x-6 text-sm">
               {/* Column 1 */}
               <ul className="flex flex-col space-y-2">
                 <li>
-                  <Link href="/" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Home">
+                  <Link href="/" className="text-white hover:text-silver-100 transition-colors" data-text="Home">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Products">
+                  <Link href="/products" className="text-white hover:text-silver-100 transition-colors" data-text="Products">
                     Products
                   </Link>
                 </li>
                 <li>
-                  <Link href="/events" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Events">
+                  <Link href="/events" className="text-white hover:text-silver-100 transition-colors" data-text="Events">
                     Events
                   </Link>
                 </li>
@@ -51,17 +51,17 @@ export function Footer() {
               {/* Column 2 */}
               <ul className="flex flex-col space-y-2">
                 <li>
-                  <Link href="/contact" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Contact Us">
+                  <Link href="/contact" className="text-white hover:text-silver-100 transition-colors" data-text="Contact Us">
                     Contact Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="About Us">
+                  <Link href="/about" className="text-white hover:text-silver-100 transition-colors" data-text="About Us">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <a href="/privacy" className="text-silver-shine hover:text-silver-100 transition-colors" data-text="Privacy Policy">
+                  <a href="/privacy" className="text-white hover:text-silver-100 transition-colors" data-text="Privacy Policy">
                     Privacy Policy
                   </a>
                 </li>
@@ -72,7 +72,7 @@ export function Footer() {
           {/* Social & Newsletter */}
           <div className="space-y-4">
             <div className="flex items-center justify-between md:flex-col md:items-start md:gap-4 md:justify-start">
-              <h4 className="text-silver-shine font-fancy font-semibold text-lg" data-text="Follow Us">Follow Us</h4>
+              <h4 className="text-white font-semibold text-lg" data-text="Follow Us">Follow Us</h4>
               <div className="flex gap-4 md:gap-4">
               <a
                 href="https://www.instagram.com/sheeshupyourlife/"
@@ -123,9 +123,9 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-silver-700/20 text-sm text-center font-fancy hidden md:block">
+        <div className="mt-12 pt-8 border-t border-silver-700/20 text-sm text-center hidden md:block">
           <p
-            className="text-silver-shine"
+            className="text-white"
             data-text={`© ${currentYear} Sheesh. All Rights Reserved – Developed by Syed Farhan Jafri`}
           >
             &copy; {currentYear} Sheesh. All Rights Reserved – Developed by Syed Farhan Jafri

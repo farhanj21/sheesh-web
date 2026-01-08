@@ -27,11 +27,11 @@ export function FeaturedProducts() {
       <div className="container mx-auto px-6 lg:px-12">
         <FadeIn>
           <h2 className="text-3xl font-display font-bold text-center">
-            <span className="text-gold-shine" data-text="Signature Pieces">
+            <span className="text-gray-300">
               Signature Pieces
             </span>
           </h2>
-          <p className="text-gray-600 text-lg text-center font-fancy italic"><span className="text-silver-shine" data-text="Handcrafted with precision, designed to captivate">Handcrafted with precision, designed to captivate</span></p>
+          <p className="text-gray-600 text-lg text-center italic"><span className="text-white">Handcrafted with precision, designed to captivate</span></p>
         </FadeIn>
 
         {galleryItems.length > 0 && (

@@ -53,7 +53,7 @@ const CardDescription = forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn('text-sm font-fancy text-silver-400 mt-1.5 italic', className)}
+    className={cn('text-sm text-silver-400 mt-1.5 italic', className)}
     {...props}
   />
 ))

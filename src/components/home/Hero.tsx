@@ -31,13 +31,13 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-fancy max-w-3xl mb-6 md:mb-8 italic drop-shadow-[0_0_50px_rgba(255,255,255,0.2)] leading-tight"
             >
-              <span className="text-silver-shine block sm:inline" data-text="Handcrafted ">
+              <span className="text-white block sm:inline">
                 Handcrafted
               </span>{' '}
-              <span className="text-gold-shine block sm:inline" data-text="Mosaic Mirror Art">
+              <span className="text-gray-300 block sm:inline">
                 Mosaic Mirror Art
               </span>
-              <span className="text-silver-shine block" data-text=" That Transforms Your Space And Vibe">
+              <span className="text-white block">
                 That Transforms Your Space And Vibe
               </span>
             </motion.p>
@@ -47,8 +47,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="text-lg sm:text-xl md:text-2xl font-fancy text-gold-shine max-w-xl mb-6 md:mb-8 italic"
-              data-text="Sheesh Up Your Life"
+              className="text-lg sm:text-xl md:text-2xl font-fancy text-gray-300 max-w-xl mb-6 md:mb-8 italic"
             >
               Sheesh Up Your Life
             </motion.p>

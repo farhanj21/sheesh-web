@@ -18,8 +18,8 @@ export function AboutSection() {
             </SlideIn>
             <SlideIn direction="right" delay={0.2}>
               <div className="space-y-4">
-                <h3 className="text-4xl font-display font-bold text-silver-shine" data-text="Meticulous Craftsmanship">Meticulous Craftsmanship</h3>
-                <p className="text-lg font-fancy text-silver-shine leading-relaxed italic" data-text="Each piece is meticulously handcrafted by skilled artisans who pour their passion into every mirror tile and reflective surface. We believe in the beauty of imperfection and the unique character that comes from human touch.">
+                <h3 className="text-4xl font-display font-bold text-white">Meticulous Craftsmanship</h3>
+                <p className="text-lg text-white leading-relaxed italic">
                   Each piece is meticulously handcrafted by skilled artisans who
                   pour their passion into every mirror tile and reflective
                   surface. We believe in the beauty of imperfection and the
@@ -33,8 +33,8 @@ export function AboutSection() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <SlideIn direction="left" delay={0.2} className="order-2 md:order-1">
               <div className="space-y-4">
-                <h3 className="text-4xl font-display font-bold text-silver-shine" data-text="Transform Any Space">Transform Any Space</h3>
-                <p className="text-lg font-fancy text-silver-shine leading-relaxed italic" data-text="From intimate gatherings to grand celebrations, our reflective art pieces create captivating atmospheres that enchant and inspire. Watch as light dances across surfaces, creating ever-changing patterns that breathe life into your space.">
+                <h3 className="text-4xl font-display font-bold text-white">Transform Any Space</h3>
+                <p className="text-lg text-white leading-relaxed italic">
                   From intimate gatherings to grand celebrations, our reflective
                   art pieces create captivating atmospheres that enchant and
                   inspire. Watch as light dances across surfaces, creating
@@ -58,8 +58,8 @@ export function AboutSection() {
             </SlideIn>
             <SlideIn direction="right" delay={0.2}>
               <div className="space-y-4">
-                <h3 className="text-4xl font-display font-bold text-silver-shine" data-text="Sustainable Beauty">Sustainable Beauty</h3>
-                <p className="text-lg font-fancy text-silver-shine leading-relaxed italic" data-text="We're committed to sustainable materials and ethical production practices. Our pieces are built to last generations, combining timeless design with responsible sourcing to create art that feels as good as it looks.">
+                <h3 className="text-4xl font-display font-bold text-white">Sustainable Beauty</h3>
+                <p className="text-lg text-white leading-relaxed italic">
                   We&apos;re committed to sustainable materials and ethical
                   production practices. Our pieces are built to last generations,
                   combining timeless design with responsible sourcing to create

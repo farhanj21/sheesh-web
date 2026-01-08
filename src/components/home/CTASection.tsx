@@ -36,8 +36,7 @@ export function CTASection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-silver-shine mb-6 leading-tight"
-                data-text="Let's Get In Touch."
+                className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-tight"
               >
                 Let&apos;s Get In Touch.
               </motion.h2>
@@ -48,8 +47,7 @@ export function CTASection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="text-lg md:text-xl text-silver-shine mb-10 leading-relaxed max-w-xl"
-                data-text="Discover how our handcrafted mosaic mirror art can transform your space. Let's discuss your vision and explore our latest collections."
+                className="text-lg md:text-xl text-white mb-10 leading-relaxed max-w-xl"
               >
                 Discover how our handcrafted mosaic mirror art can transform your space. Let&apos;s discuss your vision and explore our latest collections.
               </motion.p>
@@ -67,7 +65,7 @@ export function CTASection() {
                   <motion.button
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group inline-flex w-full sm:w-auto items-center justify-center gap-3 px-6 py-4 text-md font-fancy tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full"
+                    className="group inline-flex w-full sm:w-auto items-center justify-center gap-3 px-6 py-4 text-md tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full"
                   >
                     <span>Get in Touch</span>
                     <div className="w-8 h-8 bg-black/10 rounded-full flex items-center justify-center group-hover:bg-black/20 transition-colors">
@@ -83,7 +81,7 @@ export function CTASection() {
                   <motion.button
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group inline-flex items-center justify-center gap-3 px-6 py-4 text-md font-fancy tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full"
+                    className="group inline-flex items-center justify-center gap-3 px-6 py-4 text-md tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full"
                   >
                     <span>View Products</span>
                     <div className="w-8 h-8 bg-black/10 rounded-full flex items-center justify-center group-hover:bg-black/20 transition-colors">

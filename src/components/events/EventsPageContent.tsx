@@ -76,7 +76,7 @@ export function EventsPageContent({ events }: EventsPageContentProps) {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-display font-bold text-silver-shine mb-8" data-text="Upcoming Events"
+            className="text-3xl md:text-4xl font-display font-bold text-white mb-8" data-text="Upcoming Events"
           >
             Upcoming Events
           </motion.h2>
@@ -91,8 +91,8 @@ export function EventsPageContent({ events }: EventsPageContentProps) {
                 <svg className="w-16 h-16 mx-auto mb-4 text-silver-400/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <h3 className="text-xl font-display font-bold text-silver-shine mb-2">No Upcoming Events</h3>
-                <p className="text-lg font-fancy text-silver-400 italic">
+                <h3 className="text-xl font-display font-bold text-white mb-2">No Upcoming Events</h3>
+                <p className="text-lg text-silver-400 italic">
                   Stay tuned! We&apos;ll announce new events soon.
                 </p>
               </div>
@@ -117,7 +117,7 @@ export function EventsPageContent({ events }: EventsPageContentProps) {
                         className="object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent" />
-                      <div className="absolute bottom-2 right-2 px-3 py-1 bg-black/70 rounded-full text-white text-sm font-fancy flex items-center gap-1">
+                      <div className="absolute bottom-2 right-2 px-3 py-1 bg-black/70 rounded-full text-white text-sm flex items-center gap-1">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
@@ -125,10 +125,10 @@ export function EventsPageContent({ events }: EventsPageContentProps) {
                       </div>
                     </div>
                     <div className="p-8 flex flex-col justify-center">
-                      <h2 className="text-3xl font-display font-bold text-silver-shine mb-3" data-text={event.title}>
+                      <h2 className="text-3xl font-display font-bold text-white mb-3" data-text={event.title}>
                         {event.title}
                       </h2>
-                      <div className="flex flex-col gap-2 mb-4 font-fancy text-silver-400">
+                      <div className="flex flex-col gap-2 mb-4 text-silver-400">
                         <div className="flex items-center gap-2">
                           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -143,7 +143,7 @@ export function EventsPageContent({ events }: EventsPageContentProps) {
                           <span>{event.location}</span>
                         </div>
                       </div>
-                      <p className="text-silver-300 font-fancy leading-relaxed">
+                      <p className="text-silver-300 leading-relaxed">
                         {event.description}
                       </p>
                     </div>
@@ -165,7 +165,7 @@ export function EventsPageContent({ events }: EventsPageContentProps) {
             <div className="w-full border-t border-silver-700/30"></div>
           </div>
             <div className="relative flex justify-center">
-            <span className="bg-dark-950 px-6 text-silver-650 font-fancy text-lg">
+            <span className="bg-dark-950 px-6 text-silver-650 text-lg">
               Past Events
             </span>
           </div>
@@ -193,7 +193,7 @@ export function EventsPageContent({ events }: EventsPageContentProps) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent" />
                   {/* Gallery indicator */}
-                  <div className="absolute bottom-2 right-2 px-3 py-1 bg-black/70 rounded-full text-white text-sm font-fancy flex items-center gap-1">
+                  <div className="absolute bottom-2 right-2 px-3 py-1 bg-black/70 rounded-full text-white text-sm flex items-center gap-1">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
@@ -203,10 +203,10 @@ export function EventsPageContent({ events }: EventsPageContentProps) {
 
                 {/* Event Details */}
                 <div className="p-8 flex flex-col justify-center">
-                  <h2 className="text-3xl font-display font-bold text-silver-shine mb-3" data-text={event.title}>
+                  <h2 className="text-3xl font-display font-bold text-white mb-3" data-text={event.title}>
                     {event.title}
                   </h2>
-                  <div className="flex flex-col gap-2 mb-4 font-fancy text-silver-400">
+                  <div className="flex flex-col gap-2 mb-4 text-silver-400">
                     <div className="flex items-center gap-2">
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -221,7 +221,7 @@ export function EventsPageContent({ events }: EventsPageContentProps) {
                       <span>{event.location}</span>
                     </div>
                   </div>
-                  <p className="text-silver-300 font-fancy leading-relaxed">
+                  <p className="text-silver-300 leading-relaxed">
                     {event.description}
                   </p>
                 </div>
@@ -237,13 +237,13 @@ export function EventsPageContent({ events }: EventsPageContentProps) {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mt-20"
         >
-          <p className="text-xl font-fancy text-silver-400 mb-6">
+          <p className="text-xl text-silver-400 mb-6">
             Want to see us at your next event?
           </p>
           <Link href="/contact">
             <Button
               size="md"
-              className="text-sm sm:text-md font-fancy tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+              className="text-sm sm:text-md tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
             >
               Get in Touch
             </Button>

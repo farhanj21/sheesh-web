@@ -8,6 +8,8 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   max-width: 100vw;
+  --font-sans: var(--font-hk-grotesk);
+  font-family: var(--font-hk-grotesk);
 }
 
 body {
@@ -56,55 +58,6 @@ body {
   animation: shimmer 3s infinite;
 }
 
-/* Silver shine animation */
-@keyframes silver-shine {
-  0% {
-    background-position: 110% 0%, 0 0;
-  }
-  100% {
-    background-position: -10% 0%, 0 0;
-  }
-}
-
-/* Shiny silver text effect */
-.text-silver-shine {
-  color: #858585;
-  position: relative;
-  display: inline-block;
-}
-
-@supports ((background-clip: text) or (-webkit-background-clip: text)) {
-  .text-silver-shine {
-    color: transparent;
-    background-image: linear-gradient(to right, transparent 0%, transparent 45%, white 50%, transparent 55%, transparent 100%), 
-                      linear-gradient(270deg, #8c8c8c 1.3%, #999 15%, #868686 29.6%, #828282 29.6%, #7d7d7d 31.8%, #797979 31.8%, #6a6a6a 38.9%, #d3d3d3);
-    background-position: 110% 0%, 0 0;
-    background-size: 200% auto, auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    animation: silver-shine 2s ease-in-out 2 alternate-reverse 2s;
-  }
-
-  .text-silver-shine::before {
-    content: attr(data-text);
-    color: #fff;
-    position: absolute;
-    z-index: -1;
-    top: -0.05em;
-    left: 0;
-    text-shadow: rgba(0, 0, 0, 1) 0px 0.05em 12px;
-  }
-
-  .text-silver-shine::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: linear-gradient(to bottom, transparent 0%, transparent 48%, rgba(17, 17, 17, 0.5) 50%, transparent 75%);
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-}
 
 /* Reduced motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
@@ -167,57 +120,10 @@ body {
   animation: scaleIn 0.2s ease-out;
 }
 
-/* Gold shine animation */
-@keyframes gold-shine {
-  0% {
-    background-position: 110% 0%, 0 0;
-  }
-  100% {
-    background-position: -10% 0%, 0 0;
-  }
-}
-
-/* Shiny gold text effect */
-.text-gold-shine {
-  color: #ac733c; /* fallback solid color */
-  position: relative;
-  display: inline-block;
-}
-
-@supports ((background-clip: text) or (-webkit-background-clip: text)) {
-  .text-gold-shine {
-    color: transparent;
-    background-image: linear-gradient(to right, transparent 0%, transparent 45%, white 50%, transparent 55%, transparent 100%), 
-                      linear-gradient(90deg, #c78c48, #cf9147 9.4%, #cf9348 9.4%, #b2763e 33.6%, #ad743c 35.7%, #ac723d 46.9%, #b0773d 51.7%, #b0793e 52.1%, #c4914c 64.6%, #c99750 68.5%, #ce9e54 73.2%, #f4d188);
-    background-position: 110% 0%, 0 0;
-    background-size: 200% auto, auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    animation: gold-shine 2s ease-in-out 2 alternate 2s;
-  }
-
-  .text-gold-shine::before {
-    content: attr(data-text);
-    color: #f0d8a9;
-    position: absolute;
-    z-index: -1;
-    top: -0.05em;
-    left: 0;
-    text-shadow: rgba(0, 0, 0, 1) 0px 0.05em 12px;
-  }
-
-  .text-gold-shine::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: linear-gradient(to bottom, transparent 0%, transparent 48%, rgba(98, 16, 0, 0.5) 50%, transparent 75%);
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-}
 
 @theme inline {
+  --font-sans: var(--font-hk-grotesk), system-ui, sans-serif;
+  --font-display: var(--font-hk-grotesk), system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

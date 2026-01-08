@@ -47,10 +47,10 @@ export function LoadingScreen({ pageName }: LoadingScreenProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <h3 className="text-2xl font-display font-bold text-silver-shine mb-2">
+          <h3 className="text-2xl font-display font-bold text-white mb-2">
             Loading {pageName}
           </h3>
-          <p className="text-silver-400 font-fancy">
+          <p className="text-silver-400">
             Please wait...
           </p>
         </motion.div>

@@ -36,9 +36,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-playfair)', 'Georgia', 'serif'],
-        fancy: ['var(--font-cormorant)', 'Georgia', 'serif'],
+        sans: ['var(--font-hk-grotesk)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-hk-grotesk)', 'system-ui', 'sans-serif'],
+        fancy: ['var(--font-hk-grotesk)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         hero: ['clamp(3rem, 10vw, 8rem)', { lineHeight: '1', letterSpacing: '-0.02em' }],

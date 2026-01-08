@@ -71,7 +71,7 @@ export function ImageGallery({ images, isOpen, onClose, initialIndex = 0 }: Imag
         </button>
 
         {/* Image Counter */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 px-4 py-2 bg-black/50 rounded-full text-white font-fancy">
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 px-4 py-2 bg-black/50 rounded-full text-white">
           {currentIndex + 1} / {images.length}
         </div>
 
