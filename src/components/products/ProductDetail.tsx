@@ -24,7 +24,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 pt-28 pb-8">
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-neutral-400">
@@ -101,34 +101,37 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
             </div>
 
             {/* Product Details */}
-            <div className="grid md:grid-cols-2 gap-6 mb-8 p-6 bg-zinc-900 border border-zinc-800 rounded-xl">
-              {/* Materials */}
-              {product.materials && product.materials.length > 0 && (
-                <div>
-                  <h3 className="font-semibold mb-2 text-white">Materials</h3>
-                  <ul className="text-neutral-300 space-y-1 text-sm">
-                    {product.materials.map((material, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="text-gray-400 mt-1">•</span>
-                        <span>{material}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+            {((product.materials && product.materials.length > 0) ||
+              (product.dimensions && product.dimensions.width > 0 && product.dimensions.height > 0)) && (
+              <div className="grid md:grid-cols-2 gap-6 mb-8 p-6 bg-zinc-900 border border-zinc-800 rounded-xl">
+                {/* Materials */}
+                {product.materials && product.materials.length > 0 && (
+                  <div>
+                    <h3 className="font-semibold mb-2 text-white">Materials</h3>
+                    <ul className="text-neutral-300 space-y-1 text-sm">
+                      {product.materials.map((material, index) => (
+                        <li key={index} className="flex items-start gap-2">
+                          <span className="text-gray-400 mt-1">•</span>
+                          <span>{material}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
-              {/* Dimensions */}
-              {product.dimensions && product.dimensions.width > 0 && product.dimensions.height > 0 && (
-                <div>
-                  <h3 className="font-semibold mb-2 text-white">Dimensions</h3>
-                  <p className="text-neutral-300 text-sm">
-                    {product.dimensions.width} × {product.dimensions.height}
-                    {product.dimensions.depth && ` × ${product.dimensions.depth}`}{' '}
-                    {product.dimensions.unit}
-                  </p>
-                </div>
-              )}
-            </div>
+                {/* Dimensions */}
+                {product.dimensions && product.dimensions.width > 0 && product.dimensions.height > 0 && (
+                  <div>
+                    <h3 className="font-semibold mb-2 text-white">Dimensions</h3>
+                    <p className="text-neutral-300 text-sm">
+                      {product.dimensions.width} × {product.dimensions.height}
+                      {product.dimensions.depth && product.dimensions.depth > 0 && ` × ${product.dimensions.depth}`}{' '}
+                      {product.dimensions.unit}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Order Button */}
             <motion.button
@@ -149,7 +152,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
             </motion.button>
 
             {/* Additional Info */}
-            <div className="mt-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-lg">
+            <div className="mt-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-lg space-y-3">
               <p className="text-sm text-neutral-400 flex items-start gap-2">
                 <svg className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -160,8 +163,20 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                   />
                 </svg>
                 <span>
-                  Each piece is handcrafted with care. Contact us via Instagram to discuss customizations,
-                  delivery, and payment options.
+                  Contact us via Instagram to discuss delivery, and payment options.
+                </span>
+              </p>
+              <p className="text-sm text-neutral-400 flex items-start gap-2">
+                <svg className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
+                </svg>
+                <span>
+                  <strong className="text-yellow-400">Payment Policy:</strong> 40% of the total price must be paid in advance for order confirmation. Cash on delivery (COD) is available with additional charges calculated separately.
                 </span>
               </p>
             </div>
