@@ -59,15 +59,15 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
   }
 
   return (
-    <div className="bg-gray-50 rounded-xl p-5 border border-gray-300 hover:border-gray-400 transition-colors">
+    <div className="bg-gray-50 dark:bg-neutral-900 rounded-xl p-5 border border-gray-300 dark:border-neutral-700 hover:border-gray-400 dark:hover:border-neutral-600 transition-colors">
       {/* Header */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-2">
-            <h4 className="text-gray-900 font-semibold">{review.reviewerName}</h4>
+            <h4 className="text-black dark:text-white font-semibold">{review.reviewerName}</h4>
             <StarRating rating={review.rating} size="sm" />
           </div>
-          <p className="text-xs text-gray-600">{formatDate(review.createdAt)}</p>
+          <p className="text-xs text-gray-600 dark:text-neutral-400">{formatDate(review.createdAt)}</p>
           {!review.isVisible && isAdmin && (
             <span className="inline-block mt-1 text-xs bg-red-100 text-red-700 px-2 py-1 rounded">
               Hidden
@@ -81,7 +81,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
             {onToggleVisibility && (
               <button
                 onClick={handleToggleVisibility}
-                className="text-xs px-3 py-1 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded transition-colors"
+                className="text-xs px-3 py-1 bg-gray-200 dark:bg-neutral-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 rounded transition-colors"
               >
                 {review.isVisible ? 'Hide' : 'Show'}
               </button>
@@ -100,7 +100,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
       </div>
 
       {/* Review Text */}
-      <p className="text-gray-700 text-sm leading-relaxed mb-3">{review.reviewText}</p>
+      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-3">{review.reviewText}</p>
 
       {/* Review Images */}
       {review.images && review.images.length > 0 && (
@@ -108,7 +108,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
           {review.images.map((image, index) => (
             <div
               key={index}
-              className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border border-gray-300"
+              className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border border-gray-300 dark:border-gray-600"
             >
               <Image
                 src={image.src}
@@ -124,17 +124,17 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
 
       {/* Admin Response */}
       {review.adminResponse && (
-        <div className="mt-4 p-3 bg-white border border-gray-300 rounded-lg">
+        <div className="mt-4 p-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg">
           <div className="flex items-center gap-2 mb-2">
             <div className="w-6 h-6 bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 rounded-full flex items-center justify-center">
               <span className="text-xs font-bold text-black">A</span>
             </div>
-            <span className="text-sm font-semibold text-gray-900">Admin Response</span>
-            <span className="text-xs text-gray-500">
+            <span className="text-sm font-semibold text-black dark:text-white">Admin Response</span>
+            <span className="text-xs text-gray-500 dark:text-neutral-400">
               {formatDate(review.adminResponse.respondedAt)}
             </span>
           </div>
-          <p className="text-sm text-gray-700 leading-relaxed">{review.adminResponse.text}</p>
+          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{review.adminResponse.text}</p>
         </div>
       )}
 
@@ -144,7 +144,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
           {!showReplyForm ? (
             <button
               onClick={() => setShowReplyForm(true)}
-              className="text-sm px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded transition-colors"
+              className="text-sm px-4 py-2 bg-gray-200 dark:bg-neutral-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 rounded transition-colors"
             >
               Reply to Review
             </button>

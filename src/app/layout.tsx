@@ -4,6 +4,8 @@ import Script from 'next/script'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { ThemeProvider } from '@/contexts/ThemeContext'
+import { themeScript } from '@/lib/themeScript'
 
 const hkGrotesk = localFont({
   src: [
@@ -50,31 +52,40 @@ export default function RootLayout({
   const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID
 
   return (
-    <html lang="en" className={`${hkGrotesk.variable} overflow-x-hidden`}>
-      <body className="font-sans bg-white text-gray-900 overflow-x-hidden">
-        {/* Google Analytics 4 */}
-        {GA4_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA4_ID}', {
-                  page_path: window.location.pathname,
-                });
-              `}
-            </Script>
-          </>
-        )}
+    <html
+      lang="en"
+      className={`${hkGrotesk.variable} overflow-x-hidden`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="font-sans overflow-x-hidden">
+        <ThemeProvider>
+          {/* Google Analytics 4 */}
+          {GA4_ID && (
+            <>
+              <Script
+                src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+                strategy="afterInteractive"
+              />
+              <Script id="google-analytics" strategy="afterInteractive">
+                {`
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA4_ID}', {
+                    page_path: window.location.pathname,
+                  });
+                `}
+              </Script>
+            </>
+          )}
 
-        <Header />
-        <main className="overflow-x-hidden">{children}</main>
-        <Footer />
+          <Header />
+          <main className="overflow-x-hidden">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

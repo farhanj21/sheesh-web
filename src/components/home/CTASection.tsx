@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 export function CTASection() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+    <section className="relative py-24 md:py-32 overflow-hidden bg-white dark:bg-black">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Main CTA Card */}
         <motion.div
@@ -13,18 +13,18 @@ export function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative rounded-[32px] bg-gradient-to-br from-gray-900 via-black to-gray-900 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
+          className="relative rounded-[32px] bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 dark:from-gray-900 dark:via-black dark:to-gray-900 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
         >
           {/* Decorative Concentric Circles - Right Side */}
           <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none hidden lg:block">
             {/* Outer circle */}
-            <div className="absolute inset-0 rounded-full border-[2px] border-white/10 scale-100"></div>
-            <div className="absolute inset-[40px] rounded-full border-[2px] border-white/15 bg-gradient-to-br from-white/5 to-transparent"></div>
-            <div className="absolute inset-[80px] rounded-full border-[2px] border-white/20 bg-gradient-to-br from-white/10 to-transparent"></div>
-            <div className="absolute inset-[120px] rounded-full border-[2px] border-white/25 bg-gradient-to-br from-gray-400/20 to-transparent"></div>
-            <div className="absolute inset-[160px] rounded-full border-[2px] border-white/30 bg-gradient-to-br from-gray-300/30 to-white/10"></div>
-            <div className="absolute inset-[200px] rounded-full border-[2px] border-white/40 bg-gradient-to-br from-gray-200/40 to-white/20"></div>
-            <div className="absolute inset-[240px] rounded-full bg-gradient-to-br from-white/50 to-white/30"></div>
+            <div className="absolute inset-0 rounded-full border-[2px] border-gray-900/10 dark:border-white/10 scale-100"></div>
+            <div className="absolute inset-[40px] rounded-full border-[2px] border-gray-900/15 dark:border-white/15 bg-gradient-to-br from-gray-900/5 dark:from-white/5 to-transparent"></div>
+            <div className="absolute inset-[80px] rounded-full border-[2px] border-gray-900/20 dark:border-white/20 bg-gradient-to-br from-gray-900/10 dark:from-white/10 to-transparent"></div>
+            <div className="absolute inset-[120px] rounded-full border-[2px] border-gray-900/25 dark:border-white/25 bg-gradient-to-br from-gray-400/20 to-transparent"></div>
+            <div className="absolute inset-[160px] rounded-full border-[2px] border-gray-900/30 dark:border-white/30 bg-gradient-to-br from-gray-300/30 to-gray-900/10 dark:to-white/10"></div>
+            <div className="absolute inset-[200px] rounded-full border-[2px] border-gray-900/40 dark:border-white/40 bg-gradient-to-br from-gray-200/40 to-gray-900/20 dark:to-white/20"></div>
+            <div className="absolute inset-[240px] rounded-full bg-gradient-to-br from-gray-900/50 dark:from-white/50 to-gray-900/30 dark:to-white/30"></div>
           </div>
 
           {/* Content - Left Side */}
@@ -36,7 +36,7 @@ export function CTASection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-tight"
+                className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-black dark:text-white mb-6 leading-tight"
               >
                 Let&apos;s Get In Touch.
               </motion.h2>
@@ -47,7 +47,7 @@ export function CTASection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="text-lg md:text-xl text-white mb-10 leading-relaxed max-w-xl"
+                className="text-lg md:text-xl text-black dark:text-white mb-10 leading-relaxed max-w-xl"
               >
                 Discover how our handcrafted mosaic mirror art can transform your space. Let&apos;s discuss your vision and explore our latest collections.
               </motion.p>

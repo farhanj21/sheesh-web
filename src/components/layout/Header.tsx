@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ThemeToggle } from '@/components/ui/ThemeToggle'
 
 export function Header() {
   const pathname = usePathname()
@@ -72,8 +73,8 @@ export function Header() {
       className={cn(
         'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
         isScrolled
-          ? 'bg-black backdrop-blur-md shadow-[0_8px_32px_rgba(192,192,192,0.15)]'
-          : 'bg-black backdrop-blur-sm shadow-[0_4px_24px_rgba(192,192,192,0.1)]'
+          ? 'bg-white/95 dark:bg-black/95 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(192,192,192,0.15)]'
+          : 'bg-white/80 dark:bg-black/80 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_24px_rgba(192,192,192,0.1)]'
       )}
     >
       <nav className="container mx-auto px-6 lg:px-12">
@@ -87,31 +88,34 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {desktopNavLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-gray-300 transition-all duration-300 text-lg tracking-wide relative group font-medium pb-2",
-                  "hover:text-white",
-                  pathname === link.href && "text-white"
+                  "text-gray-700 dark:text-gray-300 transition-all duration-300 text-lg tracking-wide relative group font-medium pb-2",
+                  "hover:text-gray-900 dark:hover:text-white",
+                  pathname === link.href && "text-gray-900 dark:text-white"
                 )}
                 data-text={link.label}
               >
                 {link.label}
                 <span className={cn(
-                  "absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-white transition-all duration-300 ease-out rounded-full",
+                  "absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-gray-900 dark:bg-white transition-all duration-300 ease-out rounded-full",
                   pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
                 )}></span>
               </Link>
             ))}
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="md:hidden p-2 hover:bg-zinc-800 rounded-lg transition-all duration-300 text-white hover:scale-110"
+            className="md:hidden p-2 hover:bg-gray-200 dark:hover:bg-zinc-800 rounded-lg transition-all duration-300 text-gray-900 dark:text-white hover:scale-110"
             aria-label="Open mobile menu"
             aria-expanded={isMobileMenuOpen}
           >
@@ -142,7 +146,7 @@ export function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9998] md:hidden"
+              className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-sm z-[9998] md:hidden"
               onClick={handleNavClick}
               aria-hidden="true"
             />
@@ -153,40 +157,44 @@ export function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-              className="fixed top-0 right-0 bottom-0 left-0 h-screen w-full bg-black z-[9999] md:hidden overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 left-0 h-screen w-full bg-white dark:bg-black z-[9999] md:hidden overflow-y-auto"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation menu"
             >
               <div className="flex flex-col min-h-screen">
                 {/* Header with Close Button */}
-                <div className="flex items-center justify-between px-6 py-6 border-b border-silver-700/30 shrink-0">
+                <div className="flex items-center justify-between px-6 py-6 border-b border-gray-300 dark:border-silver-700/30 shrink-0">
                   <Link href="/" onClick={handleNavClick} className="block">
                     <img
                       src="/Logo NO BG.png"
                       alt="Logo"
-                      className="h-20 w-auto drop-shadow-[0_0_8px_rgba(192,192,192,0.3)]"
+                      className="h-20 w-auto drop-shadow-[0_0_8px_rgba(100,100,100,0.3)] dark:drop-shadow-[0_0_8px_rgba(192,192,192,0.3)]"
                     />
                   </Link>
-                  <button
-                    onClick={handleNavClick}
-                    className="p-2 hover:bg-zinc-800 rounded-lg transition-all duration-300 text-white hover:text-silver-300 hover:scale-110"
-                    aria-label="Close mobile menu"
-                  >
-                    <svg
-                      className="w-7 h-7"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                  <div className="flex items-center gap-2">
+                    {/* Theme Toggle */}
+                    <ThemeToggle />
+                    <button
+                      onClick={handleNavClick}
+                      className="p-2 hover:bg-gray-200 dark:hover:bg-zinc-800 rounded-lg transition-all duration-300 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-silver-300 hover:scale-110"
+                      aria-label="Close mobile menu"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
+                      <svg
+                        className="w-7 h-7"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Navigation Links */}
@@ -205,11 +213,11 @@ export function Header() {
                           className={cn(
                             'block py-5 px-6 rounded-xl text-3xl transition-all duration-300',
                             pathname === link.href
-                              ? 'bg-zinc-800'
-                              : 'hover:bg-zinc-800 hover:translate-x-2'
+                              ? 'bg-gray-200 dark:bg-zinc-800'
+                              : 'hover:bg-gray-200 dark:hover:bg-zinc-800 hover:translate-x-2'
                           )}
                         >
-                          <span className="text-white" data-text={link.label}>
+                          <span className="text-gray-900 dark:text-white" data-text={link.label}>
                             {link.label}
                           </span>
                         </Link>

@@ -23,24 +23,24 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       <div className="max-w-7xl mx-auto px-4 pt-28 pb-8">
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm">
-          <ol className="flex items-center gap-2 text-gray-600">
+          <ol className="flex items-center gap-2 text-gray-600 dark:text-neutral-400">
             <li>
-              <Link href="/" className="hover:text-gray-900 transition-colors">
+              <Link href="/" className="hover:text-black dark:hover:text-white transition-colors">
                 Home
               </Link>
             </li>
             <li>/</li>
             <li>
-              <Link href="/products" className="hover:text-gray-900 transition-colors">
+              <Link href="/products" className="hover:text-black dark:hover:text-white transition-colors">
                 Products
               </Link>
             </li>
             <li>/</li>
-            <li className="text-gray-900">{product.name}</li>
+            <li className="text-black dark:text-white">{product.name}</li>
           </ol>
         </nav>
 
@@ -55,7 +55,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           <div>
             {/* Category Badge */}
             <div className="mb-4">
-              <span className="inline-block px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-full capitalize">
+              <span className="inline-block px-3 py-1 bg-gray-200 dark:bg-neutral-800 text-gray-700 dark:text-neutral-200 text-sm rounded-full capitalize">
                 {product.category.replace('-', ' ')}
               </span>
             </div>
@@ -64,7 +64,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">{product.name}</h1>
 
             {/* Price */}
-            <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-gray-600 to-gray-800 mb-6">
+            <div className="text-3xl font-bold text-black dark:text-white mb-6">
               Rs {product.price.toFixed(2)}
             </div>
 
@@ -96,22 +96,22 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
 
             {/* Description */}
             <div className="mb-8">
-              <h2 className="text-xl font-semibold mb-3">Description</h2>
-              <p className="text-gray-600 leading-relaxed">{product.description}</p>
+              <h2 className="text-xl font-semibold mb-3 text-black dark:text-white">Description</h2>
+              <p className="text-gray-600 dark:text-neutral-300 leading-relaxed">{product.description}</p>
             </div>
 
             {/* Product Details */}
             {((product.materials && product.materials.length > 0) ||
               (product.dimensions && product.dimensions.width > 0 && product.dimensions.height > 0)) && (
-              <div className="grid md:grid-cols-2 gap-6 mb-8 p-6 bg-gray-50 border border-gray-300 rounded-xl">
+              <div className="grid md:grid-cols-2 gap-6 mb-8 p-6 bg-gray-50 dark:bg-neutral-900 border border-gray-300 dark:border-neutral-700 rounded-xl">
                 {/* Materials */}
                 {product.materials && product.materials.length > 0 && (
                   <div>
-                    <h3 className="font-semibold mb-2 text-gray-900">Materials</h3>
-                    <ul className="text-gray-600 space-y-1 text-sm">
+                    <h3 className="font-semibold mb-2 text-black dark:text-white">Materials</h3>
+                    <ul className="text-gray-600 dark:text-neutral-300 space-y-1 text-sm">
                       {product.materials.map((material, index) => (
                         <li key={index} className="flex items-start gap-2">
-                          <span className="text-gray-400 mt-1">•</span>
+                          <span className="text-gray-400 dark:text-neutral-500 mt-1">•</span>
                           <span>{material}</span>
                         </li>
                       ))}
@@ -122,8 +122,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                 {/* Dimensions */}
                 {product.dimensions && product.dimensions.width > 0 && product.dimensions.height > 0 && (
                   <div>
-                    <h3 className="font-semibold mb-2 text-gray-900">Dimensions</h3>
-                    <p className="text-gray-600 text-sm">
+                    <h3 className="font-semibold mb-2 text-black dark:text-white">Dimensions</h3>
+                    <p className="text-gray-600 dark:text-neutral-300 text-sm">
                       {product.dimensions.width} × {product.dimensions.height}
                       {product.dimensions.depth && product.dimensions.depth > 0 && ` × ${product.dimensions.depth}`}{' '}
                       {product.dimensions.unit}
@@ -152,9 +152,9 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
             </motion.button>
 
             {/* Additional Info */}
-            <div className="mt-6 p-4 bg-gray-50 border border-gray-300 rounded-lg space-y-3">
-              <p className="text-sm text-gray-600 flex items-start gap-2">
-                <svg className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="mt-6 p-4 bg-gray-50 dark:bg-neutral-900 border border-gray-300 dark:border-neutral-700 rounded-lg space-y-3">
+              <p className="text-sm text-gray-600 dark:text-neutral-300 flex items-start gap-2">
+                <svg className="w-5 h-5 text-gray-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -166,8 +166,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                   Contact us via Instagram to discuss delivery, and payment options.
                 </span>
               </p>
-              <p className="text-sm text-gray-600 flex items-start gap-2">
-                <svg className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <p className="text-sm text-gray-600 dark:text-neutral-300 flex items-start gap-2">
+                <svg className="w-5 h-5 text-yellow-600 dark:text-yellow-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -176,7 +176,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                   />
                 </svg>
                 <span>
-                  <strong className="text-yellow-700">Payment Policy:</strong> 40% of the total price must be paid in advance for order confirmation. Cash on delivery (COD) is available with additional charges calculated separately.
+                  <strong className="text-yellow-700 dark:text-yellow-500">Payment Policy:</strong> 40% of the total price must be paid in advance for order confirmation. Cash on delivery (COD) is available with additional charges calculated separately.
                 </span>
               </p>
             </div>

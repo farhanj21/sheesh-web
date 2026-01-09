@@ -8,17 +8,17 @@ import { SplineScene } from './SplineScene'
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-black">
       {/* Animated background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-black dark:via-black dark:to-black" />
 
       {/* Shimmer effect overlay */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-400/15 to-transparent animate-shimmer bg-[length:200%_100%]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-400/15 to-transparent dark:via-silver-400/15 animate-shimmer bg-[length:200%_100%]" />
       </div>
 
       {/* Radial glow effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[600px] md:h-[600px] lg:w-[800px] lg:h-[800px] bg-gray-400/8 rounded-full blur-[120px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[600px] md:h-[600px] lg:w-[800px] lg:h-[800px] bg-gray-400/8 dark:bg-silver-400/8 rounded-full blur-[120px]" />
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12 w-full">
         <div className="grid lg:grid-cols-[45%_55%] gap-8 lg:gap-12 items-center min-h-screen py-20 lg:py-0">
@@ -29,15 +29,15 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-fancy max-w-3xl mb-6 md:mb-8 italic drop-shadow-[0_0_30px_rgba(100,100,100,0.15)] leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-fancy max-w-3xl mb-6 md:mb-8 italic drop-shadow-[0_0_30px_rgba(100,100,100,0.15)] dark:drop-shadow-[0_0_30px_rgba(192,192,192,0.15)] leading-tight"
             >
-              <span className="text-gray-900 block sm:inline">
+              <span className="text-gray-900 dark:text-white block sm:inline">
                 Handcrafted
               </span>{' '}
-              <span className="text-gray-700 block sm:inline">
+              <span className="text-gray-700 dark:text-silver-200 block sm:inline">
                 Mosaic Mirror Art
               </span>
-              <span className="text-gray-900 block">
+              <span className="text-gray-900 dark:text-white block">
                 That Transforms Your Space And Vibe
               </span>
             </motion.p>
@@ -47,7 +47,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="text-lg sm:text-xl md:text-2xl font-fancy text-gray-600 max-w-xl mb-6 md:mb-8 italic"
+              className="text-lg sm:text-xl md:text-2xl font-fancy text-gray-600 dark:text-silver-300 max-w-xl mb-6 md:mb-8 italic"
             >
               Sheesh Up Your Life
             </motion.p>
@@ -73,7 +73,7 @@ export function Hero() {
           <div className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-screen order-1 lg:order-2">
             <Suspense fallback={
               <div className="w-full h-full flex items-center justify-center">
-                <div className="text-gray-600 animate-pulse text-sm sm:text-base">Loading 3D model...</div>
+                <div className="text-gray-600 dark:text-neutral-400 animate-pulse text-sm sm:text-base">Loading 3D model...</div>
               </div>
             }>
               <div className="w-full h-full [&>canvas]:!bg-transparent brightness-125 contrast-110 saturate-110 drop-shadow-[0_0_30px_rgba(100,100,100,0.15)]">
@@ -93,7 +93,7 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.8 }}
         className="hidden md:block absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
       >
-        <div className="flex flex-col items-center gap-2 text-gray-500">
+        <div className="flex flex-col items-center gap-2 text-gray-600 dark:text-neutral-400">
           <motion.svg
             className="w-6 h-6"
             animate={{ y: [0, 10, 0] }}

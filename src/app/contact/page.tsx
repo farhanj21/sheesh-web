@@ -90,11 +90,11 @@ export default function ContactPage() {
   ]
 
   return (
-    <div className="relative min-h-screen pt-32 pb-16 bg-white">
+    <div className="relative min-h-screen pt-32 pb-16 bg-white dark:bg-dark-950">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-dark-900 dark:via-dark-950 dark:to-dark-900 -z-10" />
       <div className="absolute inset-0 opacity-30 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-400/15 to-transparent animate-shimmer bg-[length:200%_100%]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-400/15 to-transparent dark:via-silver-400/15 animate-shimmer bg-[length:200%_100%]" />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
@@ -106,10 +106,10 @@ export default function ContactPage() {
           className="text-center mb-16 max-w-3xl mx-auto"
         >
           <h1 className="text-section font-bold text-4xl mb-4">
-            <span className="text-gray-900" data-text="Get in Touch">Get in Touch</span>
+            <span className="text-gray-900 dark:text-white" data-text="Get in Touch">Get in Touch</span>
           </h1>
           <p className="text-xl max-w-2xl mx-auto text-center">
-            <span className="text-gray-600 italic leading-relaxed" data-text="We'd love to hear from you. Reach out through your preferred channel.">
+            <span className="text-gray-600 dark:text-silver-300 italic leading-relaxed" data-text="We'd love to hear from you. Reach out through your preferred channel.">
               We&apos;d love to hear from you. Reach out through your preferred channel.
             </span>
           </p>

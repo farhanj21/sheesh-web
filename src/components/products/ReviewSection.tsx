@@ -147,11 +147,11 @@ export const ReviewSection: React.FC<ReviewSectionProps> = ({
   }
 
   return (
-    <div className="py-12 border-t border-gray-300">
-      <h2 className="text-3xl font-bold text-gray-900 mb-8">Customer Reviews</h2>
+    <div className="py-12 border-t border-gray-300 dark:border-neutral-700">
+      <h2 className="text-3xl font-bold text-black dark:text-white mb-8">Customer Reviews</h2>
 
       {error && (
-        <div className="mb-6 p-4 bg-red-100 border border-red-300 rounded-lg text-red-700">
+        <div className="mb-6 p-4 bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700 rounded-lg text-red-700 dark:text-red-400">
           {error}
         </div>
       )}
@@ -160,23 +160,23 @@ export const ReviewSection: React.FC<ReviewSectionProps> = ({
       {stats.totalReviews > 0 && (
         <div className="grid md:grid-cols-2 gap-8 mb-10">
           {/* Average Rating */}
-          <div className="bg-gray-50 rounded-xl p-6 border border-gray-300">
+          <div className="bg-gray-50 dark:bg-neutral-900 rounded-xl p-6 border border-gray-300 dark:border-neutral-700">
             <div className="text-center">
-              <div className="text-5xl font-bold text-gray-900 mb-2">
+              <div className="text-5xl font-bold text-black dark:text-white mb-2">
                 {stats.averageRating.toFixed(1)}
               </div>
               <StarRating rating={stats.averageRating} size="lg" className="justify-center mb-2" />
-              <p className="text-gray-600">Based on {stats.totalReviews} review{stats.totalReviews !== 1 ? 's' : ''}</p>
+              <p className="text-gray-600 dark:text-neutral-400">Based on {stats.totalReviews} review{stats.totalReviews !== 1 ? 's' : ''}</p>
             </div>
           </div>
 
           {/* Rating Distribution */}
-          <div className="bg-gray-50 rounded-xl p-6 border border-gray-300">
+          <div className="bg-gray-50 dark:bg-neutral-900 rounded-xl p-6 border border-gray-300 dark:border-neutral-700">
             <div className="space-y-2">
               {[5, 4, 3, 2, 1].map((rating) => (
                 <div key={rating} className="flex items-center gap-3">
-                  <span className="text-sm text-gray-700 w-8">{rating} ★</span>
-                  <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <span className="text-sm text-gray-700 dark:text-neutral-300 w-8">{rating} ★</span>
+                  <div className="flex-1 h-2 bg-gray-200 dark:bg-neutral-700 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-yellow-500 transition-all duration-300"
                       style={{
@@ -184,7 +184,7 @@ export const ReviewSection: React.FC<ReviewSectionProps> = ({
                       }}
                     />
                   </div>
-                  <span className="text-sm text-gray-600 w-10 text-right">
+                  <span className="text-sm text-gray-600 dark:text-neutral-400 w-10 text-right">
                     {stats.ratingDistribution[rating as 1 | 2 | 3 | 4 | 5]}
                   </span>
                 </div>
@@ -221,8 +221,8 @@ export const ReviewSection: React.FC<ReviewSectionProps> = ({
       {/* Reviews List */}
       {isLoading && reviews.length === 0 ? (
         <div className="text-center py-12">
-          <div className="animate-spin w-8 h-8 border-4 border-gray-300 border-t-gray-900 rounded-full mx-auto"></div>
-          <p className="text-gray-600 mt-4">Loading reviews...</p>
+          <div className="animate-spin w-8 h-8 border-4 border-gray-300 dark:border-neutral-600 border-t-gray-900 dark:border-t-white rounded-full mx-auto"></div>
+          <p className="text-gray-600 dark:text-neutral-400 mt-4">Loading reviews...</p>
         </div>
       ) : (
         <ReviewList

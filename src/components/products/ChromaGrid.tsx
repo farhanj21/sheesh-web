@@ -6,6 +6,7 @@ import { Product } from '@/types'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { trackProductView } from '@/lib/analytics'
+import { useTheme } from '@/contexts/ThemeContext'
 
 export interface ChromaItem {
   image: string
@@ -42,9 +43,10 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
   const setY = useRef<SetterFn | null>(null)
   const pos = useRef({ x: 0, y: 0 })
   const router = useRouter()
+  const { theme } = useTheme()
 
-  // Convert products to ChromaItem format
-  const categoryColors: Record<string, { border: string; gradient: string }> = {
+  // Light theme gradients
+  const categoryColorsLight: Record<string, { border: string; gradient: string }> = {
     mirrors: {
       border: '#808080',
       gradient: 'linear-gradient(145deg, #909090, #f0f0f0)'
@@ -62,6 +64,28 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       gradient: 'linear-gradient(210deg, #10B981, #f5f5f5)'
     }
   }
+
+  // Dark theme gradients
+  const categoryColorsDark: Record<string, { border: string; gradient: string }> = {
+    mirrors: {
+      border: '#c0c0c0',
+      gradient: 'linear-gradient(145deg, #909090, #1a1a1a)'
+    },
+    'disco-balls': {
+      border: '#FFD700',
+      gradient: 'linear-gradient(180deg, #FFD700, #0a0a0a)'
+    },
+    'wall-art': {
+      border: '#8B5CF6',
+      gradient: 'linear-gradient(225deg, #8B5CF6, #0a0a0a)'
+    },
+    accessories: {
+      border: '#10B981',
+      gradient: 'linear-gradient(210deg, #10B981, #0a0a0a)'
+    }
+  }
+
+  const categoryColors = theme === 'dark' ? categoryColorsDark : categoryColorsLight
 
   const items: ChromaItem[] = products.map(product => {
     const primaryImage = product.images.find(img => img.isPrimary) || product.images[0]
@@ -161,7 +185,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
               {
                 '--card-border': c.borderColor || 'transparent',
                 background: c.gradient,
-                '--spotlight-color': 'rgba(100,100,100,0.3)'
+                '--spotlight-color': theme === 'dark' ? 'rgba(192,192,192,0.3)' : 'rgba(100,100,100,0.3)'
               } as React.CSSProperties
             }
           >
@@ -181,7 +205,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
                 className="w-full h-full object-cover rounded-[10px]" 
               />
             </div>
-            <footer className="relative z-10 h-[100px] p-3 text-gray-900 font-sans grid grid-cols-[1fr_auto] gap-x-3 gap-y-1 items-start">
+            <footer className="relative z-10 h-[100px] p-3 text-gray-900 dark:text-white font-sans grid grid-cols-[1fr_auto] gap-x-3 gap-y-1 items-start">
               <h3 className="m-0 text-[1.05rem] font-semibold line-clamp-2">{c.title}</h3>
               {c.handle && <span className="text-[0.95rem] opacity-80 text-right whitespace-nowrap">{c.handle}</span>}
               <p className="m-0 text-[0.85rem] opacity-85">{c.subtitle}</p>
