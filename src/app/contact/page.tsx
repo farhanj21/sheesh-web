@@ -90,11 +90,11 @@ export default function ContactPage() {
   ]
 
   return (
-    <div className="relative min-h-screen pt-32 pb-16 bg-white dark:bg-dark-950">
+    <div className="relative min-h-screen pt-32 pb-16 bg-white dark:bg-black">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-dark-900 dark:via-dark-950 dark:to-dark-900 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-black dark:via-black dark:to-black -z-10" />
       <div className="absolute inset-0 opacity-30 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-400/15 to-transparent dark:via-silver-400/15 animate-shimmer bg-[length:200%_100%]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-400/15 to-transparent dark:via-gray-600/15 animate-shimmer bg-[length:200%_100%]" />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
@@ -106,10 +106,10 @@ export default function ContactPage() {
           className="text-center mb-16 max-w-3xl mx-auto"
         >
           <h1 className="text-section font-bold text-4xl mb-4">
-            <span className="text-gray-900 dark:text-white" data-text="Get in Touch">Get in Touch</span>
+            <span className="text-black dark:text-white" data-text="Get in Touch">Get in Touch</span>
           </h1>
           <p className="text-xl max-w-2xl mx-auto text-center">
-            <span className="text-gray-600 dark:text-silver-300 italic leading-relaxed" data-text="We'd love to hear from you. Reach out through your preferred channel.">
+            <span className="text-gray-600 dark:text-gray-400 italic leading-relaxed" data-text="We'd love to hear from you. Reach out through your preferred channel.">
               We&apos;d love to hear from you. Reach out through your preferred channel.
             </span>
           </p>
@@ -137,14 +137,14 @@ export default function ContactPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative bg-white/95 backdrop-blur-md border-2 border-gray-300 rounded-2xl p-8 text-center overflow-hidden transition-all duration-500 hover:border-gray-400 hover:shadow-glow-dark-lg shadow-glow-dark"
+                className="group relative bg-white/95 dark:bg-black/95 backdrop-blur-md border-2 border-gray-300 dark:border-gray-700 rounded-2xl p-8 text-center overflow-hidden transition-all duration-500 hover:border-gray-400 dark:hover:border-gray-600 hover:shadow-glow-dark-lg shadow-glow-dark"
               >
               {/* Animated gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-gray-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-gray-400/5 dark:via-gray-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Shimmer effect on hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-300/20 to-transparent animate-shimmer bg-[length:200%_100%]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-300/20 dark:via-gray-700/20 to-transparent animate-shimmer bg-[length:200%_100%]" />
               </div>
 
               {/* Radial glow effect behind icon */}
@@ -158,16 +158,16 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-                <h3 className="text-2xl text-gray-900 mb-3 group-hover:text-gray-700 transition-colors duration-300">
+                <h3 className="text-2xl text-black dark:text-white mb-3 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
                   {social.name}
                 </h3>
-                <p className="text-sm text-gray-600 italic group-hover:text-gray-700 transition-colors duration-300">
+                <p className="text-sm text-gray-600 dark:text-gray-400 italic group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
                   {social.description}
                 </p>
               </div>
 
               {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gray-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gray-400/50 dark:via-gray-600/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </Component>
             )
           })}
@@ -180,13 +180,13 @@ export default function ContactPage() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="max-w-3xl mx-auto"
         >
-          <div className="bg-white/60 backdrop-blur-sm border border-gray-300 rounded-2xl p-8 md:p-12">
+          <div className="bg-white/60 dark:bg-black/60 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-2xl p-8 md:p-12">
             <div className="text-center mb-8">
               <h2 className="text-section font-bold text-3xl mb-2">
-                <span className="text-gray-900" data-text="Send us an Email">Send us an Email</span>
+                <span className="text-black dark:text-white" data-text="Send us an Email">Send us an Email</span>
               </h2>
               <p className="text-lg">
-                <span className="text-gray-600 italic leading-relaxed" data-text="Fill out the form below and we'll get back to you soon">
+                <span className="text-gray-600 dark:text-gray-400 italic leading-relaxed" data-text="Fill out the form below and we'll get back to you soon">
                   Fill out the form below and we&apos;ll get back to you soon
                 </span>
               </p>
@@ -205,7 +205,7 @@ export default function ContactPage() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-gray-700 dark:text-gray-300 mb-2">
                     Your Name
                   </label>
                   <input
@@ -215,12 +215,12 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-gray-400 focus:bg-gray-50 focus:shadow-glow-dark transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 rounded-lg text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 focus:bg-gray-50 dark:focus:bg-gray-900 focus:shadow-glow-dark transition-all duration-300"
                     placeholder="Enter your name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-gray-700 dark:text-gray-300 mb-2">
                     Email Address
                   </label>
                   <input
@@ -230,14 +230,14 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-gray-400 focus:bg-gray-50 focus:shadow-glow-dark transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 rounded-lg text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 focus:bg-gray-50 dark:focus:bg-gray-900 focus:shadow-glow-dark transition-all duration-300"
                     placeholder="Enter your email"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-gray-700 mb-2">
+                <label htmlFor="subject" className="block text-gray-700 dark:text-gray-300 mb-2">
                   Subject
                 </label>
                 <input
@@ -247,13 +247,13 @@ export default function ContactPage() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-gray-400 focus:bg-gray-50 focus:shadow-glow-dark transition-all duration-300"
+                  className="w-full px-4 py-3 bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 rounded-lg text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 focus:bg-gray-50 dark:focus:bg-gray-900 focus:shadow-glow-dark transition-all duration-300"
                   placeholder="What's this about?"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-gray-700 mb-2">
+                <label htmlFor="message" className="block text-gray-700 dark:text-gray-300 mb-2">
                   Message
                 </label>
                 <textarea
@@ -263,7 +263,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-gray-400 focus:bg-gray-50 focus:shadow-glow-dark transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 rounded-lg text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 focus:bg-gray-50 dark:focus:bg-gray-900 focus:shadow-glow-dark transition-all duration-300 resize-none"
                   placeholder="Tell us more..."
                 />
               </div>
@@ -307,11 +307,11 @@ export default function ContactPage() {
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[90%] max-w-md"
             >
-              <div className="bg-white border-2 border-gray-300 rounded-2xl p-8 shadow-glow-dark-lg">
+              <div className="bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 rounded-2xl p-8 shadow-glow-dark-lg">
                 {/* Close button */}
                 <button
                   onClick={() => setIsQRModalOpen(false)}
-                  className="absolute top-4 right-4 p-2 hover:bg-gray-200 rounded-lg transition-all duration-300 text-gray-700 hover:text-gray-900"
+                  className="absolute top-4 right-4 p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                   aria-label="Close QR code modal"
                 >
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -323,7 +323,7 @@ export default function ContactPage() {
                 <div className="text-center">
                   <div className="mb-6">
                     <h3 className="text-section font-bold text-3xl mb-4">
-                      <span className="text-gray-900" data-text="Scan to Follow Us">
+                      <span className="text-black dark:text-white" data-text="Scan to Follow Us">
                         Scan to Follow Us
                       </span>
                     </h3>
@@ -341,7 +341,7 @@ export default function ContactPage() {
                   {/* Instagram handle */}
                   <div className="text-center mb-4">
                     <p className="text-xl">
-                      <span className="text-gray-600 italic" data-text="@sheeshupyourlife">
+                      <span className="text-gray-600 dark:text-gray-400 italic" data-text="@sheeshupyourlife">
                         @sheeshupyourlife
                       </span>
                     </p>
