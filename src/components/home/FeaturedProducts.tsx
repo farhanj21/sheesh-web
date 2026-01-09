@@ -36,12 +36,13 @@ export function FeaturedProducts() {
 
         {galleryItems.length > 0 && (
           <div style={{ height: '500px', position: 'relative', marginTop: '-70px' }}>
-            <CircularGallery 
+            <CircularGallery
               items={galleryItems}
-              bend={3} 
-              textColor="#111827" 
-              borderRadius={0.05} 
+              bend={3}
+              textColor="#111827"
+              borderRadius={0.05}
               scrollEase={0.02}
+              font="bold 30px HK Grotesk"
             />
           </div>
         )}
