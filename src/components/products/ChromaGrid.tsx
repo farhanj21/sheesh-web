@@ -50,16 +50,16 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       gradient: 'linear-gradient(145deg, #909090, #f0f0f0)'
     },
     'disco-balls': {
-      border: '#FFD700',
-      gradient: 'linear-gradient(180deg, #FFD700, #f5f5f5)'
+      border: '#9CA3AF',
+      gradient: 'linear-gradient(180deg, #D1D5DB, #f5f5f5)'
     },
     'wall-art': {
-      border: '#8B5CF6',
-      gradient: 'linear-gradient(225deg, #8B5CF6, #f5f5f5)'
+      border: '#6B7280',
+      gradient: 'linear-gradient(225deg, #9CA3AF, #f5f5f5)'
     },
     accessories: {
-      border: '#10B981',
-      gradient: 'linear-gradient(210deg, #10B981, #f5f5f5)'
+      border: '#4B5563',
+      gradient: 'linear-gradient(210deg, #6B7280, #f5f5f5)'
     }
   }
 
