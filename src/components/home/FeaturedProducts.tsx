@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react'
 import { Product } from '@/types'
 import { FadeIn } from '@/components/animations/FadeIn'
 import CircularGallery from './CircularGallery'
+import { useTheme } from '@/contexts/ThemeContext'
 
 export function FeaturedProducts() {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([])
+  const { theme } = useTheme()
 
   useEffect(() => {
     fetch('/api/products')
@@ -39,7 +41,7 @@ export function FeaturedProducts() {
             <CircularGallery
               items={galleryItems}
               bend={3}
-              textColor="#111827"
+              textColor={theme === 'dark' ? '#ffffff' : '#111827'}
               borderRadius={0.05}
               scrollEase={0.02}
               font="bold 30px HK Grotesk"

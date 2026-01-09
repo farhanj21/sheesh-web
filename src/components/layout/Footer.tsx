@@ -12,7 +12,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-white dark:bg-dark-900 text-gray-600 dark:text-neutral-400 pt-8 md:pt-16 pb-4 md:pb-6 border-t border-gray-200 dark:border-silver-700/30">
+    <footer className="bg-white dark:bg-black text-gray-600 dark:text-white pt-8 md:pt-16 pb-4 md:pb-6 border-t border-gray-200 dark:border-gray-800">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
           {/* Brand */}
@@ -20,8 +20,8 @@ export function Footer() {
             <Link href="/" className="block">
               <img src="/Logo NO BG.png" alt="Logo" className="h-16 w-auto" />
             </Link>
-            <p className="text-xs text-gray-500 dark:text-neutral-400 italic text-left">by Aliha Naeem</p>
-            <p className="text-sm text-gray-700 dark:text-silver-100 md:whitespace-nowrap" data-text="Premium mosaic handmade mirrorworks that transform any space.">
+            <p className="text-xs text-gray-500 dark:text-white italic text-left">by Aliha Naeem</p>
+            <p className="text-sm text-gray-700 dark:text-white md:whitespace-nowrap" data-text="Premium mosaic handmade mirrorworks that transform any space.">
               Premium mosaic handmade mirrorworks that transform any space.
             </p>
           </div>
@@ -33,19 +33,19 @@ export function Footer() {
               {/* Column 1 */}
               <ul className="flex flex-col space-y-3">
                 <li>
-                  <Link href="/" className="text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-silver-300 transition-all duration-300 relative group inline-block pb-1" data-text="Home">
+                  <Link href="/" className="text-gray-600 dark:text-white hover:text-black dark:hover:text-gray-300 transition-all duration-300 relative group inline-block pb-1" data-text="Home">
                     Home
                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-black dark:bg-white transition-all duration-300 ease-out rounded-full group-hover:w-full"></span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products" className="text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-silver-300 transition-all duration-300 relative group inline-block pb-1" data-text="Products">
+                  <Link href="/products" className="text-gray-600 dark:text-white hover:text-black dark:hover:text-gray-300 transition-all duration-300 relative group inline-block pb-1" data-text="Products">
                     Products
                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-black dark:bg-white transition-all duration-300 ease-out rounded-full group-hover:w-full"></span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/events" className="text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-silver-300 transition-all duration-300 relative group inline-block pb-1" data-text="Events">
+                  <Link href="/events" className="text-gray-600 dark:text-white hover:text-black dark:hover:text-gray-300 transition-all duration-300 relative group inline-block pb-1" data-text="Events">
                     Events
                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-black dark:bg-white transition-all duration-300 ease-out rounded-full group-hover:w-full"></span>
                   </Link>
@@ -54,19 +54,19 @@ export function Footer() {
               {/* Column 2 */}
               <ul className="flex flex-col space-y-3">
                 <li>
-                  <Link href="/contact" className="text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-silver-300 transition-all duration-300 relative group inline-block pb-1" data-text="Contact Us">
+                  <Link href="/contact" className="text-gray-600 dark:text-white hover:text-black dark:hover:text-gray-300 transition-all duration-300 relative group inline-block pb-1" data-text="Contact Us">
                     Contact Us
                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-black dark:bg-white transition-all duration-300 ease-out rounded-full group-hover:w-full"></span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-silver-300 transition-all duration-300 relative group inline-block pb-1" data-text="About Us">
+                  <Link href="/about" className="text-gray-600 dark:text-white hover:text-black dark:hover:text-gray-300 transition-all duration-300 relative group inline-block pb-1" data-text="About Us">
                     About Us
                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-black dark:bg-white transition-all duration-300 ease-out rounded-full group-hover:w-full"></span>
                   </Link>
                 </li>
                 <li>
-                  <a href="/privacy" className="text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-silver-300 transition-all duration-300 relative group inline-block pb-1" data-text="Privacy Policy">
+                  <a href="/privacy" className="text-gray-600 dark:text-white hover:text-black dark:hover:text-gray-300 transition-all duration-300 relative group inline-block pb-1" data-text="Privacy Policy">
                     Privacy Policy
                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-black dark:bg-white transition-all duration-300 ease-out rounded-full group-hover:w-full"></span>
                   </a>
@@ -82,7 +82,7 @@ export function Footer() {
               <div className="flex gap-4 md:gap-4">
               <a
                 href="https://www.instagram.com/sheeshupyourlife/"
-                className="text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all hover:scale-110 duration-300"
+                className="text-gray-600 dark:text-white hover:text-black dark:hover:text-gray-300 transition-all hover:scale-110 duration-300"
                 target="_blank"
                 aria-label="Instagram"
               >
@@ -96,7 +96,7 @@ export function Footer() {
               </a>
               <a
                 href="#"
-                className="text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all hover:scale-110 duration-300"
+                className="text-gray-600 dark:text-white hover:text-black dark:hover:text-gray-300 transition-all hover:scale-110 duration-300"
                 aria-label="Facebook"
               >
                 <svg
@@ -111,7 +111,7 @@ export function Footer() {
                   href="https://wa.me/XXXXXXXXXXX"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all hover:scale-110 duration-300"
+                  className="text-gray-600 dark:text-white hover:text-black dark:hover:text-gray-300 transition-all hover:scale-110 duration-300"
                   aria-label="WhatsApp"
                 >
                   <svg
@@ -129,9 +129,9 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-silver-700/30 text-sm text-center hidden md:block">
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-sm text-center hidden md:block">
           <p
-            className="text-gray-600 dark:text-neutral-400"
+            className="text-gray-600 dark:text-white"
             data-text={`© ${currentYear} Sheesh. All Rights Reserved – Developed by Syed Farhan Jafri`}
           >
             &copy; {currentYear} Sheesh. All Rights Reserved – Developed by Syed Farhan Jafri

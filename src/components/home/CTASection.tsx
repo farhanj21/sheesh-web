@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 export function CTASection() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-white dark:bg-black">
+    <section className="relative py-24 md:py-32 overflow-hidden bg-black dark:bg-white">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Main CTA Card */}
         <motion.div
@@ -13,18 +13,18 @@ export function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative rounded-[32px] bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 dark:from-gray-900 dark:via-black dark:to-gray-900 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
+          className="relative rounded-[32px] bg-gradient-to-br from-white via-gray-50 to-white dark:from-black dark:via-black dark:to-black overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_60px_rgba(255,255,255,0.1)]"
         >
           {/* Decorative Concentric Circles - Right Side */}
           <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none hidden lg:block">
             {/* Outer circle */}
-            <div className="absolute inset-0 rounded-full border-[2px] border-gray-900/10 dark:border-white/10 scale-100"></div>
-            <div className="absolute inset-[40px] rounded-full border-[2px] border-gray-900/15 dark:border-white/15 bg-gradient-to-br from-gray-900/5 dark:from-white/5 to-transparent"></div>
-            <div className="absolute inset-[80px] rounded-full border-[2px] border-gray-900/20 dark:border-white/20 bg-gradient-to-br from-gray-900/10 dark:from-white/10 to-transparent"></div>
-            <div className="absolute inset-[120px] rounded-full border-[2px] border-gray-900/25 dark:border-white/25 bg-gradient-to-br from-gray-400/20 to-transparent"></div>
-            <div className="absolute inset-[160px] rounded-full border-[2px] border-gray-900/30 dark:border-white/30 bg-gradient-to-br from-gray-300/30 to-gray-900/10 dark:to-white/10"></div>
-            <div className="absolute inset-[200px] rounded-full border-[2px] border-gray-900/40 dark:border-white/40 bg-gradient-to-br from-gray-200/40 to-gray-900/20 dark:to-white/20"></div>
-            <div className="absolute inset-[240px] rounded-full bg-gradient-to-br from-gray-900/50 dark:from-white/50 to-gray-900/30 dark:to-white/30"></div>
+            <div className="absolute inset-0 rounded-full border-[2px] border-black/10 dark:border-white/10 scale-100"></div>
+            <div className="absolute inset-[40px] rounded-full border-[2px] border-black/15 dark:border-white/15 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent"></div>
+            <div className="absolute inset-[80px] rounded-full border-[2px] border-black/20 dark:border-white/20 bg-gradient-to-br from-black/10 dark:from-white/10 to-transparent"></div>
+            <div className="absolute inset-[120px] rounded-full border-[2px] border-black/25 dark:border-white/25 bg-gradient-to-br from-gray-400/20 to-transparent"></div>
+            <div className="absolute inset-[160px] rounded-full border-[2px] border-black/30 dark:border-white/30 bg-gradient-to-br from-gray-300/30 to-black/10 dark:to-white/10"></div>
+            <div className="absolute inset-[200px] rounded-full border-[2px] border-black/40 dark:border-white/40 bg-gradient-to-br from-gray-200/40 to-black/20 dark:to-white/20"></div>
+            <div className="absolute inset-[240px] rounded-full bg-gradient-to-br from-black/50 dark:from-white/50 to-black/30 dark:to-white/30"></div>
           </div>
 
           {/* Content - Left Side */}
@@ -63,13 +63,13 @@ export function CTASection() {
                 {/* Button 1 - Contact Us */}
                 <Link href="/contact" className="w-full sm:w-auto">
                   <motion.button
-                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group inline-flex w-full sm:w-auto items-center justify-center gap-3 px-6 py-4 text-md tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full"
+                    className="group inline-flex w-full sm:w-auto items-center justify-center gap-3 px-6 py-4 text-lg font-bold tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full"
                   >
                     <span>Get in Touch</span>
-                    <div className="w-8 h-8 bg-black/10 rounded-full flex items-center justify-center group-hover:bg-black/20 transition-colors">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-10 h-10 bg-black/10 rounded-full flex items-center justify-center group-hover:bg-black/20 transition-colors">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
@@ -79,13 +79,13 @@ export function CTASection() {
                 {/* Button 2 - View Products - Hidden on mobile */}
                 <Link href="/products" className="hidden sm:block">
                   <motion.button
-                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group inline-flex items-center justify-center gap-3 px-6 py-4 text-md tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full"
+                    className="group inline-flex items-center justify-center gap-3 px-6 py-4 text-lg font-bold tracking-wide text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full"
                   >
                     <span>View Products</span>
-                    <div className="w-8 h-8 bg-black/10 rounded-full flex items-center justify-center group-hover:bg-black/20 transition-colors">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-10 h-10 bg-black/10 rounded-full flex items-center justify-center group-hover:bg-black/20 transition-colors">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
                     </div>

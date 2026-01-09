@@ -34,7 +34,7 @@ export function Hero() {
               <span className="text-gray-900 dark:text-white block sm:inline">
                 Handcrafted
               </span>{' '}
-              <span className="text-gray-700 dark:text-silver-200 block sm:inline">
+              <span className="text-gray-700 dark:text-white block sm:inline">
                 Mosaic Mirror Art
               </span>
               <span className="text-gray-900 dark:text-white block">
@@ -47,7 +47,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="text-lg sm:text-xl md:text-2xl font-fancy text-gray-600 dark:text-silver-300 max-w-xl mb-6 md:mb-8 italic"
+              className="text-lg sm:text-xl md:text-2xl font-fancy text-gray-600 dark:text-white max-w-xl mb-6 md:mb-8 italic"
             >
               Sheesh Up Your Life
             </motion.p>
@@ -73,7 +73,7 @@ export function Hero() {
           <div className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-screen order-1 lg:order-2">
             <Suspense fallback={
               <div className="w-full h-full flex items-center justify-center">
-                <div className="text-gray-600 dark:text-neutral-400 animate-pulse text-sm sm:text-base">Loading 3D model...</div>
+                <div className="text-gray-600 dark:text-white animate-pulse text-sm sm:text-base">Loading 3D model...</div>
               </div>
             }>
               <div className="w-full h-full [&>canvas]:!bg-transparent brightness-125 contrast-110 saturate-110 drop-shadow-[0_0_30px_rgba(100,100,100,0.15)]">
@@ -93,7 +93,7 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.8 }}
         className="hidden md:block absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
       >
-        <div className="flex flex-col items-center gap-2 text-gray-600 dark:text-neutral-400">
+        <div className="flex flex-col items-center gap-2 text-gray-600 dark:text-white">
           <motion.svg
             className="w-6 h-6"
             animate={{ y: [0, 10, 0] }}
