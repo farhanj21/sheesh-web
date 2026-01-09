@@ -52,9 +52,9 @@ export function AdminDashboard() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black px-4 md:px-0">
-        <div className="bg-zinc-900 p-8 rounded-lg shadow-xl w-full max-w-md border border-zinc-800">
-          <h2 className="text-2xl font-bold mb-6 text-white">Admin Login</h2>
+      <div className="min-h-screen flex items-center justify-center bg-white px-4 md:px-0">
+        <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-md border border-gray-200">
+          <h2 className="text-2xl font-bold mb-6 text-black">Admin Login</h2>
           <div className="relative mb-4">
             <input
               type={showPassword ? "text" : "password"}
@@ -62,12 +62,12 @@ export function AdminDashboard() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && login()}
-              className="w-full px-4 py-3 pr-12 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+              className="w-full px-4 py-3 pr-12 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-200 transition"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition"
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -76,7 +76,7 @@ export function AdminDashboard() {
           {error && <p className="text-red-500 mb-4">{error}</p>}
           <button
             onClick={login}
-            className="w-full bg-white text-black py-3 rounded-lg font-semibold hover:bg-zinc-200 transition"
+            className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
           >
             Login
           </button>
@@ -86,18 +86,18 @@ export function AdminDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-white">
       {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 bg-zinc-900 border-b border-zinc-800 z-50">
+      <nav className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">
         <div className="container mx-auto px-4 md:px-6">
           {/* Mobile Layout */}
           <div className="md:hidden">
             {/* Top row - Title and Logout */}
-            <div className="flex items-center justify-between h-14 border-b border-zinc-800">
-              <span className="text-lg font-bold text-white">Admin Dashboard</span>
+            <div className="flex items-center justify-between h-14 border-b border-gray-200">
+              <span className="text-lg font-bold text-black">Admin Dashboard</span>
               <button
                 onClick={logout}
-                className="border-2 border-red-500 text-white px-3 py-1.5 text-sm rounded-lg hover:bg-red-500 hover:text-white transition-all duration-300 ease-in-out"
+                className="border-2 border-red-500 text-red-500 px-3 py-1.5 text-sm rounded-lg hover:bg-red-500 hover:text-white transition-all duration-300 ease-in-out"
               >
                 Logout
               </button>
@@ -108,8 +108,8 @@ export function AdminDashboard() {
                 onClick={() => setActiveTab('products')}
                 className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition ${
                   activeTab === 'products'
-                    ? 'bg-zinc-800 text-white'
-                    : 'text-zinc-400 hover:text-white'
+                    ? 'bg-gray-100 text-black'
+                    : 'text-gray-500 hover:text-black'
                 }`}
               >
                 <LayoutGrid size={18} />
@@ -119,8 +119,8 @@ export function AdminDashboard() {
                 onClick={() => setActiveTab('events')}
                 className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition ${
                   activeTab === 'events'
-                    ? 'bg-zinc-800 text-white'
-                    : 'text-zinc-400 hover:text-white'
+                    ? 'bg-gray-100 text-black'
+                    : 'text-gray-500 hover:text-black'
                 }`}
               >
                 <Calendar size={18} />
@@ -130,8 +130,8 @@ export function AdminDashboard() {
                 onClick={() => setActiveTab('analytics')}
                 className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition ${
                   activeTab === 'analytics'
-                    ? 'bg-zinc-800 text-white'
-                    : 'text-zinc-400 hover:text-white'
+                    ? 'bg-gray-100 text-black'
+                    : 'text-gray-500 hover:text-black'
                 }`}
               >
                 <TrendingUp size={18} />
@@ -143,14 +143,14 @@ export function AdminDashboard() {
           {/* Desktop Layout */}
           <div className="hidden md:flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
-              <span className="text-xl font-bold text-white">Admin Dashboard</span>
+              <span className="text-xl font-bold text-black">Admin Dashboard</span>
               <div className="flex gap-4">
                 <button
                   onClick={() => setActiveTab('products')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
                     activeTab === 'products'
-                      ? 'bg-zinc-800 text-white'
-                      : 'text-zinc-400 hover:text-white'
+                      ? 'bg-gray-100 text-black'
+                      : 'text-gray-500 hover:text-black'
                   }`}
                 >
                   <LayoutGrid size={20} />
@@ -160,8 +160,8 @@ export function AdminDashboard() {
                   onClick={() => setActiveTab('events')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
                     activeTab === 'events'
-                      ? 'bg-zinc-800 text-white'
-                      : 'text-zinc-400 hover:text-white'
+                      ? 'bg-gray-100 text-black'
+                      : 'text-gray-500 hover:text-black'
                   }`}
                 >
                   <Calendar size={20} />
@@ -171,8 +171,8 @@ export function AdminDashboard() {
                   onClick={() => setActiveTab('analytics')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
                     activeTab === 'analytics'
-                      ? 'bg-zinc-800 text-white'
-                      : 'text-zinc-400 hover:text-white'
+                      ? 'bg-gray-100 text-black'
+                      : 'text-gray-500 hover:text-black'
                   }`}
                 >
                   <TrendingUp size={20} />
@@ -182,7 +182,7 @@ export function AdminDashboard() {
             </div>
             <button
               onClick={logout}
-              className="border-2 border-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-500 hover:text-white transition-all duration-300 ease-in-out"
+              className="border-2 border-red-500 text-red-500 px-6 py-2 rounded-lg hover:bg-red-500 hover:text-white transition-all duration-300 ease-in-out"
             >
               Logout
             </button>

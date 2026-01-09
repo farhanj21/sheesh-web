@@ -92,11 +92,18 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white transition-all duration-300 text-lg tracking-wide relative group hover:text-silver-300"
+                className={cn(
+                  "text-gray-300 transition-all duration-300 text-lg tracking-wide relative group font-medium pb-2",
+                  "hover:text-white",
+                  pathname === link.href && "text-white"
+                )}
                 data-text={link.label}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-transparent via-silver-300 to-transparent group-hover:w-full transition-all duration-300"></span>
+                <span className={cn(
+                  "absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-white transition-all duration-300 ease-out rounded-full",
+                  pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
+                )}></span>
               </Link>
             ))}
           </div>
@@ -146,7 +153,7 @@ export function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-              className="fixed top-0 right-0 bottom-0 left-0 h-screen w-full bg-dark-900 z-[9999] md:hidden overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 left-0 h-screen w-full bg-black z-[9999] md:hidden overflow-y-auto"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation menu"

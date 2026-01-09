@@ -211,14 +211,14 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
   }
 
   return (
-    <div className="bg-zinc-900 rounded-lg shadow-xl border border-zinc-800 p-8">
+    <div className="bg-white rounded-lg shadow-xl border border-gray-200 p-8">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-white">
+        <h2 className="text-2xl font-bold text-black">
           {product ? 'Edit Product' : 'Add New Product'}
         </h2>
         <button
           onClick={onCancel}
-          className="text-zinc-400 hover:text-white transition"
+          className="text-gray-500 hover:text-black transition"
         >
           <X size={24} />
         </button>
@@ -227,7 +227,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* <div>
-            <label className="block text-sm font-semibold text-white mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Product ID (auto-generated if empty)
             </label>
             <input
@@ -235,13 +235,13 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               value={formData.id}
               onChange={(e) => setFormData({ ...formData, id: e.target.value })}
               disabled={!!product}
-              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500 disabled:opacity-50"
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400 disabled:opacity-50"
               placeholder="unique-product-id (optional)"
             />
           </div> */}
 
           <div>
-            <label className="block text-sm font-semibold text-white mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Product Name <span className="text-red-400">*</span>
             </label>
             <input
@@ -249,26 +249,26 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
               placeholder="Enter product name here"
             />
           </div>
 
           {/* <div>
-            <label className="block text-sm font-semibold text-white mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Slug (optional, auto-generated)
             </label>
             <input
               type="text"
               value={formData.slug}
               onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
               placeholder="classic-disco-ball"
             />
           </div> */}
 
           <div>
-            <label className="block text-sm font-semibold text-white mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Category
             </label>
               <div className="relative w-full">
@@ -280,7 +280,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
                       category: e.target.value as Product['category'],
                     })
                   }
-                  className="w-full appearance-none px-4 py-2 pr-10 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+                  className="w-full appearance-none px-4 py-2 pr-10 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
                 >
                   <option value="disco-balls">Disco Balls</option>
                   <option value="mirrors">Mirrors</option>
@@ -288,7 +288,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
                   <option value="accessories">Accessories</option>
                 </select>
 
-                <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-zinc-400">
+                <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
                   <svg
                     className="h-4 w-4"
                     viewBox="0 0 20 20"
@@ -306,7 +306,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-white mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Price <span className="text-red-400">*</span>
             </label>
             <input
@@ -317,13 +317,13 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               onChange={(e) =>
                 setFormData({ ...formData, price: parseFloat(e.target.value) || 0 })
               }
-              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
               placeholder="Enter price here"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-white mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Quantity <span className="text-red-400">*</span>
             </label>
             <input
@@ -333,32 +333,32 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               onChange={(e) =>
                 setFormData({ ...formData, quantity: parseInt(e.target.value) || 0 })
               }
-              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
               placeholder="Enter quantity here"
             />
           </div>
 
           <div className="flex items-center gap-6">
-            <label className="flex items-center gap-2 text-white cursor-pointer">
+            <label className="flex items-center gap-2 text-black cursor-pointer">
               <input
                 type="checkbox"
                 checked={formData.featured}
                 onChange={(e) =>
                   setFormData({ ...formData, featured: e.target.checked })
                 }
-                className="w-5 h-5 bg-zinc-800 border border-zinc-700 rounded"
+                className="w-5 h-5 bg-white border border-gray-300 rounded"
               />
               <span>Featured</span>
             </label>
 
-            <label className="flex items-center gap-2 text-white cursor-pointer">
+            <label className="flex items-center gap-2 text-black cursor-pointer">
               <input
                 type="checkbox"
                 checked={formData.visible}
                 onChange={(e) =>
                   setFormData({ ...formData, visible: e.target.checked })
                 }
-                className="w-5 h-5 bg-zinc-800 border border-zinc-700 rounded"
+                className="w-5 h-5 bg-white border border-gray-300 rounded"
               />
               <span>Visible</span>
             </label>
@@ -366,7 +366,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-white mb-2">
+          <label className="block text-sm font-semibold text-black mb-2">
             Description <span className="text-red-400">*</span>
           </label>
           <textarea
@@ -376,16 +376,16 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               setFormData({ ...formData, description: e.target.value })
             }
             rows={4}
-            className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+            className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
             placeholder="Enter description here"
           />
         </div>
 
-        <div className="border-t border-zinc-800 pt-6">
-          <h3 className="text-lg font-semibold text-white mb-4">Dimensions</h3>
+        <div className="border-t border-gray-200 pt-6">
+          <h3 className="text-lg font-semibold text-black mb-4">Dimensions</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div>
-              <label className="block text-sm text-zinc-400 mb-2">Width</label>
+              <label className="block text-sm text-gray-500 mb-2">Width</label>
               <input
                 type="number"
                 value={formData.dimensions?.width || 0}
@@ -398,11 +398,11 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
                     },
                   })
                 }
-                className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+                className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
               />
             </div>
             <div>
-              <label className="block text-sm text-zinc-400 mb-2">Height</label>
+              <label className="block text-sm text-gray-500 mb-2">Height</label>
               <input
                 type="number"
                 value={formData.dimensions?.height || 0}
@@ -415,11 +415,11 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
                     },
                   })
                 }
-                className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+                className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
               />
             </div>
             <div>
-              <label className="block text-sm text-zinc-400 mb-2">Depth</label>
+              <label className="block text-sm text-gray-500 mb-2">Depth</label>
               <input
                 type="number"
                 value={formData.dimensions?.depth || 0}
@@ -432,11 +432,11 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
                     },
                   })
                 }
-                className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+                className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
               />
             </div>
             <div>
-              <label className="block text-sm text-zinc-400 mb-2">Unit</label>
+              <label className="block text-sm text-gray-500 mb-2">Unit</label>
             <div className="relative w-full">
               <select
                 value={formData.dimensions?.unit || 'cm'}
@@ -449,14 +449,14 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
                     },
                   })
                 }
-                className="w-full appearance-none px-4 py-2 pr-10 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+                className="w-full appearance-none px-4 py-2 pr-10 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
               >
                 <option value="cm">cm</option>
                 <option value="in">in</option>
               </select>
 
               {/* Custom chevron */}
-              <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-zinc-400">
+              <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
                 <svg
                   className="h-4 w-4"
                   viewBox="0 0 20 20"
@@ -474,21 +474,21 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
           </div>
         </div>
 
-        {/* <div className="border-t border-zinc-800 pt-6">
-          <h3 className="text-lg font-semibold text-white mb-4">Materials</h3>
+        {/* <div className="border-t border-gray-200 pt-6">
+          <h3 className="text-lg font-semibold text-black mb-4">Materials</h3>
           <div className="flex gap-2 mb-3">
             <input
               type="text"
               value={materialInput}
               onChange={(e) => setMaterialInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addMaterial())}
-              className="flex-1 px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+              className="flex-1 px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
               placeholder="Add material..."
             />
             <button
               type="button"
               onClick={addMaterial}
-              className="px-4 py-2 bg-white text-black rounded-lg font-semibold hover:bg-zinc-200 transition"
+              className="px-4 py-2 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition"
             >
               <Plus size={20} />
             </button>
@@ -512,8 +512,8 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
           </div>
         </div> */}
 
-        <div className="border-t border-zinc-800 pt-6">
-          <h3 className="text-lg font-semibold text-white mb-4">Images</h3>
+        <div className="border-t border-gray-200 pt-6">
+          <h3 className="text-lg font-semibold text-black mb-4">Images</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             <input
               type="text"
@@ -521,13 +521,13 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               onChange={(e) =>
                 setImageInput({ ...imageInput, src: e.target.value })
               }
-              className="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+              className="px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
               placeholder="Enter image URL here"
             />
             <button
               type="button"
               onClick={addImage}
-              className="px-4 py-2 bg-white text-black rounded-lg font-semibold hover:bg-zinc-200 transition"
+              className="px-4 py-2 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition"
             >
               <Plus size={20} className="inline mr-2" />
               Add URL
@@ -544,7 +544,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
               type="button"
               onClick={() => fileInputRef.current?.click()}
               disabled={uploading}
-              className="px-4 py-2 bg-zinc-700 text-white rounded-lg font-semibold hover:bg-zinc-600 transition border border-zinc-600 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 py-2 bg-gray-100 text-black rounded-lg font-semibold hover:bg-gray-200 transition border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Upload size={20} className="inline mr-2" />
               {uploading ? 'Uploading...' : 'Upload Image'}
@@ -554,7 +554,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
             {formData.images.map((image, index) => (
               <div
                 key={index}
-                className="relative group rounded-lg overflow-hidden border border-zinc-700"
+                className="relative group rounded-lg overflow-hidden border border-gray-300"
               >
                 <img
                   src={image.src}
@@ -578,17 +578,17 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
           </div>
         </div>
 
-        <div className="flex justify-end gap-4 border-t border-zinc-800 pt-6">
+        <div className="flex justify-end gap-4 border-t border-gray-200 pt-6">
           <button
             type="button"
             onClick={onCancel}
-            className="px-6 py-3 bg-zinc-800 text-white rounded-lg font-semibold hover:bg-zinc-700 transition border border-zinc-700"
+            className="px-6 py-3 bg-gray-100 text-black rounded-lg font-semibold hover:bg-gray-200 transition border border-gray-300"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-zinc-200 transition"
+            className="px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition"
           >
             {product ? 'Update Product' : 'Create Product'}
           </button>

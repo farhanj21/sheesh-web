@@ -179,14 +179,14 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
   }
 
   return (
-    <div className="bg-zinc-900 rounded-lg shadow-xl border border-zinc-800 p-8">
+    <div className="bg-white rounded-lg shadow-xl border border-gray-200 p-8">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-white">
+        <h2 className="text-2xl font-bold text-black">
           {event ? 'Edit Event' : 'Add New Event'}
         </h2>
         <button
           onClick={onCancel}
-          className="text-zinc-400 hover:text-white transition"
+          className="text-gray-500 hover:text-black transition"
         >
           <X size={24} />
         </button>
@@ -195,7 +195,7 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-semibold text-white mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Event Title <span className="text-red-400">*</span>
             </label>
             <input
@@ -203,13 +203,13 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
               required
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
               placeholder="Enter event title here"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-white mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Date <span className="text-red-400">*</span>
             </label>
             <input
@@ -217,13 +217,13 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
               required
               value={formData.date}
               onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500 [color-scheme:dark]"
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400 [color-scheme:light]"
               placeholder="Enter date here"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-white mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Location <span className="text-red-400">*</span>
             </label>
             <input
@@ -231,14 +231,14 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
               required
               value={formData.location}
               onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-              className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
               placeholder="Enter location here"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-white mb-2">
+          <label className="block text-sm font-semibold text-black mb-2">
             Description <span className="text-red-400">*</span>
           </label>
           <textarea
@@ -248,16 +248,16 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
               setFormData({ ...formData, description: e.target.value })
             }
             rows={4}
-            className="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-500"
+            className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-black focus:outline-none focus:border-gray-400"
             placeholder="Enter description here"
           />
         </div>
 
-        <div className="border-t border-zinc-800 pt-6">
-          <h3 className="text-lg font-semibold text-white mb-4">Cover Image</h3>
+        <div className="border-t border-gray-200 pt-6">
+          <h3 className="text-lg font-semibold text-black mb-4">Cover Image</h3>
           <div className="flex items-center gap-4">
              {formData.image && (
-                <div className="relative w-32 h-32 rounded-lg overflow-hidden border border-zinc-700">
+                <div className="relative w-32 h-32 rounded-lg overflow-hidden border border-gray-300">
                   <img
                     src={formData.image}
                     alt="Cover"
@@ -284,7 +284,7 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
                 type="button"
                 onClick={() => coverInputRef.current?.click()}
                 disabled={uploading}
-                className="px-4 py-2 bg-zinc-700 text-white rounded-lg font-semibold hover:bg-zinc-600 transition border border-zinc-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-gray-100 text-black rounded-lg font-semibold hover:bg-gray-200 transition border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Upload size={20} className="inline mr-2" />
                 {uploading ? 'Uploading...' : 'Upload Cover'}
@@ -294,8 +294,8 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
           </div>
         </div>
 
-        <div className="border-t border-zinc-800 pt-6">
-          <h3 className="text-lg font-semibold text-white mb-4">Gallery Images</h3>
+        <div className="border-t border-gray-200 pt-6">
+          <h3 className="text-lg font-semibold text-black mb-4">Gallery Images</h3>
           <div className="mb-4">
              <input
                 ref={galleryInputRef}
@@ -309,7 +309,7 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
                 type="button"
                 onClick={() => galleryInputRef.current?.click()}
                 disabled={uploading}
-                className="px-4 py-2 bg-zinc-700 text-white rounded-lg font-semibold hover:bg-zinc-600 transition border border-zinc-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-gray-100 text-black rounded-lg font-semibold hover:bg-gray-200 transition border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Upload size={20} className="inline mr-2" />
                 {uploading ? 'Uploading...' : 'Upload Gallery Images'}
@@ -319,7 +319,7 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
             {formData.gallery.map((imgSrc, index) => (
               <div
                 key={index}
-                className="relative group rounded-lg overflow-hidden border border-zinc-700 h-24"
+                className="relative group rounded-lg overflow-hidden border border-gray-300 h-24"
               >
                 <img
                   src={imgSrc}
@@ -341,17 +341,17 @@ export function EventForm({ event, onSave, onCancel }: EventFormProps) {
           </div>
         </div>
 
-        <div className="flex justify-end gap-4 border-t border-zinc-800 pt-6">
+        <div className="flex justify-end gap-4 border-t border-gray-200 pt-6">
           <button
             type="button"
             onClick={onCancel}
-            className="px-6 py-3 bg-zinc-800 text-white rounded-lg font-semibold hover:bg-zinc-700 transition border border-zinc-700"
+            className="px-6 py-3 bg-gray-100 text-black rounded-lg font-semibold hover:bg-gray-200 transition border border-gray-300"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-zinc-200 transition"
+            className="px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition"
           >
             {event ? 'Update Event' : 'Create Event'}
           </button>

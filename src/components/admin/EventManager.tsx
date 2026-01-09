@@ -137,7 +137,7 @@ export function EventManager({ token: propToken }: EventManagerProps) {
     return (
       <>
         <ToastContainer toasts={toasts} onClose={removeToast} />
-        <div className="bg-black pt-6 pb-12">
+        <div className="bg-white pt-6 pb-12">
           <div className="container mx-auto px-4 md:px-6">
             <EventForm
               event={editingEvent}
@@ -170,16 +170,16 @@ export function EventManager({ token: propToken }: EventManagerProps) {
         }}
         onCancel={() => setDeleteDialog({ isOpen: false, eventId: null })}
       />
-      <div className="bg-black pt-6 pb-12">
+      <div className="bg-white pt-6 pb-12">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 md:mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Event Management</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-black">Event Management</h2>
             <button
               onClick={() => {
                 setEditingEvent(null)
                 setShowForm(true)
               }}
-              className="flex items-center justify-center gap-2 bg-white text-black px-4 md:px-6 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-zinc-200 transition"
+              className="flex items-center justify-center gap-2 bg-black text-white px-4 md:px-6 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
             >
               <Plus size={18} />
               <span>Add Event</span>
@@ -187,15 +187,15 @@ export function EventManager({ token: propToken }: EventManagerProps) {
           </div>
 
           {loading ? (
-            <div className="text-center text-white py-12">Loading...</div>
+            <div className="text-center text-black py-12">Loading...</div>
           ) : (
             <>
               {/* Desktop Table View */}
-              <div className="hidden md:block bg-zinc-900 rounded-lg shadow-xl border border-zinc-800 overflow-hidden">
+              <div className="hidden md:block bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="bg-zinc-800 text-white">
+                      <tr className="bg-gray-50 text-black">
                         <th className="px-6 py-4 text-left">Event</th>
                         <th className="px-6 py-4 text-left">Date</th>
                         <th className="px-6 py-4 text-left">Location</th>
@@ -206,7 +206,7 @@ export function EventManager({ token: propToken }: EventManagerProps) {
                       {events.map((event) => (
                         <tr
                           key={event.id}
-                          className="border-b border-zinc-800 hover:bg-zinc-800/50 transition"
+                          className="border-b border-gray-200 hover:bg-gray-50 transition"
                         >
                           <td className="px-6 py-4">
                             <div className="flex items-center gap-4">
@@ -218,16 +218,16 @@ export function EventManager({ token: propToken }: EventManagerProps) {
                                   />
                               )}
                               <div>
-                                <div className="font-semibold text-white">
+                                <div className="font-semibold text-black">
                                   {event.title}
                                 </div>
                               </div>
                             </div>
                           </td>
-                          <td className="px-6 py-4 text-zinc-300">
+                          <td className="px-6 py-4 text-gray-700">
                             {event.date}
                           </td>
-                          <td className="px-6 py-4 text-zinc-300">
+                          <td className="px-6 py-4 text-gray-700">
                             {event.location}
                           </td>
                           <td className="px-6 py-4">
@@ -252,8 +252,8 @@ export function EventManager({ token: propToken }: EventManagerProps) {
                         </tr>
                       ))}
                       {events.length === 0 && (
-                           <tr className="border-b border-zinc-800">
-                               <td colSpan={4} className="px-6 py-8 text-center text-zinc-400">
+                           <tr className="border-b border-gray-200">
+                               <td colSpan={4} className="px-6 py-8 text-center text-gray-500">
                                    No events found.
                                </td>
                            </tr>
@@ -266,14 +266,14 @@ export function EventManager({ token: propToken }: EventManagerProps) {
               {/* Mobile Card View */}
               <div className="md:hidden space-y-4">
                 {events.length === 0 ? (
-                  <div className="bg-zinc-900 rounded-lg shadow-xl border border-zinc-800 p-8 text-center text-zinc-400">
+                  <div className="bg-white rounded-lg shadow-xl border border-gray-200 p-8 text-center text-gray-500">
                     No events found.
                   </div>
                 ) : (
                   events.map((event) => (
                     <div
                       key={event.id}
-                      className="bg-zinc-900 rounded-lg shadow-xl border border-zinc-800 overflow-hidden"
+                      className="bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden"
                     >
                       <div className="p-4">
                         {/* Event Header */}
@@ -286,7 +286,7 @@ export function EventManager({ token: propToken }: EventManagerProps) {
                             />
                           )}
                           <div className="flex-1 min-w-0">
-                            <h3 className="font-semibold text-white text-base">
+                            <h3 className="font-semibold text-black text-base">
                               {event.title}
                             </h3>
                           </div>
@@ -295,17 +295,17 @@ export function EventManager({ token: propToken }: EventManagerProps) {
                         {/* Event Details */}
                         <div className="space-y-2 mb-4">
                           <div>
-                            <p className="text-xs text-zinc-400 mb-0.5">Date</p>
-                            <p className="text-white text-sm">{event.date}</p>
+                            <p className="text-xs text-gray-500 mb-0.5">Date</p>
+                            <p className="text-black text-sm">{event.date}</p>
                           </div>
                           <div>
-                            <p className="text-xs text-zinc-400 mb-0.5">Location</p>
-                            <p className="text-white text-sm">{event.location}</p>
+                            <p className="text-xs text-gray-500 mb-0.5">Location</p>
+                            <p className="text-black text-sm">{event.location}</p>
                           </div>
                         </div>
 
                         {/* Actions */}
-                        <div className="flex gap-2 pt-3 border-t border-zinc-800">
+                        <div className="flex gap-2 pt-3 border-t border-gray-200">
                           <button
                             onClick={() => {
                               setEditingEvent(event)
