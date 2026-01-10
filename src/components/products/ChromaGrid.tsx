@@ -68,20 +68,20 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
   // Dark theme gradients
   const categoryColorsDark: Record<string, { border: string; gradient: string }> = {
     mirrors: {
-      border: '#c0c0c0',
-      gradient: 'linear-gradient(145deg, #909090, #1a1a1a)'
+      border: '#404040',
+      gradient: 'linear-gradient(145deg, #2a2a2a, #0a0a0a)'
     },
     'disco-balls': {
-      border: '#FFD700',
-      gradient: 'linear-gradient(180deg, #FFD700, #0a0a0a)'
+      border: '#4B5563',
+      gradient: 'linear-gradient(180deg, #374151, #0a0a0a)'
     },
     'wall-art': {
-      border: '#8B5CF6',
-      gradient: 'linear-gradient(225deg, #8B5CF6, #0a0a0a)'
+      border: '#52525b',
+      gradient: 'linear-gradient(225deg, #3f3f46, #0a0a0a)'
     },
     accessories: {
-      border: '#10B981',
-      gradient: 'linear-gradient(210deg, #10B981, #0a0a0a)'
+      border: '#3f3f46',
+      gradient: 'linear-gradient(210deg, #27272a, #0a0a0a)'
     }
   }
 

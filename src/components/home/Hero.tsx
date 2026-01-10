@@ -32,12 +32,7 @@ export function Hero() {
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-fancy max-w-3xl mb-6 md:mb-8 italic drop-shadow-[0_0_30px_rgba(100,100,100,0.15)] dark:drop-shadow-[0_0_30px_rgba(192,192,192,0.15)] leading-tight"
             >
               <span className="text-gray-900 dark:text-white block sm:inline">
-                Handcrafted
-              </span>{' '}
-              <span className="text-gray-700 dark:text-white block sm:inline">
-                Mosaic Mirror Art
-              </span>
-              <span className="text-gray-900 dark:text-white block">
+                Handcrafted Mosaic Mirror Art
                 That Transforms Your Space And Vibe
               </span>
             </motion.p>
