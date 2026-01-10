@@ -13,16 +13,16 @@ export function LoadingScreen({ pageName }: LoadingScreenProps) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      className="fixed inset-0 z-50 bg-white flex items-center justify-center"
+      className="fixed inset-0 z-50 bg-white dark:bg-black flex items-center justify-center"
     >
       <div className="text-center">
         {/* Spinning loader */}
         <div className="relative w-20 h-20 mx-auto mb-6">
           <motion.div
-            className="absolute inset-0 border-4 border-gray-300/30 rounded-full"
+            className="absolute inset-0 border-4 border-gray-300/30 dark:border-gray-700/30 rounded-full"
           />
           <motion.div
-            className="absolute inset-0 border-4 border-transparent border-t-gray-900 rounded-full"
+            className="absolute inset-0 border-4 border-transparent border-t-gray-900 dark:border-t-white rounded-full"
             animate={{ rotate: 360 }}
             transition={{
               duration: 1,
@@ -31,7 +31,7 @@ export function LoadingScreen({ pageName }: LoadingScreenProps) {
             }}
           />
           <motion.div
-            className="absolute inset-2 border-4 border-transparent border-t-metallic rounded-full"
+            className="absolute inset-2 border-4 border-transparent border-t-metallic dark:border-t-gray-400 rounded-full"
             animate={{ rotate: -360 }}
             transition={{
               duration: 1.5,
@@ -47,10 +47,10 @@ export function LoadingScreen({ pageName }: LoadingScreenProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">
+          <h3 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-2">
             Loading {pageName}
           </h3>
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-gray-400">
             Please wait...
           </p>
         </motion.div>
@@ -60,7 +60,7 @@ export function LoadingScreen({ pageName }: LoadingScreenProps) {
           {[0, 1, 2].map((i) => (
             <motion.div
               key={i}
-              className="w-2 h-2 bg-gray-900 rounded-full"
+              className="w-2 h-2 bg-gray-900 dark:bg-white rounded-full"
               animate={{
                 scale: [1, 1.5, 1],
                 opacity: [0.5, 1, 0.5]
