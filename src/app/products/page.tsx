@@ -63,10 +63,10 @@ export default function ProductsPage() {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
             <h1 className="text-section font-bold text-4xl mb-4">
-              <span className="text-gray-900" data-text="Our Collection">Our Collection</span>
+              <span className="text-black dark:text-white" data-text="Our Collection">Our Collection</span>
             </h1>
             <p className="text-xl max-w-5xl mx-auto text-center">
-              <span className="text-gray-600 italic leading-relaxed lg:whitespace-nowrap" data-text="Discover handcrafted reflective art pieces that transform any space into a captivating experience.">
+              <span className="text-gray-600 dark:text-gray-400 italic leading-relaxed lg:whitespace-nowrap" data-text="Discover handcrafted reflective art pieces that transform any space into a captivating experience.">
                 Discover handcrafted reflective art pieces that transform any space into a captivating experience.
               </span>
             </p>

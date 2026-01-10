@@ -86,15 +86,15 @@ export function AdminDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-dark-950">
       {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">
+      <nav className="fixed top-0 left-0 right-0 bg-white dark:bg-black border-b border-gray-200 dark:border-zinc-800 z-50">
         <div className="container mx-auto px-4 md:px-6">
           {/* Mobile Layout */}
           <div className="md:hidden">
             {/* Top row - Title and Logout */}
-            <div className="flex items-center justify-between h-14 border-b border-gray-200">
-              <span className="text-lg font-bold text-black">Admin Dashboard</span>
+            <div className="flex items-center justify-between h-14 border-b border-gray-200 dark:border-zinc-800">
+              <span className="text-lg font-bold text-black dark:text-white">Admin Dashboard</span>
               <button
                 onClick={logout}
                 className="border-2 border-red-500 text-red-500 px-3 py-1.5 text-sm rounded-lg hover:bg-red-500 hover:text-white transition-all duration-300 ease-in-out"
@@ -108,8 +108,8 @@ export function AdminDashboard() {
                 onClick={() => setActiveTab('products')}
                 className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition ${
                   activeTab === 'products'
-                    ? 'bg-gray-100 text-black'
-                    : 'text-gray-500 hover:text-black'
+                    ? 'bg-black dark:bg-gradient-to-r dark:from-silver-400 dark:to-silver-500 text-white dark:text-dark-950'
+                    : 'text-gray-700 dark:text-neutral-400 hover:bg-gray-100 dark:hover:bg-zinc-800'
                 }`}
               >
                 <LayoutGrid size={18} />
@@ -119,8 +119,8 @@ export function AdminDashboard() {
                 onClick={() => setActiveTab('events')}
                 className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition ${
                   activeTab === 'events'
-                    ? 'bg-gray-100 text-black'
-                    : 'text-gray-500 hover:text-black'
+                    ? 'bg-black dark:bg-gradient-to-r dark:from-silver-400 dark:to-silver-500 text-white dark:text-dark-950'
+                    : 'text-gray-700 dark:text-neutral-400 hover:bg-gray-100 dark:hover:bg-zinc-800'
                 }`}
               >
                 <Calendar size={18} />
@@ -130,8 +130,8 @@ export function AdminDashboard() {
                 onClick={() => setActiveTab('analytics')}
                 className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition ${
                   activeTab === 'analytics'
-                    ? 'bg-gray-100 text-black'
-                    : 'text-gray-500 hover:text-black'
+                    ? 'bg-black dark:bg-gradient-to-r dark:from-silver-400 dark:to-silver-500 text-white dark:text-dark-950'
+                    : 'text-gray-700 dark:text-neutral-400 hover:bg-gray-100 dark:hover:bg-zinc-800'
                 }`}
               >
                 <TrendingUp size={18} />
@@ -143,14 +143,14 @@ export function AdminDashboard() {
           {/* Desktop Layout */}
           <div className="hidden md:flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
-              <span className="text-xl font-bold text-black">Admin Dashboard</span>
+              <span className="text-xl font-bold text-black dark:text-white">Admin Dashboard</span>
               <div className="flex gap-4">
                 <button
                   onClick={() => setActiveTab('products')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
                     activeTab === 'products'
-                      ? 'bg-gray-100 text-black'
-                      : 'text-gray-500 hover:text-black'
+                      ? 'bg-black dark:bg-gradient-to-r dark:from-silver-400 dark:to-silver-500 text-white dark:text-dark-950'
+                      : 'text-gray-700 dark:text-neutral-400 hover:bg-gray-100 dark:hover:bg-zinc-800'
                   }`}
                 >
                   <LayoutGrid size={20} />
@@ -160,8 +160,8 @@ export function AdminDashboard() {
                   onClick={() => setActiveTab('events')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
                     activeTab === 'events'
-                      ? 'bg-gray-100 text-black'
-                      : 'text-gray-500 hover:text-black'
+                      ? 'bg-black dark:bg-gradient-to-r dark:from-silver-400 dark:to-silver-500 text-white dark:text-dark-950'
+                      : 'text-gray-700 dark:text-neutral-400 hover:bg-gray-100 dark:hover:bg-zinc-800'
                   }`}
                 >
                   <Calendar size={20} />
@@ -171,8 +171,8 @@ export function AdminDashboard() {
                   onClick={() => setActiveTab('analytics')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
                     activeTab === 'analytics'
-                      ? 'bg-gray-100 text-black'
-                      : 'text-gray-500 hover:text-black'
+                      ? 'bg-black dark:bg-gradient-to-r dark:from-silver-400 dark:to-silver-500 text-white dark:text-dark-950'
+                      : 'text-gray-700 dark:text-neutral-400 hover:bg-gray-100 dark:hover:bg-zinc-800'
                   }`}
                 >
                   <TrendingUp size={20} />

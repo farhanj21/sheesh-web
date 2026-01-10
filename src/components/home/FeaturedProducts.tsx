@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react'
 import { Product } from '@/types'
 import { FadeIn } from '@/components/animations/FadeIn'
 import CircularGallery from './CircularGallery'
+import { useTheme } from '@/contexts/ThemeContext'
 
 export function FeaturedProducts() {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([])
+  const { theme } = useTheme()
 
   useEffect(() => {
     fetch('/api/products')
@@ -23,15 +25,15 @@ export function FeaturedProducts() {
   }))
 
   return (
-    <section className="py-12">
+    <section className="py-12 bg-white dark:bg-black">
       <div className="container mx-auto px-6 lg:px-12">
         <FadeIn>
           <h2 className="text-3xl font-display font-bold text-center">
-            <span className="text-gray-800">
+            <span className="text-black dark:text-white">
               Signature Pieces
             </span>
           </h2>
-          <p className="text-gray-600 text-lg text-center italic"><span className="text-gray-900">Handcrafted with precision, designed to captivate</span></p>
+          <p className="text-gray-600 dark:text-gray-300 text-lg text-center italic"><span className="text-black dark:text-white">Handcrafted with precision, designed to captivate</span></p>
         </FadeIn>
 
         {galleryItems.length > 0 && (
@@ -39,7 +41,7 @@ export function FeaturedProducts() {
             <CircularGallery
               items={galleryItems}
               bend={3}
-              textColor="#111827"
+              textColor={theme === 'dark' ? '#ffffff' : '#111827'}
               borderRadius={0.05}
               scrollEase={0.02}
               font="bold 30px HK Grotesk"

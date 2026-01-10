@@ -42,8 +42,8 @@ export const ReviewList: React.FC<ReviewListProps> = ({
     return (
       <div className="text-center py-12">
         <div className="text-6xl mb-4">💬</div>
-        <h3 className="text-xl font-bold text-gray-900 mb-2">No reviews yet</h3>
-        <p className="text-gray-600">Be the first to review this product!</p>
+        <h3 className="text-xl font-bold text-black dark:text-white mb-2">No reviews yet</h3>
+        <p className="text-gray-600 dark:text-neutral-400">Be the first to review this product!</p>
       </div>
     )
   }
@@ -53,14 +53,14 @@ export const ReviewList: React.FC<ReviewListProps> = ({
       {/* Sort Options */}
       {reviews.length > 1 && (
         <div className="flex items-center gap-3 mb-4">
-          <span className="text-sm text-gray-600">Sort by:</span>
+          <span className="text-sm text-gray-600 dark:text-neutral-400">Sort by:</span>
           <div className="flex gap-2">
             <button
               onClick={() => setSortBy('recent')}
               className={`text-sm px-3 py-1 rounded-full transition-colors ${
                 sortBy === 'recent'
-                  ? 'bg-gray-300 text-black font-semibold'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  ? 'bg-gray-300 dark:bg-neutral-600 text-black dark:text-white font-semibold'
+                  : 'bg-gray-200 dark:bg-neutral-700 text-gray-700 dark:text-neutral-300 hover:bg-gray-300 dark:hover:bg-neutral-600'
               }`}
             >
               Most Recent
@@ -69,8 +69,8 @@ export const ReviewList: React.FC<ReviewListProps> = ({
               onClick={() => setSortBy('rating-high')}
               className={`text-sm px-3 py-1 rounded-full transition-colors ${
                 sortBy === 'rating-high'
-                  ? 'bg-gray-300 text-black font-semibold'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  ? 'bg-gray-300 dark:bg-neutral-600 text-black dark:text-white font-semibold'
+                  : 'bg-gray-200 dark:bg-neutral-700 text-gray-700 dark:text-neutral-300 hover:bg-gray-300 dark:hover:bg-neutral-600'
               }`}
             >
               Highest Rating
@@ -79,8 +79,8 @@ export const ReviewList: React.FC<ReviewListProps> = ({
               onClick={() => setSortBy('rating-low')}
               className={`text-sm px-3 py-1 rounded-full transition-colors ${
                 sortBy === 'rating-low'
-                  ? 'bg-gray-300 text-black font-semibold'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  ? 'bg-gray-300 dark:bg-neutral-600 text-black dark:text-white font-semibold'
+                  : 'bg-gray-200 dark:bg-neutral-700 text-gray-700 dark:text-neutral-300 hover:bg-gray-300 dark:hover:bg-neutral-600'
               }`}
             >
               Lowest Rating
@@ -109,7 +109,7 @@ export const ReviewList: React.FC<ReviewListProps> = ({
           <button
             onClick={onLoadMore}
             disabled={isLoading}
-            className="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-6 py-3 bg-gray-200 dark:bg-neutral-700 hover:bg-gray-300 dark:hover:bg-neutral-600 text-gray-700 dark:text-neutral-200 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? 'Loading...' : 'Load More Reviews'}
           </button>
