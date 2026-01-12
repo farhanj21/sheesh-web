@@ -7,12 +7,21 @@ A modern, interactive, and minimalist e-commerce showcase website for Sheesh, fe
 - **Interactive Hero Section** - Full-viewport hero with animated typography and scroll indicator
 - **Dynamic Product Showcase** - MongoDB-backed product management with detailed views
 - **Events Gallery** - Showcase of past events and exhibitions
-- **Admin Dashboard** - Secure interface to manage products, stock, and events
+- **Admin Dashboard** - Secure interface to manage products, stock, events, reviews, and analytics
 - **Smooth Scroll Animations** - Framer Motion & GSAP powered animations
 - **Image Optimization** - Cloudinary integration for efficient media delivery
 - **Responsive Design** - Mobile-first approach with breakpoints for all devices
 - **Modern UI Components** - reusable design system
 - **3D Elements** - Spline and OGL integration for immersive visuals
+- **Review System** - Users can submit and view reviews with images
+- **Analytics** - Track product views, DM clicks, and more (admin only)
+- **File Upload API** - Secure Cloudinary upload endpoint for images
+- **Migration Scripts** - Tools for migrating images and setting up indexes
+- **TypeScript Types** - Strict typing for all data models
+- **API Routes** - RESTful endpoints for products, events, reviews, analytics, and uploads
+- **Environment-based Auth** - Admin routes protected by password token
+- **Vercel Ready** - Optimized for serverless deployment
+- **Customizable UI** - Built with Tailwind, shadcn/ui, and Lucide icons
 
 ## Tech Stack
 
@@ -63,7 +72,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000] in your browser.
 
 ### Admin Access
 
@@ -93,15 +102,6 @@ sheeshWeb/
 │   └── types/            # TypeScript definitions
 └── public/               # Static assets
 ```
-
-## Deployment
-
-### Vercel (Recommended)
-
-1. Push your code to GitHub
-2. Import project in Vercel
-3. Add the Environment Variables in Vercel project settings
-4. Deploy
 
 ## License
 

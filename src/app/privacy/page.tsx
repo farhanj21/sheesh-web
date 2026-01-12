@@ -9,11 +9,11 @@ export default function PrivacyPage() {
     trackPageView('Privacy')
   }, [])
   return (
-    <div className="relative min-h-screen pt-32 pb-16 bg-white">
+    <div className="relative min-h-screen pt-32 pb-16 bg-white dark:bg-black dark:text-white">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50 -z-10 dark:bg-black dark:bg-none" />
       <div className="absolute inset-0 opacity-30 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-400/15 to-transparent animate-shimmer bg-[length:200%_100%]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-400/15 to-transparent animate-shimmer bg-[length:200%_100%] dark:bg-none" />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12 max-w-4xl">
@@ -25,11 +25,11 @@ export default function PrivacyPage() {
           className="text-center mb-16"
         >
           <h1 className="text-section font-bold text-4xl mb-4">
-            <span className="text-gray-900" data-text="Privacy Policy">Privacy Policy</span>
+            <span className="text-gray-900 dark:text-white" data-text="Privacy Policy">Privacy Policy</span>
           </h1>
           <p className="text-xl max-w-2xl mx-auto text-center">
-            <span className="text-gray-600 italic leading-relaxed" data-text="Last updated: December 31, 2025">
-              Last updated: December 31, 2025
+            <span className="text-gray-600 dark:text-gray-200 italic leading-relaxed" data-text="Last updated: January 12, 2026">
+              Last updated: January 12, 2026
             </span>
           </p>
         </motion.div>
@@ -39,17 +39,17 @@ export default function PrivacyPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-white/60 backdrop-blur-sm border border-gray-300 rounded-2xl p-8 md:p-12 space-y-8"
+          className="bg-white/60 dark:bg-black/80 border border-gray-300 dark:border-gray-700 rounded-2xl p-8 md:p-12 space-y-8"
         >
           <section>
-            <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Introduction</h2>
+            <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-4">Introduction</h2>
             <p className="text-gray-600 leading-relaxed">
               Welcome to Sheesh. We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you visit our website or purchase our products.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Information We Collect</h2>
+            <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-4">Information We Collect</h2>
             <p className="text-gray-600 leading-relaxed mb-3">
               We may collect the following types of information:
             </p>
@@ -63,7 +63,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">How We Use Your Information</h2>
+            <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-4">How We Use Your Information</h2>
             <p className="text-gray-600 leading-relaxed mb-3">
               We use your information to:
             </p>
@@ -77,28 +77,21 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Data Security</h2>
+            <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-4">Data Security</h2>
             <p className="text-gray-600 leading-relaxed">
               We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Third-Party Services</h2>
+            <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-4">Third-Party Services</h2>
             <p className="text-gray-600 leading-relaxed">
               We may use third-party service providers to help us operate our business and website or administer activities on our behalf. These third parties have access to your personal information only to perform specific tasks and are obligated not to disclose or use it for any other purpose.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Cookies</h2>
-            <p className="text-gray-600 leading-relaxed">
-              Our website may use cookies to enhance your browsing experience. You can choose to disable cookies through your browser settings, though this may affect some functionality of our website.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Your Rights</h2>
+            <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-4">Your Rights</h2>
             <p className="text-gray-600 leading-relaxed mb-3">
               You have the right to:
             </p>
@@ -112,16 +105,9 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Changes to This Policy</h2>
+            <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-4">Changes to This Policy</h2>
             <p className="text-gray-600 leading-relaxed">
               We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Contact Us</h2>
-            <p className="text-gray-600 leading-relaxed">
-              If you have any questions about this Privacy Policy or our data practices, please contact us through our <a href="/contact" className="text-gray-300 hover:text-gold-400 transition-colors">Contact page</a>.
             </p>
           </section>
         </motion.div>
