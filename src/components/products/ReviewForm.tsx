@@ -93,7 +93,7 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({
         }
 
         const data = await response.json()
-        uploadedUrls.push(data.secure_url)
+        uploadedUrls.push(data.url || data.secure_url)
       }
 
       setImages((prev) => [...prev, ...uploadedUrls])
@@ -261,13 +261,15 @@ export const ReviewForm: React.FC<ReviewFormProps> = ({
           <div className="flex gap-2 mb-3 overflow-x-auto pb-2">
             {images.map((url, index) => (
               <div key={index} className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border border-gray-300 dark:border-neutral-600 group">
-                <Image
-                  src={url}
-                  alt={`Review image ${index + 1}`}
-                  width={80}
-                  height={80}
-                  className="w-full h-full object-cover"
-                />
+                {url ? (
+                  <Image
+                    src={url}
+                    alt={`Review image ${index + 1}`}
+                    width={80}
+                    height={80}
+                    className="w-full h-full object-cover"
+                  />
+                ) : null}
                 <button
                   type="button"
                   onClick={() => handleRemoveImage(index)}
