@@ -204,7 +204,7 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 rounded-lg text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 focus:bg-gray-50 dark:focus:bg-gray-900 focus:shadow-glow-dark transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 rounded-lg text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 focus:bg-gray-50 dark:focus:bg-gray-600 focus:shadow-glow-dark transition-all duration-300"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -219,7 +219,7 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 rounded-lg text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 focus:bg-gray-50 dark:focus:bg-gray-900 focus:shadow-glow-dark transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 rounded-lg text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 focus:bg-gray-50 dark:focus:bg-gray-600 focus:shadow-glow-dark transition-all duration-300"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -236,7 +236,7 @@ export default function ContactPage() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 rounded-lg text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 focus:bg-gray-50 dark:focus:bg-gray-900 focus:shadow-glow-dark transition-all duration-300"
+                  className="w-full px-4 py-3 bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 rounded-lg text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 focus:bg-gray-50 dark:focus:bg-gray-600 focus:shadow-glow-dark transition-all duration-300"
                   placeholder="What's this about?"
                 />
               </div>
@@ -252,7 +252,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 rounded-lg text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 focus:bg-gray-50 dark:focus:bg-gray-900 focus:shadow-glow-dark transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 rounded-lg text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 focus:bg-gray-50 dark:focus:bg-gray-600 focus:shadow-glow-dark transition-all duration-300 resize-none"
                   placeholder="Tell us more..."
                 />
               </div>

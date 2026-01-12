@@ -59,7 +59,7 @@ export default function ProductsPage() {
   return (
     <>
       <ToastContainer toasts={toasts} onClose={removeToast} />
-      <div className="min-h-screen pt-32 pb-16">
+      <div className="min-h-screen pt-32 pb-16 dark:bg-black">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
             <h1 className="text-section font-bold text-4xl mb-4">

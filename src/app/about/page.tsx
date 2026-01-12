@@ -12,7 +12,7 @@ export default function AboutPage() {
   }, [])
 
   return (
-    <div className="min-h-screen pt-32 pb-16">
+    <div className="min-h-screen pt-32 pb-16 dark:bg-black">
       <div className="container mx-auto px-6 lg:px-12">
         <FadeIn>
           <div className="text-center mb-12 max-w-3xl mx-auto">

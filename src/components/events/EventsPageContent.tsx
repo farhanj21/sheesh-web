@@ -243,7 +243,7 @@ export function EventsPageContent({ events }: EventsPageContentProps) {
           <Link href="/contact">
             <Button
               size="md"
-              className="text-sm sm:text-md tracking-wide text-black dark:text-white bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 dark:from-gray-700 dark:via-gray-800 dark:to-gray-700 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 dark:hover:from-gray-600 dark:hover:via-gray-700 dark:hover:to-gray-600 shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+              className="text-sm sm:text-md tracking-wide text-black dark:text-black bg-gradient-to-br from-gray-300 via-gray-100 to-gray-300 hover:from-gray-400 hover:via-gray-200 hover:to-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full w-full sm:w-auto"
             >
               Get in Touch
             </Button>
