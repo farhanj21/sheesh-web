@@ -109,7 +109,9 @@ export function Header() {
             ))}
 
             {/* Theme Toggle */}
-            <ThemeToggle />
+            <div className="pb-2">
+              <ThemeToggle />
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
