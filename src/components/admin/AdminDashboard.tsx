@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react'
 import { StockManager } from './StockManager'
 import { EventManager } from './EventManager'
 import { AnalyticsManager } from './AnalyticsManager'
-import { LayoutGrid, Calendar, TrendingUp, Eye, EyeOff } from 'lucide-react'
+import { AboutManager } from './AboutManager'
+import { LayoutGrid, Calendar, TrendingUp, FileText, Eye, EyeOff } from 'lucide-react'
 
 export function AdminDashboard() {
   const [token, setToken] = useState<string | null>(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [activeTab, setActiveTab] = useState<'products' | 'events' | 'analytics'>('products')
+  const [activeTab, setActiveTab] = useState<'products' | 'events' | 'analytics' | 'about'>('products')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -137,6 +138,17 @@ export function AdminDashboard() {
                 <TrendingUp size={18} />
                 <span className="text-xs">Analytics</span>
               </button>
+              <button
+                onClick={() => setActiveTab('about')}
+                className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition ${
+                  activeTab === 'about'
+                    ? 'bg-black dark:bg-gradient-to-r dark:from-silver-400 dark:to-silver-500 text-white dark:text-dark-950'
+                    : 'text-gray-700 dark:text-neutral-400 hover:bg-gray-100 dark:hover:bg-zinc-800'
+                }`}
+              >
+                <FileText size={18} />
+                <span className="text-xs">About</span>
+              </button>
             </div>
           </div>
 
@@ -178,6 +190,17 @@ export function AdminDashboard() {
                   <TrendingUp size={20} />
                   Analytics
                 </button>
+                <button
+                  onClick={() => setActiveTab('about')}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
+                    activeTab === 'about'
+                      ? 'bg-black dark:bg-gradient-to-r dark:from-silver-400 dark:to-silver-500 text-white dark:text-dark-950'
+                      : 'text-gray-700 dark:text-neutral-400 hover:bg-gray-100 dark:hover:bg-zinc-800'
+                  }`}
+                >
+                  <FileText size={20} />
+                  About
+                </button>
               </div>
             </div>
             <button
@@ -196,8 +219,10 @@ export function AdminDashboard() {
           <StockManager token={token!} onLogout={logout} />
         ) : activeTab === 'events' ? (
           <EventManager token={token!} />
-        ) : (
+        ) : activeTab === 'analytics' ? (
           <AnalyticsManager token={token!} />
+        ) : (
+          <AboutManager token={token!} />
         )}
       </div>
     </div>

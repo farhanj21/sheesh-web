@@ -87,3 +87,15 @@ export interface ReviewStats {
     5: number
   }
 }
+
+export interface AboutSection {
+  id: string
+  title: string
+  content: string
+}
+
+export interface AboutContent {
+  id: string
+  sections: AboutSection[]
+  updatedAt: string
+}
