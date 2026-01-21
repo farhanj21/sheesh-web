@@ -1,42 +1,30 @@
-'use client'
+import { Metadata } from 'next'
+import { generateMetadata as genMeta, pageKeywords } from '@/lib/seo-utils'
+import { getEvents } from '@/lib/events-db'
+import { EventsContent } from '@/components/events/EventsContent'
+import { getEventSchema, renderJsonLd } from '@/lib/structured-data'
 
-import { useState, useEffect } from 'react'
-import { EventsPageContent } from '@/components/events/EventsPageContent'
-import { LoadingScreen } from '@/components/shared/LoadingScreen'
-import { Event } from '@/types'
-import { trackPageView } from '@/lib/analytics'
+export const metadata: Metadata = genMeta({
+  title: 'Events & Exhibitions',
+  description: 'Discover our latest exhibitions and events showcasing handcrafted mirror mosaic art. Join us for upcoming showcases and view past exhibitions by Sheesh Mirrorworks.',
+  path: '/events',
+  keywords: pageKeywords.events
+})
 
-export default function EventsPage() {
-  const [events, setEvents] = useState<Event[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+export default async function EventsPage() {
+  const events = await getEvents()
 
-  // Track page view
-  useEffect(() => {
-    trackPageView('Events')
-  }, [])
-
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const response = await fetch('/api/events')
-        if (!response.ok) {
-          throw new Error('Failed to fetch events')
-        }
-        const data = await response.json()
-        setEvents(data)
-      } catch (error) {
-        console.error('Error fetching events:', error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchEvents()
-  }, [])
-
-  if (isLoading) {
-    return <LoadingScreen pageName="Events" />
-  }
-
-  return <EventsPageContent events={events} />
+  return (
+    <>
+      {/* Event Structured Data */}
+      {events.map(event => (
+        <script
+          key={event.id}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={renderJsonLd(getEventSchema(event))}
+        />
+      ))}
+      <EventsContent events={events} />
+    </>
+  )
 }

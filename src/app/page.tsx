@@ -1,24 +1,14 @@
-'use client'
+import { Metadata } from 'next'
+import { generateMetadata as genMeta, pageKeywords } from '@/lib/seo-utils'
+import { HomeContent } from '@/components/home/HomeContent'
 
-import { useEffect } from 'react'
-import { Hero } from '@/components/home/Hero'
-import { FeaturedProducts } from '@/components/home/FeaturedProducts'
-import { AboutSection } from '@/components/home/AboutSection'
-import { CTASection } from '@/components/home/CTASection'
-import { trackPageView } from '@/lib/analytics'
+export const metadata: Metadata = genMeta({
+  title: 'Home',
+  description: 'Discover handcrafted mosaic mirror art, disco balls, and reflective artistic products. Transform your space with Sheesh Mirrorworks - Premium custom designs from Lahore, Pakistan.',
+  path: '/',
+  keywords: pageKeywords.home
+})
 
 export default function Home() {
-  // Track page view
-  useEffect(() => {
-    trackPageView('Home')
-  }, [])
-
-  return (
-    <>
-      <Hero />
-      <FeaturedProducts />
-      <AboutSection />
-      <CTASection />
-    </>
-  )
+  return <HomeContent />
 }

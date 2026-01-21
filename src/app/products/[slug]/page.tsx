@@ -1,7 +1,9 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getProductBySlug } from '@/lib/products-db'
+import { getReviewStats } from '@/lib/reviews-db'
 import { ProductDetail } from '@/components/products/ProductDetail'
+import { getBreadcrumbSchema, getProductSchema, renderJsonLd } from '@/lib/structured-data'
 
 interface ProductPageProps {
   params: Promise<{
@@ -52,6 +54,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound()
   }
 
+  // Get review stats for aggregate rating
+  const reviewStats = await getReviewStats(product.id)
+
+  // Generate structured data schemas
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Products', url: '/products' },
+    { name: product.name, url: `/products/${product.slug}` }
+  ])
+
+  const productSchema = getProductSchema(
+    product,
+    reviewStats.totalReviews > 0 ? reviewStats : undefined
+  )
+
   // Check if user is admin (for review management features)
   // In a real app, this would check server-side auth
   // For now, we'll pass isAdmin as false and let client-side handle it
@@ -59,32 +76,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <>
-      {/* JSON-LD Structured Data for SEO */}
+      {/* BreadcrumbList Structured Data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Product',
-            name: product.name,
-            description: product.description,
-            image: product.images.map(img => img.src),
-            offers: {
-              '@type': 'Offer',
-              price: product.price,
-              priceCurrency: product.currency,
-              availability: product.inStock
-                ? 'https://schema.org/InStock'
-                : 'https://schema.org/OutOfStock',
-              url: `https://sheeshmirrorworks.com/products/${product.slug}`
-            },
-            brand: {
-              '@type': 'Brand',
-              name: 'Sheesh Mirrorworks'
-            },
-            category: product.category
-          })
-        }}
+        dangerouslySetInnerHTML={renderJsonLd(breadcrumbSchema)}
+      />
+
+      {/* Product Structured Data with AggregateRating */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={renderJsonLd(productSchema)}
       />
 
       <ProductDetail product={product} isAdmin={isAdmin} />
