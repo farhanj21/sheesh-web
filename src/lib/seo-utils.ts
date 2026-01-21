@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 // Site configuration
 export const siteConfig = {
   name: 'Sheesh Mirrorworks',
-  url: 'https://www.sheeshpk.store/',
+  url: 'https://www.sheeshpk.store',
   description: 'Premium mosaic mirrorworks, disco balls, and reflective artistic products to transform your space.',
   founder: 'Aliha Naeem',
   email: 'sheeshupyourlife@gmail.com',
