@@ -10,6 +10,8 @@ export const metadata: Metadata = genMeta({
   keywords: pageKeywords.products
 })
 
+export const revalidate = 60
+
 export default async function ProductsPage() {
   const products = await getVisibleProducts()
 

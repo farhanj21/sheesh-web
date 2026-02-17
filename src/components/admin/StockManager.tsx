@@ -318,6 +318,7 @@ export function StockManager({ token: propToken, onLogout }: { token?: string, o
                 <table className="w-full">
                   <thead>
                     <tr className="bg-gray-50 text-black">
+                      <th className="px-6 py-4 text-left">#</th>
                       <th className="px-6 py-4 text-left">Product</th>
                       <th className="px-6 py-4 text-left">Category</th>
                       <th className="px-6 py-4 text-left">Price</th>
@@ -328,11 +329,14 @@ export function StockManager({ token: propToken, onLogout }: { token?: string, o
                     </tr>
                   </thead>
                   <tbody>
-                    {products.map((product) => (
+                    {products.map((product, index) => (
                       <tr
                         key={product.id}
                         className="border-b border-gray-200 hover:bg-gray-50 transition"
                       >
+                        <td className="px-6 py-4 text-gray-700 font-medium">
+                          {index + 1}.
+                        </td>
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-4">
                             <img
@@ -417,12 +421,16 @@ export function StockManager({ token: propToken, onLogout }: { token?: string, o
 
             {/* Mobile Card View */}
             <div className="md:hidden space-y-4">
-              {products.map((product) => (
+              {products.map((product, index) => (
                 <div
                   key={product.id}
                   className="bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden"
                 >
                   <div className="p-4">
+                    {/* Serial Number Badge */}
+                    <div className="inline-block px-2 py-1 bg-gray-100 rounded text-xs font-semibold text-gray-700 mb-3">
+                      #{index + 1}
+                    </div>
                     {/* Product Header */}
                     <div className="flex gap-3 mb-4">
                       <img
