@@ -50,6 +50,13 @@ export function StockManager({ token: propToken, onLogout }: { token?: string, o
     setToasts((prev) => prev.filter((toast) => toast.id !== id))
   }
 
+  const formatCategory = (category: string) => {
+    return category
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
+  }
+
   const login = async () => {
     try {
       const res = await fetch('/api/admin/auth', {
@@ -348,14 +355,11 @@ export function StockManager({ token: propToken, onLogout }: { token?: string, o
                               <div className="font-semibold text-black">
                                 {product.name}
                               </div>
-                              <div className="text-sm text-gray-500">
-                                {product.id}
-                              </div>
                             </div>
                           </div>
                         </td>
                         <td className="px-6 py-4 text-gray-700">
-                          {product.category}
+                          {formatCategory(product.category)}
                         </td>
                         <td className="px-6 py-4 text-gray-700">
                           Rs {product.price.toFixed(2)}
@@ -421,16 +425,12 @@ export function StockManager({ token: propToken, onLogout }: { token?: string, o
 
             {/* Mobile Card View */}
             <div className="md:hidden space-y-4">
-              {products.map((product, index) => (
+              {products.map((product) => (
                 <div
                   key={product.id}
                   className="bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden"
                 >
                   <div className="p-4">
-                    {/* Serial Number Badge */}
-                    <div className="inline-block px-2 py-1 bg-gray-100 rounded text-xs font-semibold text-gray-700 mb-3">
-                      #{index + 1}
-                    </div>
                     {/* Product Header */}
                     <div className="flex gap-3 mb-4">
                       <img
@@ -443,7 +443,7 @@ export function StockManager({ token: propToken, onLogout }: { token?: string, o
                           {product.name}
                         </h3>
                         <p className="text-xs text-gray-500 truncate">{product.id}</p>
-                        <p className="text-sm text-gray-700 mt-1">{product.category}</p>
+                        <p className="text-sm text-gray-700 mt-1">{formatCategory(product.category)}</p>
                       </div>
                     </div>
 

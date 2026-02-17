@@ -196,6 +196,7 @@ export function EventManager({ token: propToken }: EventManagerProps) {
                   <table className="w-full">
                     <thead>
                       <tr className="bg-gray-50 text-black">
+                        <th className="px-6 py-4 text-left">#</th>
                         <th className="px-6 py-4 text-left">Event</th>
                         <th className="px-6 py-4 text-left">Date</th>
                         <th className="px-6 py-4 text-left">Location</th>
@@ -203,11 +204,14 @@ export function EventManager({ token: propToken }: EventManagerProps) {
                       </tr>
                     </thead>
                     <tbody>
-                      {events.map((event) => (
+                      {events.map((event, index) => (
                         <tr
                           key={event.id}
                           className="border-b border-gray-200 hover:bg-gray-50 transition"
                         >
+                          <td className="px-6 py-4 text-gray-700 font-medium">
+                            {index + 1}.
+                          </td>
                           <td className="px-6 py-4">
                             <div className="flex items-center gap-4">
                               {event.image && (
@@ -253,7 +257,7 @@ export function EventManager({ token: propToken }: EventManagerProps) {
                       ))}
                       {events.length === 0 && (
                            <tr className="border-b border-gray-200">
-                               <td colSpan={4} className="px-6 py-8 text-center text-gray-500">
+                               <td colSpan={5} className="px-6 py-8 text-center text-gray-500">
                                    No events found.
                                </td>
                            </tr>
