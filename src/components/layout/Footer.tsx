@@ -2,10 +2,15 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useInView } from 'framer-motion'
+import { useRef } from 'react'
+import { Signature } from '@/components/ui/Signature'
 
 export function Footer() {
   const pathname = usePathname()
   const currentYear = new Date().getFullYear()
+  const creditRef = useRef<HTMLParagraphElement>(null)
+  const creditInView = useInView(creditRef, { once: true })
 
   if (pathname?.startsWith('/admin')) {
     return null
@@ -118,10 +123,21 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-sm text-center hidden md:block">
           <p
-            className="text-gray-600 dark:text-white"
+            ref={creditRef}
+            className="text-gray-600 dark:text-white inline-flex items-center gap-1.5"
             data-text={`© ${currentYear} Sheesh. All Rights Reserved – Developed by Syed Farhan Jafri`}
           >
-            &copy; {currentYear} Sheesh. All Rights Reserved – Developed by Syed Farhan Jafri
+            <span>&copy; {currentYear} Sheesh. All Rights Reserved – Developed by</span>
+            <a
+              href="https://github.com/farhanj21"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Syed Farhan Jafri on GitHub"
+              className="relative group inline-flex items-center pb-1 transition-transform hover:scale-105"
+            >
+              <Signature isInView={creditInView} />
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-black dark:bg-white transition-all duration-300 ease-out rounded-full group-hover:w-full"></span>
+            </a>
           </p>
         </div>
 
